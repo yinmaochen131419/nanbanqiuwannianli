@@ -1,0 +1,42 @@
+package com.example.wannianli.engine
+
+import cn.hutool.core.date.ChineseDate
+import cn.hutool.core.date.DateUtil
+import java.util.*
+
+object LunarCalendarEngine {
+    fun solarToLunar(year: Int, month: Int, day: Int): LunarResult {
+        val cal = Calendar.getInstance()
+        cal.set(year, month - 1, day)
+        val date = cal.time
+
+        val chineseDate = ChineseDate(date)
+        val lunarYear = chineseDate.chineseYear
+        val lunarMonth = chineseDate.month
+        val lunarDay = chineseDate.day
+        val isLeapMonth = chineseDate.isLeapMonth
+
+        return LunarResult(
+            year = lunarYear,
+            month = lunarMonth,
+            day = lunarDay,
+            isLeapMonth = isLeapMonth
+        )
+    }
+
+    fun gregorianToJD(year: Int, month: Int, day: Int): Double {
+        var y = year
+        var m = month
+        if (m <= 2) { y -= 1; m += 12 }
+        val a = Math.floor(y / 100.0)
+        val b = 2 - a + Math.floor(a / 4.0)
+        return Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + day + b - 1524.5
+    }
+
+    data class LunarResult(
+        val year: Int,
+        val month: Int,
+        val day: Int,
+        val isLeapMonth: Boolean
+    )
+}

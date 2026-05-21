@@ -1,0 +1,153 @@
+package com.example.wannianli.data.local
+
+import android.content.Context
+import android.content.SharedPreferences
+import com.example.wannianli.data.model.ChangelogEntry
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
+object ChangelogDataSource {
+    private const val PREFS_NAME = "wannianli_changelog"
+    private const val KEY_CHANGELOG = "changelog_list"
+
+    private fun getPrefs(context: Context): SharedPreferences {
+        return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    }
+
+    fun getChangelog(context: Context): List<ChangelogEntry> {
+        val json = getPrefs(context).getString(KEY_CHANGELOG, null) ?: return getDefaultChangelog()
+        return try {
+            val type = object : TypeToken<List<ChangelogEntry>>() {}.type
+            Gson().fromJson(json, type)
+        } catch (e: Exception) {
+            getDefaultChangelog()
+        }
+    }
+
+    fun addEntry(context: Context, entry: ChangelogEntry) {
+        val list = getChangelog(context).toMutableList()
+        list.add(0, entry)
+        val json = Gson().toJson(list)
+        getPrefs(context).edit().putString(KEY_CHANGELOG, json).apply()
+    }
+
+    private fun getDefaultChangelog(): List<ChangelogEntry> {
+        return listOf(
+            ChangelogEntry(
+                version = "v1.0.21",
+                date = "2026-05-20",
+                content = "新增通天窍择日（独立标签页）：十二时辰黄道黑道神煞系统（青龙明堂天刑朱雀金匮天德白虎玉堂天牢玄武司命勾陈）；按日支起青龙顺排十二时辰；最优时辰推荐（首选+次选）；六大黄道吉时标注；坐山联动+本命相主联动预留接口"
+            ),
+            ChangelogEntry(
+                version = "v1.0.20",
+                date = "2026-05-20",
+                content = "斗首择日全面升级：新增斗首与坐山匹配分析（联动正体五行坐山，五星生克制化）；十干化气古法校验（年上起元辰正宗标注）；催丁催贵文案精细化（含破军干扰/武曲生贪狼等细则）；禁忌事项升级（元辰制破军化解+天德月德）；新增本命年命联动参考"
+            ),
+            ChangelogEntry(
+                version = "v1.0.19",
+                date = "2026-05-20",
+                content = "新增乌兔太阳太阴择日（杨公古法：太阳到山化煞、太阴到向催财，绑定坐山动态判定）；新增四大类神煞优先级体系（山家八煞/年家大煞/日家四大凶日/杨公忌日，按优先级分层，含四离四绝重丧正四废等全新检查）；山家煞扩展（龙虎煞血刃年家白虎小月建黄幡豹尾）"
+            ),
+            ChangelogEntry(
+                version = "v1.0.18",
+                date = "2026-05-20",
+                content = "正体五行择日重大优化：四柱五行旺衰分析（干支八字符五行统计）；扶山补龙匹配（坐山五行生克判定）；山家犯大煞动态评分覆盖（岁破三煞阴府都天强制判大凶0-25分）；宜忌事项绑定坐山分场景；神煞优先级分层（山家煞＞日神煞天德月德）"
+            ),
+            ChangelogEntry(
+                version = "v1.0.17",
+                date = "2026-05-20",
+                content = "斗首择日优化：新增斗首全局格局分析（年时双元辰/三元辰/武曲得令/破军受制等模式识别）；新增禁忌事项分析（破军所在柱位具体禁忌、化解方法）"
+            ),
+            ChangelogEntry(
+                version = "v1.0.16",
+                date = "2026-05-20",
+                content = "十二建除深度解析（建除满平定执破危成收开闭各附详解+宜忌清单）；二十八宿深度解析（28星宿简介+宜忌清单）；新增神煞冲突深度分析（破日遇天德月德可化解等规则）"
+            ),
+            ChangelogEntry(
+                version = "v1.0.15",
+                date = "2026-05-20",
+                content = "正体五行新增山家煞分析：二十四山坐山选择器；年家煞（三煞岁破大将军巡山罗睺戊己都天大月建土府）；山家煞（阴府罗天大退坐三煞方冲山坐山刑害）；天德月德虽吉犯山家大煞照样凶"
+            ),
+            ChangelogEntry(
+                version = "v1.0.14",
+                date = "2026-05-20",
+                content = "修复河洛日课闪退bug：洛书卦序(含跳跃1-9)直代标准六十四卦索引(0-63)导致离卦索引64数组越界，增加LUOSHU_TO_ARRAY_INDEX映射表修复"
+            ),
+            ChangelogEntry(
+                version = "v1.0.13",
+                date = "2026-05-20",
+                content = "择日板块新增河洛纳卦日课：纳甲纳支配八卦合六十四重卦；河洛数理/卦气通气/阴阳相配分析；催丁催贵稳大局评估；含六十四卦吉凶判定"
+            ),
+            ChangelogEntry(
+                version = "v1.0.12",
+                date = "2026-05-20",
+                content = "择日板块新增斗首择日：天干化气五行定元辰；提取元辰廉贞贪狼武曲破军五星；分析斗首旺衰/催财催丁催贵力度；包含原理说明"
+            ),
+            ChangelogEntry(
+                version = "v1.0.11",
+                date = "2026-05-20",
+                content = "择日页面重构：显示当天阳历农历四柱；十二建除宜忌映射（宜嫁娶出行开市/忌破土安葬等）；支持左右箭头切换日期+滑动手势"
+            ),
+            ChangelogEntry(
+                version = "v1.0.10",
+                date = "2026-05-20",
+                content = "合并农历与四柱为同一卡片，农历横向展示（农历：四月初四）；移除生肖显示；干支年统一格式"
+            ),
+            ChangelogEntry(
+                version = "v1.0.9",
+                date = "2026-05-20",
+                content = "首页底部新增导航栏（首页/择日）；新增正体五行择日功能：十二建除、三煞岁破月破、天德月德、劫煞灾煞、二十八宿、五行生克综合评分；择日页面展示原理说明与详细神煞分析"
+            ),
+            ChangelogEntry(
+                version = "v1.0.8",
+                date = "2026-05-20",
+                content = "修复时柱计算：添加五鼠遁显式查表（FIVE_RAT），确保甲午日寅时正确显示丙寅；清除缓存防止旧数据残留"
+            ),
+            ChangelogEntry(
+                version = "v1.0.7",
+                date = "2026-05-20",
+                content = "导出分享新增微信、QQ专用分享按钮，可直接发送文件到微信或QQ；未安装时自动提示"
+            ),
+            ChangelogEntry(
+                version = "v1.0.6",
+                date = "2026-05-20",
+                content = "导出优化：全部笔记自动合并为一个文件；导出完成后显示文件路径；支持一键分享导出文件"
+            ),
+            ChangelogEntry(
+                version = "v1.0.5",
+                date = "2026-05-20",
+                content = "新增日课应验笔记功能：自动填写四柱、日期时间，支持保存/删除/编辑；按年/月筛选；导出TXT/Word/Excel格式"
+            ),
+            ChangelogEntry(
+                version = "v1.0.4",
+                date = "2026-05-20",
+                content = "月份视图新增国家法定节假日标注（元旦/春节/清明/劳动/端午/中秋/国庆）和二十四节气标注"
+            ),
+            ChangelogEntry(
+                version = "v1.0.3",
+                date = "2026-05-20",
+                content = "新增月份视图（月历网格），支持左右切换月份、点击日期查看详情，标注农历日期"
+            ),
+            ChangelogEntry(
+                version = "v1.0.2",
+                date = "2026-05-20",
+                content = "修复月柱、日柱计算错误，更换四柱算法；修正节气年份归属逻辑；日柱公式校准为甲午日基准"
+            ),
+            ChangelogEntry(
+                version = "v1.0.1",
+                date = "2026-05-19",
+                content = "修复农历、节气、四柱计算错误，更正历法核心算法；引入hutool-core库确保农历转换准确性；使用预计算天文数据表确保节气精确到分钟"
+            ),
+            ChangelogEntry(
+                version = "v1.0.0",
+                date = "2026-05-19",
+                content = "初始版本，实现万年历基础功能"
+            )
+        )
+    }
+
+    fun resetToDefault(context: Context) {
+        val json = Gson().toJson(getDefaultChangelog())
+        getPrefs(context).edit().putString(KEY_CHANGELOG, json).apply()
+    }
+}
