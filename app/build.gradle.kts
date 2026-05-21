@@ -11,8 +11,8 @@ android {
         applicationId = "com.example.wannianli"
         minSdk = 24
         targetSdk = 34
-        versionCode = 28
-        versionName = "1.0.27"
+        versionCode = 31
+        versionName = "1.0.30"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

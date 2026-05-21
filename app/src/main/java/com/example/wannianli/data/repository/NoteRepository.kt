@@ -74,4 +74,12 @@ class NoteRepository(private val context: Context) {
             .distinct()
             .sortedDescending()
     }
+
+    fun searchNotes(keyword: String): List<DiaryNote> {
+        val kw = keyword.trim().lowercase()
+        if (kw.isEmpty()) return getAllNotes()
+        return loadNotes().filter { note ->
+            note.content.lowercase().contains(kw)
+        }.sortedByDescending { it.date + it.time }
+    }
 }

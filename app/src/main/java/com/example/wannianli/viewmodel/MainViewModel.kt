@@ -124,6 +124,19 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun navigateToYearMonth(year: Int, month: Int) {
+        _viewYear.value = year
+        _viewMonth.value = month
+
+        val selYear = _selectedYear.value
+        val selMonth = _selectedMonth.value
+        val selDay = _selectedDay.value
+
+        viewModelScope.launch(Dispatchers.IO) {
+            loadMonthDays(year, month, selYear, selMonth, selDay)
+        }
+    }
+
     fun navigateMonth(offset: Int) {
         var newYear = _viewYear.value
         var newMonth = _viewMonth.value + offset

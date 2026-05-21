@@ -1,0 +1,41 @@
+# Gradle
+.gradle/
+build/
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Android
+app/build/
+app/release/
+local.properties
+*.apk
+*.aab
+*.jks
+*.keystore
+
+# Python (节气生成脚本)
+__pycache__/
+*.pyc
+skyfield-data/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Test
+*/test-results/
+*/coverage/
+
+# Environment
+.env
+*.env.local

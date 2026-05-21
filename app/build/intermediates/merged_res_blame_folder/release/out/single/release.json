@@ -1,22 +1,22 @@
 [
     {
-        "merged": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.example.wannianli.app-merged_res-49:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.example.wannianli.app-main-50:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "com.example.wannianli.app-merged_res-49:/drawable_ic_launcher.xml.flat",
+        "source": "com.example.wannianli.app-main-50:/drawable/ic_launcher.xml"
     },
     {
-        "merged": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.example.wannianli.app-merged_res-49:\\drawable_ic_launcher.xml.flat",
-        "source": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.example.wannianli.app-main-50:\\drawable\\ic_launcher.xml"
+        "merged": "com.example.wannianli.app-merged_res-49:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.wannianli.app-main-50:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.wannianli.app-merged_res-49:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.wannianli.app-main-50:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
         "merged": "com.example.wannianli.app-merged_res-49:/xml_file_paths.xml.flat",
         "source": "com.example.wannianli.app-main-50:/xml/file_paths.xml"
     },
     {
-        "merged": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.example.wannianli.app-merged_res-49:\\drawable_ic_launcher_background.xml.flat",
-        "source": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.example.wannianli.app-main-50:\\drawable\\ic_launcher_background.xml"
-    },
-    {
-        "merged": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.example.wannianli.app-merged_res-49:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.example.wannianli.app-main-50:\\drawable\\ic_launcher_foreground.xml"
+        "merged": "com.example.wannianli.app-merged_res-49:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.wannianli.app-main-50:/drawable/ic_launcher_background.xml"
     }
 ]

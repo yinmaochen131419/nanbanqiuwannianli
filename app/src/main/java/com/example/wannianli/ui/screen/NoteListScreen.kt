@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -39,6 +40,15 @@ fun NoteListScreen(
     var showDeleteDialog by remember { mutableStateOf<Long?>(null) }
 
     var showExportResultDialog by remember { mutableStateOf(false) }
+    var searchQuery by remember { mutableStateOf("") }
+
+    val displayNotes = if (searchQuery.isBlank()) {
+        notes
+    } else {
+        notes.filter { note ->
+            note.content.contains(searchQuery, ignoreCase = true)
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -101,10 +111,39 @@ fun NoteListScreen(
                     leadingIcon = { Icon(Icons.Default.DateRange, contentDescription = null, modifier = Modifier.size(16.dp)) }
                 )
                 Spacer(Modifier.weight(1f))
-                TextButton(onClick = { viewModel.loadAllNotes(); showYearFilter = false; showMonthFilter = false }) {
+                TextButton(onClick = { viewModel.loadAllNotes(); showYearFilter = false; showMonthFilter = false; searchQuery = "" }) {
                     Text("全部")
                 }
             }
+
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 4.dp),
+                placeholder = { Text("搜索笔记内容...") },
+                leadingIcon = {
+                    Icon(
+                        Icons.Default.Search,
+                        contentDescription = "搜索",
+                        modifier = Modifier.size(20.dp)
+                    )
+                },
+                trailingIcon = {
+                    if (searchQuery.isNotEmpty()) {
+                        IconButton(onClick = { searchQuery = "" }) {
+                            Icon(Icons.Default.Close, contentDescription = "清除", modifier = Modifier.size(18.dp))
+                        }
+                    }
+                },
+                singleLine = true,
+                shape = RoundedCornerShape(12.dp),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant
+                )
+            )
 
             if (showYearFilter && availableYears.isNotEmpty()) {
                 LazyColumn(
@@ -154,7 +193,7 @@ fun NoteListScreen(
                     .background(MaterialTheme.colorScheme.outlineVariant)
             )
 
-            if (notes.isEmpty()) {
+            if (displayNotes.isEmpty()) {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
@@ -167,10 +206,16 @@ fun NoteListScreen(
                             tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                         Spacer(Modifier.height(16.dp))
-                        Text("暂无笔记", style = MaterialTheme.typography.bodyLarge)
+                        Text(
+                            if (searchQuery.isBlank()) "暂无笔记" else "未找到匹配的笔记",
+                            style = MaterialTheme.typography.bodyLarge
+                        )
                         Spacer(Modifier.height(8.dp))
-                        Text("点击右下角 + 新增", style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text(
+                            if (searchQuery.isBlank()) "点击右下角 + 新增" else "尝试其他关键词",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
                     }
                 }
             } else {
@@ -179,7 +224,7 @@ fun NoteListScreen(
                     contentPadding = PaddingValues(12.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(notes, key = { it.id }) { note ->
+                    items(displayNotes, key = { it.id }) { note ->
                         NoteCard(
                             note = note,
                             onClick = { onEdit(note.id) },

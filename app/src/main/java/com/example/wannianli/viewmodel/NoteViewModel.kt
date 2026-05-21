@@ -37,9 +37,17 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
 
     private var currentFilterYear: Int? = null
     private var currentFilterMonth: Int? = null
+    private var currentSearchKeyword: String = ""
 
     init {
         loadAllNotes()
+    }
+
+    fun searchNotes(keyword: String) {
+        currentSearchKeyword = keyword
+        viewModelScope.launch(Dispatchers.IO) {
+            _notes.value = repository.searchNotes(keyword)
+        }
     }
 
     fun loadAllNotes() {

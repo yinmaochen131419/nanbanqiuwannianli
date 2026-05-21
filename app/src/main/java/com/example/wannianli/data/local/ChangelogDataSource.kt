@@ -34,6 +34,21 @@ object ChangelogDataSource {
     private fun getDefaultChangelog(): List<ChangelogEntry> {
         return listOf(
             ChangelogEntry(
+                version = "v1.0.30",
+                date = "2026-05-21",
+                content = "工程规范化：新建.gitignore忽略规则文件，防止local.properties本地路径/用户名泄露，防止app/build/.gradle等数十MB构建产物误提交，为Gitee代码仓库上传提供前置必要条件"
+            ),
+            ChangelogEntry(
+                version = "v1.0.29",
+                date = "2026-05-21",
+                content = "首页月视图优化：点击顶部年份月份文字弹出年份-月份快速选择器（年月选择器），支持1900-2100年跨度一键跳转；日课应验笔记新增搜索功能：搜索栏支持按笔记内容关键字实时搜索，含清除按钮与无结果提示"
+            ),
+            ChangelogEntry(
+                version = "v1.0.28",
+                date = "2026-05-21",
+                content = "节气算法优化探索（方案C纯离线VSOP87天文算法/方案A高精度星历PyEphem批量生成），实测精度未达紫金山天文台标准；回滚至稳定硬编码节气预计算数据表（2020-2029），确保所有功能正常运行；节气数据仍保留原有预计算表作为唯一数据源"
+            ),
+            ChangelogEntry(
                 version = "v1.0.21",
                 date = "2026-05-20",
                 content = "新增通天窍择日（独立标签页）：十二时辰黄道黑道神煞系统（青龙明堂天刑朱雀金匮天德白虎玉堂天牢玄武司命勾陈）；按日支起青龙顺排十二时辰；最优时辰推荐（首选+次选）；六大黄道吉时标注；坐山联动+本命相主联动预留接口"
