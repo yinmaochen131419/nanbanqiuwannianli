@@ -579,9 +579,9 @@
       jars="D:\DevCache\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.10.1\b3add478d4382b78ea20b1671390a858002feb6c\gson-2.10.1.jar"
       resolved="com.google.code.gson:gson:2.10.1"/>
   <library
-      name="cn.hutool:hutool-core:5.8.28@jar"
-      jars="D:\DevCache\.gradle\caches\modules-2\files-2.1\cn.hutool\hutool-core\5.8.28\4ec59abca7815ae8a094fc984e28ee919a693886\hutool-core-5.8.28.jar"
-      resolved="cn.hutool:hutool-core:5.8.28"/>
+      name="cn.6tail:lunar:1.7.7@jar"
+      jars="D:\DevCache\.gradle\caches\modules-2\files-2.1\cn.6tail\lunar\1.7.7\f5eebc4192ba63e540d1c3e4498c726b8618ab1b\lunar-1.7.7.jar"
+      resolved="cn.6tail:lunar:1.7.7"/>
   <library
       name="org.jetbrains:annotations:13.0@jar"
       jars="D:\DevCache\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\13.0\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\annotations-13.0.jar"

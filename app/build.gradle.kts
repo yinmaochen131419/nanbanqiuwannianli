@@ -11,8 +11,8 @@ android {
         applicationId = "com.example.wannianli"
         minSdk = 24
         targetSdk = 34
-        versionCode = 31
-        versionName = "1.0.30"
+        versionCode = 39
+        versionName = "1.0.38"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -50,7 +50,7 @@ android {
 
     packaging {
         resources {
-            excludes += setOf("/META-INF/{AL2.0,LGPL2.1}")
+            excludes += setOf("/META-INF/{AL2.0,LGPL2.1}", "META-INF/INDEX.LIST")
         }
     }
 }
@@ -80,7 +80,7 @@ dependencies {
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
-    implementation("cn.hutool:hutool-core:5.8.28")
+    implementation("cn.6tail:lunar:1.7.7")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")

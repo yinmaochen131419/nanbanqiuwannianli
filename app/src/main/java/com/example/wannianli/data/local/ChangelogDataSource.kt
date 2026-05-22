@@ -34,6 +34,11 @@ object ChangelogDataSource {
     private fun getDefaultChangelog(): List<ChangelogEntry> {
         return listOf(
             ChangelogEntry(
+                version = "v1.0.38",
+                date = "2026-05-22",
+                content = "择日日家凶日完善：原\"重丧日\"更名为\"大重丧日（正重丧）\"；新增\"小重丧日（月重丧）\"，按农历月+日支判定（正七巳亥、二八辰戌等），每月固定两天，侧重丧葬禁忌；组名\"日家四大核心凶日\"同步更名为\"日家核心凶日\"。改动仅CoreTabooEngine.kt一个文件约20行，原有四离四绝正四废不受影响。"
+            ),
+            ChangelogEntry(
                 version = "v1.0.37",
                 date = "2026-05-22",
                 content = "择日板块交互优化：顶部日期区域新增年月快捷跳转功能。点击\"2026年6月5日\"文本弹出年月选择器，可快速跳转到任意年月（默认当日），解决原来仅支持左右箭头逐日翻页的交互缺失问题。改动仅涉及ZeRiScreen.kt的DayNavigator组件，完全不触及择日/四柱/历法/算法逻辑。"

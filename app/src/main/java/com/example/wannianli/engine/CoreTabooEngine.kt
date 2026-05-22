@@ -216,12 +216,29 @@ object CoreTabooEngine {
         }
         val isChongSang = dayGan == chongSangGan
         checks.add(TabooCheck(
-            name = "重丧日",
+            name = "大重丧日",
             priority = 3,
-            groupTitle = "日家四大核心凶日",
+            groupTitle = "日家核心凶日",
             isViolated = isChongSang,
-            detail = if (isChongSang) "农历${lunarMonth}月${CalendarConstants.TIAN_GAN[dayGan]}日为正重丧日，主横祸连丧" else "非重丧日",
+            detail = if (isChongSang) "农历${lunarMonth}月${CalendarConstants.TIAN_GAN[dayGan]}日为大重丧日（正重丧），主横祸连丧" else "非大重丧日",
             prohibition = "嫁娶、入宅、开业、动土、安葬全大事禁用，无例外"
+        ))
+
+        val xiaoChongSangZhi = when (lunarMonth) {
+            1 -> listOf(5, 11); 2 -> listOf(4, 10); 3 -> listOf(3, 9)
+            4 -> listOf(2, 8); 5 -> listOf(1, 7); 6 -> listOf(0, 6)
+            7 -> listOf(5, 11); 8 -> listOf(4, 10); 9 -> listOf(3, 9)
+            10 -> listOf(2, 8); 11 -> listOf(1, 7); 12 -> listOf(0, 6)
+            else -> emptyList()
+        }
+        val isXiaoChongSang = dayZhi in xiaoChongSangZhi
+        checks.add(TabooCheck(
+            name = "小重丧日",
+            priority = 3,
+            groupTitle = "日家核心凶日",
+            isViolated = isXiaoChongSang,
+            detail = if (isXiaoChongSang) "农历${lunarMonth}月${CalendarConstants.DI_ZHI[dayZhi]}日为小重丧日（月重丧），丧葬大忌" else "非小重丧日",
+            prohibition = "安葬、修坟重大忌，其余大事慎用"
         ))
 
         val season = when (monthZhi) {
@@ -239,7 +256,7 @@ object CoreTabooEngine {
         checks.add(TabooCheck(
             name = "正四废日",
             priority = 3,
-            groupTitle = "日家四大核心凶日",
+            groupTitle = "日家核心凶日",
             isViolated = isZhengSiFei,
             detail = if (isZhengSiFei) "${siLiDayGanZhi}日为正四废日，百事无成" else "非正四废日",
             prohibition = "开业、求财、建房、嫁娶、入宅禁用"
@@ -349,7 +366,7 @@ object CoreTabooEngine {
         val p3Violated = dailyChecks.filter { it.priority == 3 }.any { it.isViolated }
         groups.add(PriorityTabooGroup(
             priority = 3,
-            title = "日家四大核心凶日",
+            title = "日家核心凶日",
             subtitle = "当日气场大凶，无论山家年家是否吉庆，人生大事一律禁用，无化解方法。",
             checks = dailyChecks.filter { it.priority == 3 },
             anyViolated = p3Violated,

@@ -1070,12 +1070,12 @@ library {
 }
 library {
   maven_library {
-    groupId: "cn.hutool"
-    artifactId: "hutool-core"
-    version: "5.8.28"
+    groupId: "cn.6tail"
+    artifactId: "lunar"
+    version: "1.7.7"
   }
   digests {
-    sha256: "\215\027\241\222x\223)I\t\342\253r,\204\271\327{\235(\211\032\030\022\360X$e\227\272U\252\357"
+    sha256: "\fL:\202s3\263\342\375%\264\021\351\006s\230\365\212\353\230\261\350(\351;\242[\250\267\005\026Y"
   }
   repo_index {
     value: 1
