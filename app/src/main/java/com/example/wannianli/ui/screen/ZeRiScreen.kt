@@ -4,6 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -100,6 +103,12 @@ fun ZeRiScreen(viewModel: MainViewModel) {
                 currentMonth = next.second
                 currentDay = next.third
                 currentDayInfo = monthDayList.getOrNull(next.third - 1)
+            },
+            onNavigateToYearMonth = { pickedYear, pickedMonth ->
+                currentYear = pickedYear
+                currentMonth = pickedMonth
+                currentDay = 1
+                currentDayInfo = monthDayList.getOrNull(0)
             }
         )
 
@@ -1115,8 +1124,18 @@ private fun DayNavigator(
     month: Int,
     day: Int,
     onPrevDay: () -> Unit,
-    onNextDay: () -> Unit
+    onNextDay: () -> Unit,
+    onNavigateToYearMonth: (Int, Int) -> Unit
 ) {
+    var showYearMonthPicker by remember { mutableStateOf(false) }
+    var pickerYear by remember { mutableIntStateOf(year) }
+    var pickerMonth by remember { mutableIntStateOf(month) }
+
+    val monthNames = arrayOf(
+        "一月", "二月", "三月", "四月", "五月", "六月",
+        "七月", "八月", "九月", "十月", "十一月", "十二月"
+    )
+
     Surface(
         color = MaterialTheme.colorScheme.primaryContainer,
         modifier = Modifier.fillMaxWidth()
@@ -1147,7 +1166,15 @@ private fun DayNavigator(
                     text = "${year}年${month}月${day}日",
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(8.dp))
+                        .clickable {
+                            pickerYear = year
+                            pickerMonth = month
+                            showYearMonthPicker = true
+                        }
+                        .padding(horizontal = 8.dp, vertical = 4.dp)
                 )
             }
 
@@ -1155,6 +1182,94 @@ private fun DayNavigator(
                 Icon(Icons.Default.ChevronRight, contentDescription = "后一天")
             }
         }
+    }
+
+    if (showYearMonthPicker) {
+        AlertDialog(
+            onDismissRequest = { showYearMonthPicker = false },
+            title = {
+                Text("选择年月", fontWeight = FontWeight.Bold)
+            },
+            text = {
+                Column {
+                    Text("年份", style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.primary)
+                    Spacer(Modifier.height(4.dp))
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        IconButton(onClick = {
+                            if (pickerYear > 1900) pickerYear--
+                        }) {
+                            Icon(Icons.Default.ChevronLeft, "上一年")
+                        }
+                        Text(
+                            text = "${pickerYear}年",
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.widthIn(min = 80.dp),
+                            textAlign = TextAlign.Center
+                        )
+                        IconButton(onClick = {
+                            if (pickerYear < 2100) pickerYear++
+                        }) {
+                            Icon(Icons.Default.ChevronRight, "下一年")
+                        }
+                    }
+
+                    Spacer(Modifier.height(12.dp))
+                    Text("月份", style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.primary)
+                    Spacer(Modifier.height(4.dp))
+
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(4),
+                        modifier = Modifier.height(100.dp)
+                    ) {
+                        items(12) { index ->
+                            val mVal = index + 1
+                            val isSelected = mVal == pickerMonth
+                            Box(
+                                modifier = Modifier
+                                    .padding(4.dp)
+                                    .clip(RoundedCornerShape(8.dp))
+                                    .background(
+                                        if (isSelected) MaterialTheme.colorScheme.primary
+                                        else MaterialTheme.colorScheme.surfaceVariant
+                                    )
+                                    .clickable { pickerMonth = mVal }
+                                    .padding(vertical = 10.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = monthNames[index],
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+                                    color = if (isSelected) MaterialTheme.colorScheme.onPrimary
+                                    else MaterialTheme.colorScheme.onSurface
+                                )
+                            }
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    onNavigateToYearMonth(pickerYear, pickerMonth)
+                    showYearMonthPicker = false
+                }) {
+                    Text("确定")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showYearMonthPicker = false }) {
+                    Text("取消")
+                }
+            }
+        )
     }
 }
 

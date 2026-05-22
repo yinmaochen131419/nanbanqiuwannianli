@@ -20,7 +20,13 @@ object FourPillarsEngine {
         val dayPillar = calcDayPillar(year, month, day)
         val hourPillar = calcHourPillar(hour, dayPillar.dayGanIndex)
 
-        val shengXiaoIndex = ((year - 4) % 12 + 12) % 12
+        val liChun = solarTerms.find { it.name == "立春" }
+        val effectiveYear = if (liChun != null && (month < liChun.month || (month == liChun.month && day < liChun.day))) {
+            year - 1
+        } else {
+            year
+        }
+        val shengXiaoIndex = ((effectiveYear - 4) % 12 + 12) % 12
         val shengXiao = CalendarConstants.SHENG_XIAO[shengXiaoIndex]
 
         val lunarMonthName = if (lunarResult.isLeapMonth) {

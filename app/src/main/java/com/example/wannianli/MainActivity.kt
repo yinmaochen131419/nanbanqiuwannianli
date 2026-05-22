@@ -137,7 +137,7 @@ fun MainApp() {
                         color = MaterialTheme.colorScheme.primary
                     )
                     Text(
-                        text = "v1.0.30",
+                        text = "v1.0.37",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )

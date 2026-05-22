@@ -34,6 +34,41 @@ object ChangelogDataSource {
     private fun getDefaultChangelog(): List<ChangelogEntry> {
         return listOf(
             ChangelogEntry(
+                version = "v1.0.37",
+                date = "2026-05-22",
+                content = "择日板块交互优化：顶部日期区域新增年月快捷跳转功能。点击\"2026年6月5日\"文本弹出年月选择器，可快速跳转到任意年月（默认当日），解决原来仅支持左右箭头逐日翻页的交互缺失问题。改动仅涉及ZeRiScreen.kt的DayNavigator组件，完全不触及择日/四柱/历法/算法逻辑。"
+            ),
+            ChangelogEntry(
+                version = "v1.0.36",
+                date = "2026-05-22",
+                content = "修复生肖未与年柱同步的bug：原先生肖直接取公历年计算（如2026年全年属马），现改为根据立春判断effectiveYear（立春前year-1），确保1月1日至立春前一天生肖与年柱一致（如2026年正月初一前属蛇）。改动仅3行，不影响四柱干支计算。"
+            ),
+            ChangelogEntry(
+                version = "v1.0.35",
+                date = "2026-05-22",
+                content = "一劳永逸修复闰月闪退：lunar-java 闰月返回负值月号（如-5=闰五月），LUNAR_MONTH_NAMES[负下标] 导致数组越界崩溃。在 LunarCalendarEngine 中 month = abs(lunar.month) 将月号归一化到1-12正数，覆盖范围从公元前4712年到公元9999年全部闰月期。同时修复 computeHolidays 中闰月期间节日识别静默失败问题。仅改1文件1行代码。"
+            ),
+            ChangelogEntry(
+                version = "v1.0.34",
+                date = "2026-05-22",
+                content = "修复远期年月崩溃（真正根因）：CalendarRepository.kt computeHolidays() 中秋循环 for(d in 1..31) 改为 1..30。9月只有30天，旧版 hutool 不校验日期合法性静默通过，v1.0.32 迁移到 lunar-java 后 Solar.fromYmd(year,9,31) 触发 IllegalArgumentException 导致翻到12月时崩溃。修复仅1行，不影响四柱/择日/节气。"
+            ),
+            ChangelogEntry(
+                version = "v1.0.33",
+                date = "2026-05-22",
+                content = "修复远期年月崩溃：SolarTermCalculator.kt 中节气查询的强断言 !! 替换为空安全处理 mapIndexedNotNull + 日志记录。根因是翻页到12月时下月补位格触发跨年节气计算（如2028→2029），jieQiTable 中某键缺失导致空指针崩溃。修复后缺失节气被优雅跳过并打日志，不再影响四柱/择日等下游功能。"
+            ),
+            ChangelogEntry(
+                version = "v1.0.32",
+                date = "2026-05-22",
+                content = "农历库统一迁移：将hutool-core农历转换替换为lunar-java，消除双库共存导致的数据不一致隐患。LunarCalendarEngine从hutool ChineseDate切换至lunar-java Solar/Lunar，对外接口保持不变（solarToLunar返回LunarResult），四柱、择日、节气等所有下游模块零改动。移除hutool-core依赖（约1.5MB），APK体积减小。"
+            ),
+            ChangelogEntry(
+                version = "v1.0.31",
+                date = "2026-05-22",
+                content = "节气算法一劳永逸：引入Gitee 6.6k+ Star开源库lunar-java（寿星天文历VSOP87理论+63项章动修正），替代原有的2020-2029硬编码查表+低精度fallback方案；节气精度从分钟级提升至秒级（误差<1秒），覆盖年份从10年扩展到-4712~9999年；SolarTermCalculator从212行精简到66行，完全离线纯数学计算，零网络依赖"
+            ),
+            ChangelogEntry(
                 version = "v1.0.30",
                 date = "2026-05-21",
                 content = "工程规范化：新建.gitignore忽略规则文件，防止local.properties本地路径/用户名泄露，防止app/build/.gradle等数十MB构建产物误提交，为Gitee代码仓库上传提供前置必要条件"

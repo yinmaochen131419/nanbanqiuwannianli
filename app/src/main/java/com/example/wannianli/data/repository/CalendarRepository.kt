@@ -239,7 +239,7 @@ class CalendarRepository(private val context: Context) {
             }
         }
 
-        for (d in 1..31) {
+        for (d in 1..30) {
             val result = LunarCalendarEngine.solarToLunar(year, 9, d)
             if (result.month == 8 && result.day == 15) {
                 holidays["9-$d"] = "中秋"

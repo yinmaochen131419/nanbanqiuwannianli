@@ -1,26 +1,16 @@
 package com.example.wannianli.engine
 
-import cn.hutool.core.date.ChineseDate
-import cn.hutool.core.date.DateUtil
-import java.util.*
+import com.nlf.calendar.Solar
+import kotlin.math.abs
 
 object LunarCalendarEngine {
     fun solarToLunar(year: Int, month: Int, day: Int): LunarResult {
-        val cal = Calendar.getInstance()
-        cal.set(year, month - 1, day)
-        val date = cal.time
-
-        val chineseDate = ChineseDate(date)
-        val lunarYear = chineseDate.chineseYear
-        val lunarMonth = chineseDate.month
-        val lunarDay = chineseDate.day
-        val isLeapMonth = chineseDate.isLeapMonth
-
+        val lunar = Solar.fromYmd(year, month, day).lunar
         return LunarResult(
-            year = lunarYear,
-            month = lunarMonth,
-            day = lunarDay,
-            isLeapMonth = isLeapMonth
+            year = lunar.year,
+            month = abs(lunar.month),
+            day = lunar.day,
+            isLeapMonth = lunar.toString().contains("闰")
         )
     }
 
