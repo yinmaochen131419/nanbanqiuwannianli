@@ -1,0 +1,1500 @@
+        letterSpacing = 0.5.sp
+    )
+)
+// ===== com\nanbanqiu\wannianli\util\ExportUtil.kt =====
+/*
+ * Copyright (c) 2025-2026 南半球历法 (Nanbanqiu Wannianli)
+ * All rights reserved.
+ */
+package com.nanbanqiu.wannianli.util
+
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.widget.Toast
+import androidx.core.content.FileProvider
+import com.nanbanqiu.wannianli.data.model.DiaryNote
+import java.io.File
+import java.io.FileOutputStream
+
+object ExportUtil {
+
+    private const val PACKAGE_WECHAT = "com.tencent.mm"
+    private const val PACKAGE_QQ = "com.tencent.mobileqq"
+    fun exportNotes(
+        context: Context,
+        notes: List<DiaryNote>,
+        format: ExportFormat,
+        label: String
+    ): File {
+        return when (format) {
+            ExportFormat.TXT -> exportTxt(context, notes, label)
+            ExportFormat.WORD -> exportWordHtml(context, notes, label)
+            ExportFormat.EXCEL -> exportCsv(context, notes, label)
+        }
+    }
+
+    fun shareFile(context: Context, file: File, mimeType: String) {
+        val uri = FileProvider.getUriForFile(
+            context,
+            "${context.packageName}.fileprovider",
+            file
+        )
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = mimeType
+            putExtra(Intent.EXTRA_STREAM, uri)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        context.startActivity(Intent.createChooser(intent, "导出日课笔记"))
+    }
+
+    fun shareToWeChat(context: Context, file: File, mimeType: String): Boolean {
+        if (!isAppInstalled(context, PACKAGE_WECHAT)) {
+            Toast.makeText(context, "未安装微信", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return try {
+            val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = mimeType
+                putExtra(Intent.EXTRA_STREAM, uri)
+                setPackage(PACKAGE_WECHAT)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+            context.startActivity(intent)
+            true
+        } catch (e: Exception) {
+            Toast.makeText(context, "微信分享失败，请尝试其他分享方式", Toast.LENGTH_SHORT).show()
+            false
+        }
+    }
+
+    fun shareToQQ(context: Context, file: File, mimeType: String): Boolean {
+        if (!isAppInstalled(context, PACKAGE_QQ)) {
+            Toast.makeText(context, "未安装QQ", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return try {
+            val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = mimeType
+                putExtra(Intent.EXTRA_STREAM, uri)
+                setPackage(PACKAGE_QQ)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+            context.startActivity(intent)
+            true
+        } catch (e: Exception) {
+            Toast.makeText(context, "QQ分享失败，请尝试其他分享方式", Toast.LENGTH_SHORT).show()
+            false
+        }
+    }
+
+    private fun isAppInstalled(context: Context, packageName: String): Boolean {
+        return try {
+            context.packageManager.getPackageInfo(packageName, 0)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+    }
+
+    private fun exportTxt(context: Context, notes: List<DiaryNote>, label: String): File {
+        val file = File(context.getExternalFilesDir(null), "日课笔记_${label}.txt")
+        FileOutputStream(file).use { out ->
+            out.write("\uFEFF".toByteArray(Charsets.UTF_8))
+            val sb = StringBuilder()
+            sb.appendLine("══════════════════════════════════")
+            sb.appendLine("        日课应验笔记 ($label)")
+            sb.appendLine("══════════════════════════════════")
+            sb.appendLine()
+            for ((i, note) in notes.withIndex()) {
+                sb.appendLine("━━ 第${i + 1} 条 ━━")
+                sb.appendLine("日期: ${note.date}")
+                sb.appendLine("时间: ${note.time}")
+                sb.appendLine("年柱: ${note.yearPillar}")
+                sb.appendLine("月柱: ${note.monthPillar}")
+                sb.appendLine("日柱: ${note.dayPillar}")
+                sb.appendLine("时柱: ${note.hourPillar}")
+                sb.appendLine("记录: ${note.content}")
+                sb.appendLine()
+            }
+            out.write(sb.toString().toByteArray(Charsets.UTF_8))
+        }
+        return file
+    }
+
+    private fun exportWordHtml(context: Context, notes: List<DiaryNote>, label: String): File {
+        val file = File(context.getExternalFilesDir(null), "日课笔记_${label}.doc")
+        FileOutputStream(file).use { out ->
+            out.write("\uFEFF".toByteArray(Charsets.UTF_8))
+            val sb = StringBuilder()
+            sb.appendLine("<html><head><meta charset=\"UTF-8\">")
+            sb.appendLine("<style>")
+            sb.appendLine("body{font-family:'Microsoft YaHei',SimSun,sans-serif;padding:20px;}")
+            sb.appendLine("h1{text-align:center;font-size:18pt;}")
+            sb.appendLine(".note{border-bottom:1px solid #ccc;padding:10px 0;margin:10px 0;}")
+            sb.appendLine(".note-header{font-weight:bold;color:#333;margin-bottom:6px;}")
+            sb.appendLine(".pillars{color:#555;margin:4px 0;}")
+            sb.appendLine(".content{color:#000;margin-top:6px;white-space:pre-wrap;}")
+            sb.appendLine("</style></head><body>")
+            sb.appendLine("<h1>日课应验笔记 ($label)</h1>")
+
+            for ((i, note) in notes.withIndex()) {
+                sb.appendLine("<div class=\"note\">")
+                sb.appendLine("<div class=\"note-header\">第${i + 1} 条 — ${note.date} ${note.time}</div>")
+                sb.appendLine("<div class=\"pillars\">年柱: ${note.yearPillar}　月柱: ${note.monthPillar}　日柱: ${note.dayPillar}　时柱: ${note.hourPillar}</div>")
+                if (note.content.isNotBlank()) {
+                    sb.appendLine("<div class=\"content\">${note.content.replace("\n", "<br>")}</div>")
+                }
+                sb.appendLine("</div>")
+            }
+
+            sb.appendLine("</body></html>")
+            out.write(sb.toString().toByteArray(Charsets.UTF_8))
+        }
+        return file
+    }
+
+    private fun exportCsv(context: Context, notes: List<DiaryNote>, label: String): File {
+        val file = File(context.getExternalFilesDir(null), "日课笔记_${label}.csv")
+        FileOutputStream(file).use { out ->
+            out.write("\uFEFF".toByteArray(Charsets.UTF_8))
+            out.write("序号,日期,时间,年柱,月柱,日柱,时柱,记录\n".toByteArray(Charsets.UTF_8))
+            for ((i, note) in notes.withIndex()) {
+                val content = note.content.replace("\"", "\"\"")
+                val line = "${i + 1},${note.date},${note.time},${note.yearPillar},${note.monthPillar},${note.dayPillar},${note.hourPillar},\"$content\"\n"
+                out.write(line.toByteArray(Charsets.UTF_8))
+            }
+        }
+        return file
+    }
+
+    enum class ExportFormat(val label: String) {
+        TXT("TXT文本"),
+        WORD("Word文档"),
+        EXCEL("Excel表格")
+    }
+}
+// ===== com\nanbanqiu\wannianli\util\LanguageHelper.kt =====
+/*
+ * Copyright (c) 2025-2026 南半球历法 (Nanbanqiu Wannianli)
+ * All rights reserved.
+ */
+package com.nanbanqiu.wannianli.util
+
+import android.content.Context
+import android.os.LocaleList
+import java.util.Locale
+
+object LanguageHelper {
+    private const val PREFS_NAME = "app_language_prefs"
+    private const val KEY_LANGUAGE = "app_language"
+
+    const val LANG_ZH = "zh"
+    const val LANG_ZH_TW = "zh_TW"
+    const val LANG_EN = "en"
+    const val LANG_ES = "es"
+
+    fun getSavedLanguage(context: Context): String {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        return prefs.getString(KEY_LANGUAGE, LANG_ZH) ?: LANG_ZH
+    }
+
+    fun saveLanguage(context: Context, langCode: String) {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        prefs.edit().putString(KEY_LANGUAGE, langCode).apply()
+    }
+
+    fun getAppLocale(langCode: String): Locale {
+        return when (langCode) {
+            LANG_ZH_TW -> Locale.TRADITIONAL_CHINESE
+            LANG_EN -> Locale.ENGLISH
+            LANG_ES -> Locale("es")
+            else -> Locale.SIMPLIFIED_CHINESE
+        }
+    }
+
+    fun applyLanguage(context: Context, langCode: String): Context {
+        val locale = getAppLocale(langCode)
+        Locale.setDefault(locale)
+
+        val config = context.resources.configuration
+        config.setLocale(locale)
+        config.setLocales(LocaleList(locale))
+
+        return context.createConfigurationContext(config)
+    }
+
+    fun getLanguageDisplayName(langCode: String): String {
+        return when (langCode) {
+            LANG_ZH -> "简体中文"
+            LANG_ZH_TW -> "繁體中文"
+            LANG_EN -> "English"
+            LANG_ES -> "Español (Argentina)"
+            else -> "简体中文"
+        }
+    }
+
+    fun getAllLanguages(): List<String> = listOf(LANG_ZH, LANG_ZH_TW, LANG_EN, LANG_ES)
+}
+
+// ===== com\nanbanqiu\wannianli\util\LocalizedStringProvider.kt =====
+/*
+ * Copyright (c) 2025-2026 南半球历法 (Nanbanqiu Wannianli)
+ * All rights reserved.
+ */
+package com.nanbanqiu.wannianli.util
+
+import android.content.Context
+import com.nanbanqiu.wannianli.R
+
+/**
+ * Provides localized strings for Chinese calendar terms.
+ * Maps Chinese text from CalendarConstants to string resource IDs.
+ */
+object LocalizedStringProvider {
+
+    // Solar Terms
+    private val SOLAR_TERM_IDS = intArrayOf(
+        R.string.solar_term_0, R.string.solar_term_1, R.string.solar_term_2,
+        R.string.solar_term_3, R.string.solar_term_4, R.string.solar_term_5,
+        R.string.solar_term_6, R.string.solar_term_7, R.string.solar_term_8,
+        R.string.solar_term_9, R.string.solar_term_10, R.string.solar_term_11,
+        R.string.solar_term_12, R.string.solar_term_13, R.string.solar_term_14,
+        R.string.solar_term_15, R.string.solar_term_16, R.string.solar_term_17,
+        R.string.solar_term_18, R.string.solar_term_19, R.string.solar_term_20,
+        R.string.solar_term_21, R.string.solar_term_22, R.string.solar_term_23
+    )
+
+    fun getSolarTerm(context: Context, index: Int): String {
+        if (index !in SOLAR_TERM_IDS.indices) return ""
+        val result = context.getString(SOLAR_TERM_IDS[index])
+        return if (result.isBlank()) {
+            val terms = com.nanbanqiu.wannianli.engine.CalendarConstants.NORTH_SOLAR_TERM_NAMES
+            if (index in terms.indices) terms[index] else ""
+        } else result
+    }
+
+    fun getSolarTermByName(context: Context, chineseName: String): String {
+        val northTerms = com.nanbanqiu.wannianli.engine.CalendarConstants.NORTH_SOLAR_TERM_NAMES
+        val idx = northTerms.indexOf(chineseName)
+        return if (idx >= 0) getSolarTerm(context, idx) else chineseName
+    }
+
+    // Zodiac
+    private val ZODIAC_IDS = intArrayOf(
+        R.string.zodiac_0, R.string.zodiac_1, R.string.zodiac_2,
+        R.string.zodiac_3, R.string.zodiac_4, R.string.zodiac_5,
+        R.string.zodiac_6, R.string.zodiac_7, R.string.zodiac_8,
+        R.string.zodiac_9, R.string.zodiac_10, R.string.zodiac_11
+    )
+
+    fun getZodiac(context: Context, index: Int): String {
+        if (index !in ZODIAC_IDS.indices) return ""
+        val result = context.getString(ZODIAC_IDS[index])
+        return if (result.isBlank()) {
+            val zodiacs = com.nanbanqiu.wannianli.engine.CalendarConstants.SHENG_XIAO
+            if (index in zodiacs.indices) zodiacs[index] else ""
+        } else result
+    }
+
+    fun getZodiacByName(context: Context, chineseName: String): String {
+        val zodiacs = com.nanbanqiu.wannianli.engine.CalendarConstants.SHENG_XIAO
+        val idx = zodiacs.indexOf(chineseName)
+        return if (idx >= 0) getZodiac(context, idx) else chineseName
+    }
+
+    // Four Symbols
+    private val FOUR_SYMBOL_IDS = intArrayOf(
+        R.string.four_symbol_0, R.string.four_symbol_1,
+        R.string.four_symbol_2, R.string.four_symbol_3
+    )
+
+    fun getFourSymbol(context: Context, index: Int): String {
+        if (index !in FOUR_SYMBOL_IDS.indices) {
+            val symbols = arrayOf("青龙", "白虎", "朱雀", "玄武")
+            return if (index in symbols.indices) symbols[index] else ""
+        }
+        val result = context.getString(FOUR_SYMBOL_IDS[index])
+        return if (result.isBlank()) {
+            val symbols = arrayOf("青龙", "白虎", "朱雀", "玄武")
+            if (index in symbols.indices) symbols[index] else result
+        } else result
+    }
+
+    // Seasons
+    private val SEASON_IDS = intArrayOf(
+        R.string.season_0, R.string.season_1,
+        R.string.season_2, R.string.season_3
+    )
+
+    fun getSeason(context: Context, index: Int): String {
+        if (index !in SEASON_IDS.indices) return ""
+        val result = context.getString(SEASON_IDS[index])
+        return if (result.isBlank()) {
+            val seasons = arrayOf("春", "夏", "秋", "冬")
+            if (index in seasons.indices) seasons[index] else ""
+        } else result
+    }
+
+    fun getSeasonByName(context: Context, chineseName: String): String {
+        val seasons = arrayOf("春", "夏", "秋", "冬")
+        val idx = seasons.indexOf(chineseName)
+        return if (idx >= 0) getSeason(context, idx) else chineseName
+    }
+
+    // Moon Phases
+    private val MOON_PHASE_IDS = intArrayOf(
+        R.string.moon_phase_0, R.string.moon_phase_1, R.string.moon_phase_2,
+        R.string.moon_phase_3, R.string.moon_phase_4, R.string.moon_phase_5,
+        R.string.moon_phase_6, R.string.moon_phase_7
+    )
+
+    fun getMoonPhase(context: Context, index: Int): String {
+        if (index !in MOON_PHASE_IDS.indices) return ""
+        val result = context.getString(MOON_PHASE_IDS[index])
+        return if (result.isBlank()) {
+            val phases = arrayOf("新月", "蛾眉月", "上弦月", "盈凸月", "满月", "亏凸月", "下弦月", "残月")
+            if (index in phases.indices) phases[index] else ""
+        } else result
+    }
+
+    fun getSouthMoonPhase(context: Context, phaseIndex: Int): String {
+        // South hemisphere: reversed visual mapping
+        val southIndices = intArrayOf(0, 7, 6, 5, 4, 3, 2, 1)
+        return if (phaseIndex in southIndices.indices) getMoonPhase(context, southIndices[phaseIndex]) else ""
+    }
+
+    fun getMoonPhaseByName(context: Context, chineseName: String): String {
+        val phaseNames = arrayOf("新月", "蛾眉月", "上弦月", "盈凸月", "满月", "亏凸月", "下弦月", "残月")
+        val idx = phaseNames.indexOf(chineseName)
+        return if (idx >= 0) getMoonPhase(context, idx) else chineseName
+    }
+
+    // 28 Mansions
+    private val MANSION_IDS = intArrayOf(
+        R.string.mansion_0, R.string.mansion_1, R.string.mansion_2,
+        R.string.mansion_3, R.string.mansion_4, R.string.mansion_5,
+        R.string.mansion_6, R.string.mansion_7, R.string.mansion_8,
+        R.string.mansion_9, R.string.mansion_10, R.string.mansion_11,
+        R.string.mansion_12, R.string.mansion_13, R.string.mansion_14,
+        R.string.mansion_15, R.string.mansion_16, R.string.mansion_17,
+        R.string.mansion_18, R.string.mansion_19, R.string.mansion_20,
+        R.string.mansion_21, R.string.mansion_22, R.string.mansion_23,
+        R.string.mansion_24, R.string.mansion_25, R.string.mansion_26,
+        R.string.mansion_27
+    )
+
+    fun getMansion(context: Context, index: Int): String {
+        if (index !in MANSION_IDS.indices) {
+            val allNames = com.nanbanqiu.wannianli.engine.CalendarConstants.TWENTY_EIGHT_MANSIONS
+            return if (index in allNames.indices) allNames[index] else ""
+        }
+        val result = context.getString(MANSION_IDS[index])
+        return if (result.isBlank()) {
+            val allNames = com.nanbanqiu.wannianli.engine.CalendarConstants.TWENTY_EIGHT_MANSIONS
+            if (index in allNames.indices) allNames[index] else result
+        } else result
+    }
+
+    fun getMansionByName(context: Context, chineseName: String): String {
+        // chineseName may be like "牛宿" or "牛金牛" - extract the first character
+        val allNames = com.nanbanqiu.wannianli.engine.CalendarConstants.TWENTY_EIGHT_MANSIONS
+        for (i in allNames.indices) {
+            if (allNames[i].startsWith(chineseName) || chineseName.startsWith(allNames[i][0].toString())) {
+                return getMansion(context, i)
+            }
+        }
+        return chineseName
+    }
+
+    // Lunar Day Names
+    private val LUNAR_DAY_IDS = intArrayOf(
+        R.string.lunar_day_0, R.string.lunar_day_1, R.string.lunar_day_2,
+        R.string.lunar_day_3, R.string.lunar_day_4, R.string.lunar_day_5,
+        R.string.lunar_day_6, R.string.lunar_day_7, R.string.lunar_day_8,
+        R.string.lunar_day_9, R.string.lunar_day_10, R.string.lunar_day_11,
+        R.string.lunar_day_12, R.string.lunar_day_13, R.string.lunar_day_14,
+        R.string.lunar_day_15, R.string.lunar_day_16, R.string.lunar_day_17,
+        R.string.lunar_day_18, R.string.lunar_day_19, R.string.lunar_day_20,
+        R.string.lunar_day_21, R.string.lunar_day_22, R.string.lunar_day_23,
+        R.string.lunar_day_24, R.string.lunar_day_25, R.string.lunar_day_26,
+        R.string.lunar_day_27, R.string.lunar_day_28, R.string.lunar_day_29
+    )
+
+    fun getLunarDay(context: Context, index: Int): String {
+        if (index !in LUNAR_DAY_IDS.indices) return ""
+        val result = context.getString(LUNAR_DAY_IDS[index])
+        return if (result.isBlank()) {
+            val dayNames = com.nanbanqiu.wannianli.engine.CalendarConstants.LUNAR_DAY_NAMES
+            if (index in dayNames.indices) dayNames[index] else ""
+        } else result
+    }
+
+    fun getLunarDayByName(context: Context, chineseName: String): String {
+        val dayNames = com.nanbanqiu.wannianli.engine.CalendarConstants.LUNAR_DAY_NAMES
+        val idx = dayNames.indexOf(chineseName)
+        return if (idx >= 0) getLunarDay(context, idx) else chineseName
+    }
+
+    // Northern Lunar Month Names
+    private val NORTH_LUNAR_MONTH_IDS = intArrayOf(
+        R.string.north_lunar_month_0, R.string.north_lunar_month_1,
+        R.string.north_lunar_month_2, R.string.north_lunar_month_3,
+        R.string.north_lunar_month_4, R.string.north_lunar_month_5,
+        R.string.north_lunar_month_6, R.string.north_lunar_month_7,
+        R.string.north_lunar_month_8, R.string.north_lunar_month_9,
+        R.string.north_lunar_month_10, R.string.north_lunar_month_11
+    )
+
+    fun getNorthLunarMonth(context: Context, index: Int): String {
+        if (index !in NORTH_LUNAR_MONTH_IDS.indices) return ""
+        val result = context.getString(NORTH_LUNAR_MONTH_IDS[index])
+        return if (result.isBlank()) {
+            val months = com.nanbanqiu.wannianli.engine.CalendarConstants.NORTH_LUNAR_MONTH_NAMES
+            if (index in months.indices) months[index] else ""
+        } else result
+    }
+
+    fun getNorthLunarMonthByName(context: Context, chineseName: String): String {
+        val monthNames = com.nanbanqiu.wannianli.engine.CalendarConstants.NORTH_LUNAR_MONTH_NAMES
+        val idx = monthNames.indexOf(chineseName)
+        return if (idx >= 0) getNorthLunarMonth(context, idx) else chineseName
+    }
+
+    // Southern Lunar Month Names
+    private val SOUTH_LUNAR_MONTH_IDS = intArrayOf(
+        R.string.south_lunar_month_0, R.string.south_lunar_month_1,
+        R.string.south_lunar_month_2, R.string.south_lunar_month_3,
+        R.string.south_lunar_month_4, R.string.south_lunar_month_5,
+        R.string.south_lunar_month_6, R.string.south_lunar_month_7,
+        R.string.south_lunar_month_8, R.string.south_lunar_month_9,
+        R.string.south_lunar_month_10, R.string.south_lunar_month_11
+    )
+
+    fun getSouthLunarMonth(context: Context, index: Int): String {
+        if (index !in SOUTH_LUNAR_MONTH_IDS.indices) return ""
+        val result = context.getString(SOUTH_LUNAR_MONTH_IDS[index])
+        return if (result.isBlank()) {
+            val months = com.nanbanqiu.wannianli.engine.CalendarConstants.SOUTH_LUNAR_MONTH_NAMES
+            if (index in months.indices) months[index] else ""
+        } else result
+    }
+
+    fun getSouthLunarMonthByName(context: Context, chineseName: String): String {
+        val monthNames = com.nanbanqiu.wannianli.engine.CalendarConstants.SOUTH_LUNAR_MONTH_NAMES
+        val idx = monthNames.indexOf(chineseName)
+        return if (idx >= 0) getSouthLunarMonth(context, idx) else chineseName
+    }
+
+    // Five Elements
+    private val WUXING_IDS = intArrayOf(
+        R.string.wuxing_0, R.string.wuxing_1, R.string.wuxing_2,
+        R.string.wuxing_3, R.string.wuxing_4
+    )
+
+    fun getWuxing(context: Context, index: Int): String {
+        if (index !in WUXING_IDS.indices) return ""
+        val result = context.getString(WUXING_IDS[index])
+        return if (result.isBlank()) {
+            val elements = arrayOf("木", "火", "土", "金", "水")
+            if (index in elements.indices) elements[index] else ""
+        } else result
+    }
+
+    // Helper: get mansion with four symbol annotation
+    fun getMansionWithSymbol(context: Context, mansionIndex: Int): String {
+        val mansionName = getMansion(context, mansionIndex)
+        val symbolIndex = mansionIndex / 7  // 0-6: 青龙, 7-13: 玄武, 14-20: 白虎, 21-27: 朱雀
+        val symbolName = getFourSymbol(context, symbolIndex)
+        if (mansionName.isBlank() && symbolName.isBlank()) {
+            val allNames = com.nanbanqiu.wannianli.engine.CalendarConstants.TWENTY_EIGHT_MANSIONS
+            val symbols = arrayOf("青龙", "玄武", "白虎", "朱雀")
+            val mName = if (mansionIndex in allNames.indices) allNames[mansionIndex] else ""
+            val sName = if (symbolIndex in symbols.indices) symbols[symbolIndex] else ""
+            return "$mName($sName)"
+        }
+        if (mansionName.isBlank()) return symbolName
+        if (symbolName.isBlank()) return mansionName
+        return "$mansionName($symbolName)"
+    }
+
+    // Helper: get leap month display
+    fun getLeapMonthDisplay(context: Context, monthName: String, isLeap: Boolean): String {
+        val prefix = context.getString(R.string.leap_month_prefix)
+        return if (isLeap) "$prefix$monthName" else monthName
+    }
+
+    // Helper: localize composed southOppositeDay string (e.g., "闰南十月初三" or "南十月初三")
+    fun getLocalizedSouthOppositeDay(context: Context, composedStr: String): String {
+        val southMonthNames = com.nanbanqiu.wannianli.engine.CalendarConstants.SOUTH_LUNAR_MONTH_NAMES
+        val lunarDayNames = com.nanbanqiu.wannianli.engine.CalendarConstants.LUNAR_DAY_NAMES
+        var isLeap = false
+        var remaining = composedStr
+        if (remaining.startsWith("闰")) {
+            isLeap = true
+            remaining = remaining.substring(1)
+        }
+        var localizedMonth = ""
+        var localizedDay = ""
+        for (i in southMonthNames.indices) {
+            if (remaining.startsWith(southMonthNames[i])) {
+                localizedMonth = getSouthLunarMonth(context, i)
+                remaining = remaining.substring(southMonthNames[i].length)
+                break
+            }
+        }
+        for (i in lunarDayNames.indices) {
+            if (remaining == lunarDayNames[i]) {
+                localizedDay = getLunarDay(context, i)
+                break
+            }
+        }
+        val prefix = if (isLeap) context.getString(R.string.leap_month_prefix) else ""
+        return "$prefix$localizedMonth$localizedDay"
+    }
+
+    // Weekday full names
+    fun getWeekdayName(context: Context, weekdayIndex: Int): String {
+        return when (weekdayIndex) {
+            0 -> context.getString(R.string.weekday_full_sun)
+            1 -> context.getString(R.string.weekday_full_mon)
+            2 -> context.getString(R.string.weekday_full_tue)
+            3 -> context.getString(R.string.weekday_full_wed)
+            4 -> context.getString(R.string.weekday_full_thu)
+            5 -> context.getString(R.string.weekday_full_fri)
+            6 -> context.getString(R.string.weekday_full_sat)
+            else -> ""
+        }
+    }
+
+    // Weekday short names
+    fun getWeekdayShort(context: Context, weekdayIndex: Int): String {
+        return when (weekdayIndex) {
+            0 -> context.getString(R.string.weekday_sun)
+            1 -> context.getString(R.string.weekday_mon)
+            2 -> context.getString(R.string.weekday_tue)
+            3 -> context.getString(R.string.weekday_wed)
+            4 -> context.getString(R.string.weekday_thu)
+            5 -> context.getString(R.string.weekday_fri)
+            6 -> context.getString(R.string.weekday_sat)
+            else -> ""
+        }
+    }
+
+    // Gregorian month names (localized: Chinese=数字, English=January..., Spanish=enero...)
+    private val MONTH_NAME_IDS = intArrayOf(
+        R.string.month_name_1, R.string.month_name_2, R.string.month_name_3,
+        R.string.month_name_4, R.string.month_name_5, R.string.month_name_6,
+        R.string.month_name_7, R.string.month_name_8, R.string.month_name_9,
+        R.string.month_name_10, R.string.month_name_11, R.string.month_name_12
+    )
+
+    fun getMonthName(context: Context, month: Int): String {
+        return if (month in 1..12) context.getString(MONTH_NAME_IDS[month - 1]) else month.toString()
+    }
+
+    // Format solar term datetime using localized format string
+    fun formatSolarTermDateTime(context: Context, year: Int, month: Int, day: Int, hour: Int, minute: Int): String {
+        val monthStr = getMonthName(context, month)
+        return context.getString(R.string.format_solar_term_datetime, year.toString(), monthStr, day, hour, minute)
+    }
+
+    // Format year-month using localized format string
+    fun formatYearMonth(context: Context, year: Int, month: Int): String {
+        val monthStr = getMonthName(context, month)
+        return context.getString(R.string.format_year_month, year.toString(), monthStr)
+    }
+
+    // Format year using localized format string (e.g., "2026年" or "2026")
+    fun formatYear(context: Context, year: Int): String {
+        return context.getString(R.string.format_year, year.toString())
+    }
+
+    // Format month using localized format string (e.g., "6月" or "June")
+    fun formatMonth(context: Context, month: Int): String {
+        val monthStr = getMonthName(context, month)
+        return context.getString(R.string.format_month, monthStr)
+    }
+
+    // Format solar date title (e.g., "北半球阳历 2026年6月" or "Solar Norte, junio de 2026")
+    fun formatSolarDateTitle(context: Context, year: Int, month: Int): String {
+        val label = context.getString(R.string.home_north_solar)
+        val yearMonth = formatYearMonth(context, year, month)
+        return context.getString(R.string.home_north_solar_date, label, yearMonth)
+    }
+}
+
+// ===== com\nanbanqiu\wannianli\viewmodel\MainViewModel.kt =====
+/*
+ * Copyright (c) 2025-2026 南半球历法 (Nanbanqiu Wannianli)
+ * All rights reserved.
+ */
+package com.nanbanqiu.wannianli.viewmodel
+
+
+
+import android.app.Application
+
+import androidx.lifecycle.AndroidViewModel
+
+import androidx.lifecycle.viewModelScope
+
+import com.nanbanqiu.wannianli.data.local.ChangelogDataSource
+
+import com.nanbanqiu.wannianli.data.local.CityPreferences
+
+import com.nanbanqiu.wannianli.data.CityDataSource
+
+import com.nanbanqiu.wannianli.data.model.CalendarDay
+
+import com.nanbanqiu.wannianli.data.model.ChangelogEntry
+
+import com.nanbanqiu.wannianli.data.repository.CalendarRepository
+
+import com.nanbanqiu.wannianli.engine.PureLunarCalendarEngine
+
+import kotlinx.coroutines.Dispatchers
+
+import kotlinx.coroutines.flow.MutableStateFlow
+
+import kotlinx.coroutines.flow.StateFlow
+
+import kotlinx.coroutines.flow.asStateFlow
+
+import kotlinx.coroutines.launch
+
+import java.util.*
+
+
+
+data class MonthDayItem(
+
+    val gregorianYear: Int,
+
+    val gregorianMonth: Int,
+
+    val gregorianDay: Int,
+
+    val isCurrentMonth: Boolean,
+
+    val lunarDayName: String,
+
+    val lunarMonthName: String,
+
+    val isLunarNewMonth: Boolean,
+
+    val isToday: Boolean,
+
+    val isSelected: Boolean,
+
+    val isWeekend: Boolean,
+
+    val solarTermName: String? = null
+
+)
+
+
+
+data class PureLunarDayItem(
+
+    val gregorianYear: Int,
+
+    val gregorianMonth: Int,
+
+    val gregorianDay: Int,
+
+    val pureLunarDay: String,
+
+    val isNewMoon: Boolean,
+
+    val isFullMoon: Boolean,
+
+    val moonPhaseName: String
+
+)
+
+
+
+class MainViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val repository = CalendarRepository(application)
+
+    private val cityPrefs = CityPreferences(application)
+
+
+
+    private val _northCityId = MutableStateFlow(cityPrefs.getNorthCityId())
+
+    val northCityId: StateFlow<String> = _northCityId.asStateFlow()
+
+
+
+    private val _southCityId = MutableStateFlow(computeAntipodalZoneId(_northCityId.value))
+
+    val southCityId: StateFlow<String> = _southCityId.asStateFlow()
+
+
+
+    private fun computeAntipodalZoneId(northId: String): String {
+
+        val northCity = CityDataSource.getCityById(northId) ?: CityDataSource.defaultNorthCity
+
+        return CityDataSource.getAntipodalInfo(northCity).antipodalZoneId
+
+    }
+
+
+
+    fun setNorthCity(id: String) {
+
+        _northCityId.value = id
+
+        cityPrefs.setNorthCityId(id)
+
+        _southCityId.value = computeAntipodalZoneId(id)
+
+        loadToday()
+
+    }
+
+
+
+    private val _calendarDay = MutableStateFlow<CalendarDay?>(null)
+
+    val calendarDay: StateFlow<CalendarDay?> = _calendarDay.asStateFlow()
+
+
+
+    private val _isLoading = MutableStateFlow(false)
+
+    val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
+
+
+
+    private val _errorMessage = MutableStateFlow<String?>(null)
+
+    val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
+
+
+
+    private val _viewYear = MutableStateFlow(2026)
+
+    val viewYear: StateFlow<Int> = _viewYear.asStateFlow()
+
+
+
+    private val _viewMonth = MutableStateFlow(1)
+
+    val viewMonth: StateFlow<Int> = _viewMonth.asStateFlow()
+
+
+
+    private val _monthDays = MutableStateFlow<List<MonthDayItem>>(emptyList())
+
+    val monthDays: StateFlow<List<MonthDayItem>> = _monthDays.asStateFlow()
+
+
+
+    private val _selectedYear = MutableStateFlow(2026)
+
+    val selectedYear: StateFlow<Int> = _selectedYear.asStateFlow()
+
+
+
+    private val _selectedMonth = MutableStateFlow(1)
+
+    val selectedMonth: StateFlow<Int> = _selectedMonth.asStateFlow()
+
+
+
+    private val _selectedDay = MutableStateFlow(1)
+
+    val selectedDay: StateFlow<Int> = _selectedDay.asStateFlow()
+
+
+
+    private val _pureLunarMonthDays = MutableStateFlow<List<PureLunarDayItem>>(emptyList())
+
+    val pureLunarMonthDays: StateFlow<List<PureLunarDayItem>> = _pureLunarMonthDays.asStateFlow()
+
+
+
+    private val _changelog = MutableStateFlow<List<ChangelogEntry>>(emptyList())
+
+    val changelog: StateFlow<List<ChangelogEntry>> = _changelog.asStateFlow()
+
+
+
+    init {
+
+        loadToday()
+
+        loadChangelog()
+
+    }
+
+
+
+    fun loadToday() {
+
+        viewModelScope.launch(Dispatchers.IO) {
+
+            _isLoading.value = true
+
+            _errorMessage.value = null
+
+            try {
+
+                repository.clearCache()
+
+
+
+                // 鐢ㄥ寳鍗婄悆鍩庡競鐨勬湰鍦版椂闂磋幏鍙栨棩鏈熷拰鏃惰景
+
+                val northZoneId = _northCityId.value
+
+                val northZone = java.time.ZoneId.of(northZoneId)
+
+                val northNow = java.time.ZonedDateTime.now(northZone)
+
+                val year = northNow.year
+
+                val month = northNow.monthValue
+
+                val day = northNow.dayOfMonth
+
+                val hour = northNow.hour
+
+                val minute = northNow.minute
+
+
+
+                _viewYear.value = year
+
+                _viewMonth.value = month
+
+                _selectedYear.value = year
+
+                _selectedMonth.value = month
+
+                _selectedDay.value = day
+
+
+
+                val result = repository.getCalendarDay(year, month, day, hour, minute, northZoneId)
+
+                _calendarDay.value = result
+
+
+
+                loadMonthDays(year, month, year, month, day)
+
+            } catch (e: Exception) {
+
+                _errorMessage.value = "鍔犺浇鏃ュ巻鏁版嵁澶辫触: ${e.message}"
+
+            } finally {
+
+                _isLoading.value = false
+
+            }
+
+        }
+
+    }
+
+
+
+    fun loadDate(year: Int, month: Int, day: Int) {
+
+        viewModelScope.launch(Dispatchers.IO) {
+
+            _isLoading.value = true
+
+            _errorMessage.value = null
+
+            try {
+
+                _selectedYear.value = year
+
+                _selectedMonth.value = month
+
+                _selectedDay.value = day
+
+
+
+                if (year != _viewYear.value || month != _viewMonth.value) {
+
+                    _viewYear.value = year
+
+                    _viewMonth.value = month
+
+                }
+
+
+
+                val northZone = java.time.ZoneId.of(CityDataSource.toZoneId(_northCityId.value))
+
+                val northNow = java.time.ZonedDateTime.now(northZone)
+
+                val result = repository.getCalendarDay(year, month, day, northNow.hour, northNow.minute, CityDataSource.toZoneId(_northCityId.value))
+
+                _calendarDay.value = result
+
+
+
+                loadMonthDays(_viewYear.value, _viewMonth.value, year, month, day)
+
+            } catch (e: Exception) {
+
+                _errorMessage.value = "鍔犺浇鏃ュ巻鏁版嵁澶辫触: ${e.message}"
+
+            } finally {
+
+                _isLoading.value = false
+
+            }
+
+        }
+
+    }
+
+
+
+    fun navigateToYearMonth(year: Int, month: Int) {
+
+        _viewYear.value = year
+
+        _viewMonth.value = month
+
+
+
+        val selYear = _selectedYear.value
+
+        val selMonth = _selectedMonth.value
+
+        val selDay = _selectedDay.value
+
+
+
+        viewModelScope.launch(Dispatchers.IO) {
+
+            loadMonthDays(year, month, selYear, selMonth, selDay)
+
+        }
+
+    }
+
+
+
+    fun navigateMonth(offset: Int) {
+
+        var newYear = _viewYear.value
+
+        var newMonth = _viewMonth.value + offset
+
+
+
+        if (newMonth > 12) {
+
+            newYear += 1
+
+            newMonth = 1
+
+        } else if (newMonth < 1) {
+
+            newYear -= 1
+
+            newMonth = 12
+
+        }
+
+
+
+        _viewYear.value = newYear
+
+        _viewMonth.value = newMonth
+
+
+
+        val selYear = _selectedYear.value
+
+        val selMonth = _selectedMonth.value
+
+        val selDay = _selectedDay.value
+
+
+
+        viewModelScope.launch(Dispatchers.IO) {
+
+            loadMonthDays(newYear, newMonth, selYear, selMonth, selDay)
+
+        }
+
+    }
+
+
+
+    fun selectDay(year: Int, month: Int, day: Int) {
+
+        if (year == _selectedYear.value && month == _selectedMonth.value && day == _selectedDay.value) return
+
+
+
+        _selectedYear.value = year
+
+        _selectedMonth.value = month
+
+        _selectedDay.value = day
+
+
+
+        if (year != _viewYear.value || month != _viewMonth.value) return
+
+
+
+        viewModelScope.launch(Dispatchers.IO) {
+
+            try {
+
+                val northZone = java.time.ZoneId.of(CityDataSource.toZoneId(_northCityId.value))
+
+                val northNow = java.time.ZonedDateTime.now(northZone)
+
+                val result = repository.getCalendarDay(year, month, day, northNow.hour, northNow.minute, CityDataSource.toZoneId(_northCityId.value))
+
+                _calendarDay.value = result
+
+            } catch (_: Exception) {}
+
+
+
+            loadMonthDays(_viewYear.value, _viewMonth.value, year, month, day)
+
+        }
+
+    }
+
+
+
+    private fun loadMonthDays(viewYear: Int, viewMonth: Int, selYear: Int, selMonth: Int, selDay: Int) {
+
+        val northZone = java.time.ZoneId.of(CityDataSource.toZoneId(_northCityId.value))
+
+        val northNow = java.time.ZonedDateTime.now(northZone)
+
+        val todayYear = northNow.year
+
+        val todayMonth = northNow.monthValue
+
+        val todayDay = northNow.dayOfMonth
+
+
+
+        val dayCount = repository.getMonthDayCount(viewYear, viewMonth)
+
+
+
+        val firstDayWeekday = (java.time.LocalDate.of(viewYear, viewMonth, 1).dayOfWeek.value - 1) % 7
+
+
+
+        val items = mutableListOf<MonthDayItem>()
+
+
+
+        val prevMonth: Int
+
+        val prevYear: Int
+
+        if (viewMonth == 1) {
+
+            prevMonth = 12
+
+            prevYear = viewYear - 1
+
+        } else {
+
+            prevMonth = viewMonth - 1
+
+            prevYear = viewYear
+
+        }
+
+        val prevDayCount = repository.getMonthDayCount(prevYear, prevMonth)
+
+
+
+        for (i in 0 until firstDayWeekday) {
+
+            val d = prevDayCount - firstDayWeekday + i + 1
+
+            items.add(buildMonthDayItem(prevYear, prevMonth, d, false, todayYear, todayMonth, todayDay, selYear, selMonth, selDay))
+
+        }
+
+
+
+        for (d in 1..dayCount) {
+
+            items.add(buildMonthDayItem(viewYear, viewMonth, d, true, todayYear, todayMonth, todayDay, selYear, selMonth, selDay))
+
+        }
+
+
+
+        val remaining = 42 - items.size
+
+        val nextMonth: Int
+
+        val nextYear: Int
+
+        if (viewMonth == 12) {
+
+            nextMonth = 1
+
+            nextYear = viewYear + 1
+
+        } else {
+
+            nextMonth = viewMonth + 1
+
+            nextYear = viewYear
+
+        }
+
+
+
+        for (d in 1..remaining) {
+
+            items.add(buildMonthDayItem(nextYear, nextMonth, d, false, todayYear, todayMonth, todayDay, selYear, selMonth, selDay))
+
+        }
+
+
+
+        _monthDays.value = items
+
+    }
+
+
+
+    private fun buildMonthDayItem(
+
+        year: Int, month: Int, day: Int, isCurrentMonth: Boolean,
+
+        todayYear: Int, todayMonth: Int, todayDay: Int,
+
+        selYear: Int, selMonth: Int, selDay: Int
+
+    ): MonthDayItem {
+
+        return MonthDayItem(
+
+            gregorianYear = year,
+
+            gregorianMonth = month,
+
+            gregorianDay = day,
+
+            isCurrentMonth = isCurrentMonth,
+
+            lunarDayName = repository.getLunarDayName(year, month, day),
+
+            lunarMonthName = repository.getLunarMonthName(year, month, day),
+
+            isLunarNewMonth = repository.isLunarNewMonth(year, month, day),
+
+            isToday = year == todayYear && month == todayMonth && day == todayDay,
+
+            isSelected = year == selYear && month == selMonth && day == selDay,
+
+            isWeekend = repository.isWeekend(year, month, day),
+
+            solarTermName = repository.getSolarTermDayName(year, month, day)
+
+        )
+
+    }
+
+
+
+    fun loadPureLunarMonth(viewYear: Int, viewMonth: Int) {
+
+        viewModelScope.launch(Dispatchers.IO) {
+
+            try {
+
+                val dayCount = repository.getMonthDayCount(viewYear, viewMonth)
+
+                val items = mutableListOf<PureLunarDayItem>()
+
+
+
+                for (d in 1..dayCount) {
+
+                    val pureLunarDate = PureLunarCalendarEngine.getPureLunarDate(viewYear, viewMonth, d)
+
+                    items.add(
+
+                        PureLunarDayItem(
+
+                            gregorianYear = viewYear,
+
+                            gregorianMonth = viewMonth,
+
+                            gregorianDay = d,
+
+                            pureLunarDay = pureLunarDate?.dayName ?: "",
+
+                            isNewMoon = pureLunarDate?.isNewMoon ?: false,
+
+                            isFullMoon = pureLunarDate?.isFullMoon ?: false,
+
+                            moonPhaseName = pureLunarDate?.moonPhase ?: ""
+
+                        )
+
+                    )
+
+                }
+
+
+
+                _pureLunarMonthDays.value = items
+
+            } catch (e: Exception) {
+
+                _pureLunarMonthDays.value = emptyList()
+
+            }
+
+        }
+
+    }
+
+
+
+    fun loadChangelog() {
+
+        viewModelScope.launch(Dispatchers.IO) {
+
+            try {
+
+                val context = getApplication<Application>()
+
+                _changelog.value = ChangelogDataSource.getChangelog(context)
+
+            } catch (_: Exception) {}
+
+        }
+
+    }
+
+
+
+    fun getRepository(): CalendarRepository = repository
+
+}
+// ===== com\nanbanqiu\wannianli\viewmodel\NoteViewModel.kt =====
+/*
+ * Copyright (c) 2025-2026 南半球历法 (Nanbanqiu Wannianli)
+ * All rights reserved.
+ */
+package com.nanbanqiu.wannianli.viewmodel
+
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import com.nanbanqiu.wannianli.data.model.DiaryNote
+import com.nanbanqiu.wannianli.data.repository.NoteRepository
+import com.nanbanqiu.wannianli.util.ExportUtil
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import java.io.File
+
+class NoteViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository = NoteRepository(application)
+    private val context = application
+
+    private val _notes = MutableStateFlow<List<DiaryNote>>(emptyList())
+    val notes: StateFlow<List<DiaryNote>> = _notes.asStateFlow()
+
+    private val _availableYears = MutableStateFlow<List<Int>>(emptyList())
+    val availableYears: StateFlow<List<Int>> = _availableYears.asStateFlow()
+
+    private val _availableMonths = MutableStateFlow<List<Int>>(emptyList())
+    val availableMonths: StateFlow<List<Int>> = _availableMonths.asStateFlow()
+
+    private val _currentNote = MutableStateFlow<DiaryNote?>(null)
+    val currentNote: StateFlow<DiaryNote?> = _currentNote.asStateFlow()
+
+    private val _isExporting = MutableStateFlow(false)
+    val isExporting: StateFlow<Boolean> = _isExporting.asStateFlow()
+
+    private val _exportResult = MutableStateFlow<ExportResult?>(null)
+    val exportResult: StateFlow<ExportResult?> = _exportResult.asStateFlow()
+
+    private var currentFilterYear: Int? = null
+    private var currentFilterMonth: Int? = null
+    private var currentSearchKeyword: String = ""
+
+    init {
+        loadAllNotes()
+    }
+
+    fun searchNotes(keyword: String) {
+        currentSearchKeyword = keyword
+        viewModelScope.launch(Dispatchers.IO) {
+            _notes.value = repository.searchNotes(keyword)
+        }
+    }
+
+    fun loadAllNotes() {
+        viewModelScope.launch(Dispatchers.IO) {
+            currentFilterYear = null
+            currentFilterMonth = null
+            _notes.value = repository.getAllNotes()
+            _availableYears.value = repository.getAvailableYears()
+            _availableMonths.value = emptyList()
+        }
+    }
+
+    fun filterByYear(year: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            currentFilterYear = year
+            currentFilterMonth = null
+            _notes.value = repository.getNotesByYear(year)
+            _availableYears.value = repository.getAvailableYears()
+            _availableMonths.value = repository.getAvailableMonths(year)
+        }
+    }
+
+    fun filterByMonth(year: Int, month: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            currentFilterYear = year
+            currentFilterMonth = month
+            _notes.value = repository.getNotesByMonth(year, month)
+            _availableYears.value = repository.getAvailableYears()
+            _availableMonths.value = repository.getAvailableMonths(year)
+        }
+    }
+
+    fun loadNote(id: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _currentNote.value = repository.getNoteById(id)
+        }
+    }
+
+    fun saveNote(note: DiaryNote) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.saveNote(note)
+            refreshCurrentFilter()
+        }
+    }
+
+    fun deleteNote(id: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteNote(id)
+            refreshCurrentFilter()
+        }
+    }
+
+    fun createNewNote() {
+        _currentNote.value = null
+    }
+
+    private fun refreshCurrentFilter() {
+        if (currentFilterYear != null && currentFilterMonth != null) {
+            filterByMonth(currentFilterYear!!, currentFilterMonth!!)
+        } else if (currentFilterYear != null) {
+            filterByYear(currentFilterYear!!)
+        } else {
+            loadAllNotes()
+        }
+    }
+
+    fun exportAllNotes(format: ExportUtil.ExportFormat) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _isExporting.value = true
+            try {
+                val notesToExport = repository.getAllNotes()
+                if (notesToExport.isEmpty()) {
+                    _exportResult.value = ExportResult(false, "没有可导出的笔记")
+                    _isExporting.value = false
+                    return@launch
+                }
+
+                val label = "全部"
+                val file = ExportUtil.exportNotes(context, notesToExport, format, label)
+
+                _exportResult.value = ExportResult(
+                    success = true,
+                    message = "导出成功：共 ${notesToExport.size} 条笔记",
+                    file = file,
+                    mimeType = when (format) {
+                        ExportUtil.ExportFormat.TXT -> "text/plain"
+                        ExportUtil.ExportFormat.WORD -> "application/msword"
+                        ExportUtil.ExportFormat.EXCEL -> "text/csv"
+                    }
+                )
+            } catch (e: Exception) {
+                _exportResult.value = ExportResult(false, "导出失败: ${e.message}")
+            } finally {
+                _isExporting.value = false
+            }
+        }
+    }
+
+    fun clearExportResult() {
+        _exportResult.value = null
+    }
+
+    fun shareExportedFile() {
+        val result = _exportResult.value ?: return
+        if (result.success && result.file != null) {
+            viewModelScope.launch(Dispatchers.Main) {
+                ExportUtil.shareFile(context, result.file, result.mimeType ?: "text/plain")
+            }
+        }
+    }
+
+    fun shareToWeChat() {
+        val result = _exportResult.value ?: return
+        if (result.success && result.file != null) {
+            viewModelScope.launch(Dispatchers.Main) {
+                ExportUtil.shareToWeChat(context, result.file, result.mimeType ?: "text/plain")
+            }
+        }
+    }
+
+    fun shareToQQ() {
+        val result = _exportResult.value ?: return
+        if (result.success && result.file != null) {
+            viewModelScope.launch(Dispatchers.Main) {
+                ExportUtil.shareToQQ(context, result.file, result.mimeType ?: "text/plain")
+            }
+        }
+    }
+
+    private fun buildExportLabel(): String {
+        return when {
+            currentFilterYear != null && currentFilterMonth != null ->
+                "${currentFilterYear}年${currentFilterMonth.toString().padStart(2, '0')}月"
+            currentFilterYear != null -> "${currentFilterYear}年"
+            else -> "全部"
+        }
+    }
+
+    data class ExportResult(
+        val success: Boolean,
+        val message: String,
+        val file: File? = null,
+        val mimeType: String? = null
+    )
+}

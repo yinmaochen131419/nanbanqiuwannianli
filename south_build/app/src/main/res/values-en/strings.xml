@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">South Hemisphere Calendar</string>
+
+    <!-- Drawer menu -->
+    <string name="drawer_title">South Hemisphere Calendar</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_schedule">Schedule</string>
+    <string name="menu_changelog">Changelog</string>
+    <string name="menu_knowledge">Calendar Knowledge</string>
+    <string name="menu_settings">Time Zone Settings</string>
+    <string name="menu_feedback">Feedback</string>
+    <string name="menu_disclaimer">Disclaimer</string>
+
+    <!-- Screen titles -->
+    <string name="title_schedule">Schedule</string>
+    <string name="title_knowledge">Calendar Knowledge</string>
+    <string name="title_feedback">Feedback</string>
+    <string name="title_settings">Time Zone Settings</string>
+    <string name="title_disclaimer">Disclaimer</string>
+    <string name="title_changelog">Changelog</string>
+    <string name="title_eclipse">Solar &amp; Lunar Eclipses</string>
+    <string name="title_zeri">Date Selection</string>
+
+    <!-- Home screen -->
+    <string name="home_title">Northern Calendar ⟷ Southern Calendar</string>
+    <string name="home_north_solar">Northern Solar</string>
+    <string name="home_south_solar">Southern Solar</string>
+    <string name="home_north_lunar">N. Lunar</string>
+    <string name="home_south_lunar">S. Lunar</string>
+    <string name="home_calendar_conversion">Northern Calendar   ⟷   Southern Calendar</string>
+    <string name="home_solar_term_conversion">Northern Solar Terms   ⟷   Southern Solar Terms</string>
+    <string name="home_north_hemisphere">☀️Northern</string>
+    <string name="home_south_hemisphere">🌏Southern</string>
+    <string name="home_leap_month">Leap Month</string>
+    <string name="home_yes">Yes</string>
+    <string name="home_no">No</string>
+    <string name="home_daily_star">Daily Star Lodge</string>
+    <string name="home_solar_star">Solar Star Lodge</string>
+    <string name="home_moon_star">Moon Star Lodge</string>
+    <string name="home_four_pillars">Four Pillars</string>
+    <string name="home_year_pillar">Year Pillar</string>
+    <string name="home_month_pillar">Month Pillar</string>
+    <string name="home_day_pillar">Day Pillar</string>
+    <string name="home_hour_pillar">Hour Pillar</string>
+    <string name="home_north_season">N. Season</string>
+    <string name="home_south_season">S. Season</string>
+    <string name="home_moon_phase">Moon Phase</string>
+    <string name="home_ganzhi">Gan-Zhi</string>
+    <string name="home_zodiac">Zodiac</string>
+    <string name="home_weekday">Weekday</string>
+    <string name="home_solar_calendar">Solar</string>
+    <string name="home_lunar_calendar">Lunar</string>
+    <string name="home_solar_term">Solar Term</string>
+    <string name="home_no_solar_term">No solar term data</string>
+    <string name="home_north_term">N. Term</string>
+    <string name="home_south_term">S. Term</string>
+    <string name="home_time_diff">Time diff</string>
+    <string name="home_reference">Ref.</string>
+    <string name="home_days_later">%d days later</string>
+    <string name="home_select_year_month">Select Year &amp; Month</string>
+    <string name="home_today">Today</string>
+    <string name="home_prev_month">Previous Month</string>
+    <string name="home_next_month">Next Month</string>
+    <string name="home_decrease">Decrease</string>
+    <string name="home_increase">Increase</string>
+
+    <!-- Schedule screen -->
+    <string name="schedule_tab_all">All</string>
+    <string name="schedule_tab_birthday">Birthday</string>
+    <string name="schedule_tab_anniversary">Anniversary</string>
+    <string name="schedule_tab_meeting">Meeting</string>
+    <string name="schedule_tab_todo">To-Do</string>
+    <string name="schedule_empty">No Events</string>
+    <string name="schedule_empty_hint">Tap + to add a new event</string>
+    <string name="schedule_add">Add Event</string>
+    <string name="schedule_edit">Edit Event</string>
+    <string name="schedule_delete_confirm">Confirm Delete</string>
+    <string name="schedule_delete_message">Delete \"%s\"?</string>
+    <string name="schedule_countdown">%d days away</string>
+    <string name="schedule_expired">Expired</string>
+    <string name="schedule_recurring">Yearly</string>
+    <string name="schedule_recurring_label">Repeat Yearly</string>
+    <string name="schedule_lunar_date_label">Lunar Date</string>
+    <string name="schedule_title_label">Title</string>
+    <string name="schedule_type_label">Type</string>
+    <string name="schedule_note_label">Note</string>
+    <string name="schedule_save">Save</string>
+    <string name="schedule_cancel">Cancel</string>
+    <string name="schedule_delete">Delete</string>
+    <string name="schedule_lunar_prefix">Lunar</string>
+
+    <!-- Feedback screen -->
+    <string name="feedback_intro">Thank you for using South Hemisphere Calendar!\nPlease enter your feedback here. We value every suggestion.</string>
+    <string name="feedback_placeholder">Enter your feedback...</string>
+    <string name="feedback_submit">Submit Feedback</string>
+    <string name="feedback_error_empty">Please enter your feedback</string>
+    <string name="feedback_error_prohibited">Content contains prohibited words, please revise</string>
+    <string name="feedback_error_no_email">Cannot open email app, please check if an email client is installed</string>
+    <string name="feedback_email_subject">South Hemisphere Calendar Feedback</string>
+
+    <!-- Knowledge screen section titles -->
+    <string name="knowledge_section_1">1. Calendar Conversion Principles</string>
+    <string name="knowledge_section_2">2. Moon Phase Flip · Tai Chi Verification</string>
+    <string name="knowledge_section_3">3. Southern Solar Term Correspondence</string>
+    <string name="knowledge_section_4">4. Star-Based Solar Term Determination</string>
+    <string name="knowledge_section_5">5. Moon Phases &amp; Hemispheres</string>
+    <string name="knowledge_section_6">6. Coriolis Force &amp; Rotation</string>
+    <string name="knowledge_section_7">7. Four Pillars &amp; Solar Hours</string>
+    <string name="knowledge_section_8">8. Daily &amp; Moon Star Lodges</string>
+    <string name="knowledge_section_9">9. Significance of Southern Calendar</string>
+
+    <!-- Knowledge screen content -->
+    <string name="knowledge_content_1">The seasons in the Northern and Southern Hemispheres are completely opposite. When it is summer in the North, it is winter in the South.\n\n[Solar Calendar] Southern month = Northern month + 6 (subtract 12 if exceeds 12), year adjusted accordingly.\nExample: Northern Jan 2026 → Southern Jul 2025; Northern Jul 2026 → Southern Jan 2026.\n\n[Lunar Calendar] Southern lunar month = Northern lunar month + 6 (subtract 12 if exceeds 12), leap months offset accordingly.\nSouthern leap month = (Northern leap month + 6 - 1) % 12 + 1.\n\n[Tai Chi Opposite Day] Southern lunar day = Northern lunar day + 15 (subtract month length if exceeded, carry to next month).\nExample: Northern lunar 4th month 18th day → Southern lunar 10th month 3rd day (18+15=33, minus 29=4, next month 4th day).\n\nThe essence: lunar day +15 means 180° apart on the synodic cycle, with moon phase appearance exactly flipped.</string>
+
+    <string name="knowledge_content_2">[Core Principle] Moon phases are a natural verification tool connecting Northern and Southern Hemisphere calendars.\nMoon phases are produced by the Moon orbiting Earth. At any given moment, the moon phase is the same globally, but the illuminated side appears as a mirror image between hemispheres.\n\n[Moon Phase Comparison]\nNorthern: New Moon → D-shaped Waxing Crescent → First Quarter (right half lit) → Waxing Gibbous → Full Moon\nSouthern: New Moon → Reverse-D Waxing Crescent → First Quarter (left half lit) → Waxing Gibbous → Full Moon\n\nFull Moon is equally round everywhere, but the direction of waxing is opposite:\nChina\'s moon waxes in D-shape, Argentina\'s in reverse-D, different paths to the same full moon.\n\n[Verifying Southern Lunar Date via Moon Phase]\n1. Observe the day\'s moon phase to determine the lunar day number (globally consistent)\n2. Northern lunar day + 15 = Southern Tai Chi Opposite Day\n3. Example: Northern lunar 8th day (First Quarter) → Southern lunar 23rd day (Last Quarter)\n4. Verification: 8th day\'s phase (right half lit) and 23rd day\'s phase (left half lit) are exactly mirror symmetric\n\n[Unity and Opposition]\n· Unity: lunar day numbers are globally consistent, full moon is the same everywhere\n· Opposition: illuminated side direction is mirror symmetric, waxing direction is opposite\n· Tai Chi: 180° apart on the synodic cycle, exactly the rotational symmetry of the Tai Chi Yin-Yang symbol</string>
+
+    <string name="knowledge_content_3">Solar terms reflect the Sun\'s ecliptic longitude. The Northern and Southern Hemispheres see the Sun in symmetrically opposite positions at the same moment.\n\n[Correspondence]\nNorthern Lichun ↔ Southern Liqiu\nNorthern Yushui ↔ Southern Chushu\nNorthern Jingzhe ↔ Southern Bailu\nNorthern Chunfen ↔ Southern Qiufen\nNorthern Qingming ↔ Southern Hanlu\nNorthern Guyu ↔ Southern Shuangjiang\nNorthern Lixia ↔ Southern Lidong\nNorthern Xiaoman ↔ Southern Xiaoxue\nNorthern Mangzhong ↔ Southern Daxue\nNorthern Xiazhi ↔ Southern Dongzhi\n\nRule: Northern Nth solar term ↔ Southern (N+12)th solar term (subtract 24 if exceeds 24)</string>
+
+    <string name="knowledge_content_4">The Northern Hemisphere uses the Big Dipper\'s pointer direction to determine seasons. The Southern Hemisphere cannot observe the Big Dipper or Polaris, and must use other star patterns.\n\n[Centaurus Pointer Method]\nCentaurus is the Southern Hemisphere\'s closest equivalent to the Big Dipper. Alpha and Beta Centauri\'s line extended southward about 4.5 times the distance points to the South Celestial Pole, establishing a season system similar to the Big Dipper\'s pointer.\nWhen Alpha-Beta Centauri line points due south = Southern winter (June), points east = Southern spring (September).\n\n[Antares Method]\nAntares is a seasonal star shared by both hemispheres, magnitude 1.0, appearing high in the southern sky on summer evenings.\nNorthern Hemisphere: Antares high in evening → Summer; Southern Hemisphere: Antares high in evening → Winter.\nSeasonal meanings are exactly opposite, consistent with Tai Chi symmetry. The Antares method has the highest precision.\n\n[Canopus Method]\nCanopus, magnitude -0.74, is the second brightest star. Its altitude variation: highest on Southern winter evenings, lowest on summer evenings, serving as a seasonal auxiliary indicator.\n\n[Magellanic Clouds Method]\nThe Large and Small Magellanic Clouds orbit the South Celestial Pole. Their azimuth relative to the pole changes with seasons.\nLMC southeast of the pole = Southern summer, northwest = Southern winter.\n\n[Comprehensive Verification]\n1. Antares method as primary (highest precision, shared by both hemispheres)\n2. Centaurus pointer method as secondary (closest to Big Dipper function)\n3. Canopus and Magellanic Clouds for cross-verification\n4. All star seasonal meanings are opposite to the Northern Hemisphere, reflecting Tai Chi symmetry</string>
+
+    <string name="knowledge_content_5">The Moon\'s illuminated side appears as a mirror image between the Northern and Southern Hemispheres.\n\nIn the Northern Hemisphere, the First Quarter Moon\'s illuminated side is on the right (D-shape); in the Southern Hemisphere, it\'s on the left (reverse-D).\n\nThis app reflects this difference by rotating moon phase symbols 180°: Northern uses ☾, Southern uses ☽.\n\n[Moon Phase Names vs. Visual Difference]\nMoon phase names define the Moon\'s orbital position, not the visual illumination direction.\nAt any given moment, the Moon\'s orbital position is unique, so phase names are globally consistent.\nThe visual difference between hemispheres is only in the left-right direction of illumination.\n\n[Southern Hemisphere Moon Phase Names (by visual appearance)]\nNorthern Waxing Crescent → Southern Waning Crescent (visual)\nNorthern First Quarter → Southern Last Quarter (visual)\nNorthern Waxing Gibbous → Southern Waning Gibbous (visual)\nNorthern Full Moon → Southern Full Moon (unchanged)\nThis app swaps Southern hemisphere moon phase names by visual appearance, while icons maintain left-right mirroring.</string>
+
+    <string name="knowledge_content_6_intro">The Coriolis force is an inertial force produced by Earth\'s rotation, affecting the rotation direction of large-scale motion systems.</string>
+
+    <string name="knowledge_content_6_table_header_system">System Type</string>
+    <string name="knowledge_content_6_table_header_north">Northern</string>
+    <string name="knowledge_content_6_table_header_south">Southern</string>
+
+    <string name="knowledge_content_6_row1_system">Typhoon/Cyclone (Low Pressure)</string>
+    <string name="knowledge_content_6_row1_north">Counterclockwise ↺</string>
+    <string name="knowledge_content_6_row1_south">Clockwise ↻</string>
+
+    <string name="knowledge_content_6_row2_system">Anticyclone (High Pressure)</string>
+    <string name="knowledge_content_6_row2_north">Clockwise ↻</string>
+    <string name="knowledge_content_6_row2_south">Counterclockwise ↺</string>
+
+    <string name="knowledge_content_6_row3_system">Ocean Gyre (Subtropical)</string>
+    <string name="knowledge_content_6_row3_north">Clockwise ↻</string>
+    <string name="knowledge_content_6_row3_south">Counterclockwise ↺</string>
+
+    <string name="knowledge_content_6_row4_system">Earth\'s Rotation</string>
+    <string name="knowledge_content_6_row4_north">Counterclockwise</string>
+    <string name="knowledge_content_6_row4_south">Clockwise</string>
+
+    <string name="knowledge_content_6_math">Mathematical essence: F = -2m(ω × v), where ω is Earth\'s angular velocity vector.\n\nIn the Northern Hemisphere, the Coriolis force deflects moving objects to the right; in the Southern Hemisphere, to the left.\n\nScale effect: Only large-scale systems of several hundred kilometers or more (typhoons, ocean gyres) are significantly affected; small-scale phenomena (bathtub drainage) are not affected.</string>
+
+    <string name="knowledge_content_7">The Four Pillars (year, month, day, hour pillars) are calculated based on local solar hours.\n\n[Solar Hours &amp; Local Time]\nSolar hours correspond to local apparent solar time. The same clock time in different time zones may fall into different solar hours.\nThis app supports selecting different city time zones and automatically calculates the Four Pillars for the local solar hour.\n\n[Four Pillars Differences Between Hemispheres]\nYear Pillar: Bounded by Lichun (Start of Spring), which differs by 6 months between hemispheres; year pillars may differ.\nMonth Pillar: Bounded by solar terms, which are symmetrically opposite; month pillar earthly branches differ.\nDay Pillar: Bounded by Zi hour (11PM-1AM), different time zones may cross day boundaries; day pillars may differ.\nHour Pillar: Directly depends on local solar hour, necessarily different across time zones.\n\nThis app ensures a strict 12-hour time difference between Northern and Southern hemisphere cities, making the Four Pillars exhibit Tai Chi symmetry.</string>
+
+    <string name="knowledge_content_8">[Daily Star Lodge] The 28 Mansions rotate in a fixed sequence day by day, globally unified regardless of hemisphere.\nDaily Star Lodge is based on Ganzhi day counting, which is globally unified via Julian Day conversion.\nCalibration: January 1, 2025 = Shen Mansion (index 20).\n\n[Moon Star Lodge] The mansion corresponding to the Moon\'s ecliptic longitude position, reflecting the Moon\'s actual astronomical position.\nMoon Star Lodge is determined by astronomical algorithm calculating the Moon\'s ecliptic longitude, then matching 28 Mansion boundaries.\n\nBoth are globally unified astronomical phenomena, unchanged by hemisphere.</string>
+
+    <string name="knowledge_content_9">Traditional Chinese calendar is based on Northern Hemisphere astronomical observations. Direct application to the Southern Hemisphere results in seasonal misalignment.\n\nThe Southern Hemisphere calendar converts the Northern system through Tai Chi symmetry principles.\n\nThis enables Chinese communities in the Southern Hemisphere to use a lunar calendar system that matches their local seasons.\n\n[Philosophical Foundation of Tai Chi Symmetry]\nThe Tai Chi Yin-Yang symbol reveals: unity of opposites is the fundamental law of the universe.\nThe relationship between Northern and Southern Hemisphere calendars is a real-world mapping of the Tai Chi symbol:\n· Solar month +6, like the Yin-Yang fish rotating 180°\n· Lunar day +15, like antipodal points on the synodic cycle\n· Solar term symmetry, like Yin-Yang waxing and waning as mutual roots\n· Moon phase mirroring, like the eyes of the Yin-Yang fish gazing at each other</string>
+
+    <!-- Settings screen -->
+    <string name="settings_timezone_select">☀️ Time Zone</string>
+    <string name="settings_antipode">🌏 Antipode</string>
+    <string name="settings_select_north_timezone">Select Northern Time Zone</string>
+    <string name="settings_close">Close</string>
+    <string name="settings_selected">Selected</string>
+    <string name="settings_timezone_label">Time Zone:</string>
+    <string name="settings_auto_calculated">Auto-calculated from %s antipode</string>
+    <string name="settings_north_lat">N. Lat</string>
+    <string name="settings_south_lat">S. Lat</string>
+    <string name="settings_east_lon">E. Lon</string>
+    <string name="settings_west_lon">W. Lon</string>
+
+    <!-- ZeRi screen -->
+    <string name="zeri_maintenance">Date selection is under maintenance, please try again later</string>
+
+    <!-- Disclaimer screen -->
+    <string name="disclaimer_text">[Important: Please read this disclaimer carefully]\n\nThis app (Southern Hemisphere Calendar) is a calendar tool based on traditional Chinese calendar culture combined with Southern Hemisphere geographic features. All functions (including but not limited to date selection, Four Pillars, solar term conversion, moon phase flip, star lodge display, Coriolis force analysis, etc.) are derived from traditional Chinese folk culture research and modern astronomical knowledge, and are intended for learning, research, and exchange purposes only.\n\n1. Cultural Research Positioning\nAll calendar calculations, Bagua deductions, and auspicious/inauspicious determinations provided by this app are based on traditional ancient algorithms and folk culture theories, belonging to the category of traditional cultural research, and do not constitute any form of prediction, divination, or superstition.\n\n2. Not for Decision-Making\nAny information output by this app (including but not limited to auspicious date recommendations, hour auspiciousness, star lodge analysis, etc.) shall not be used as a decision-making basis for:\n(1) Important life decisions such as weddings, funerals, moving, or business openings;\n(2) Professional decisions in healthcare, investment, legal affairs, etc.;\n(3) Any decisions that may have legal consequences.\n\n3. Limitation of Liability\nBy using this app, you acknowledge and agree that:\n(1) The developer shall not be liable for any direct, indirect, incidental, special, punitive, or consequential damages arising from the use of or reliance on the app\'s information;\n(2) Users should independently judge the applicability of information and bear the consequences of use;\n(3) This app reserves the right to modify functions and content without prior notice;\n(4) No express or implied warranty is made regarding the continuous availability, accuracy, or timeliness of the app\'s functions.\n\n4. No Warranty\nThis app is provided \"as is\" without any warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement. The developer does not warrant that the app will be uninterrupted, timely, secure, or error-free.\n\n5. Data and Privacy\nThis app does not collect, store, or transmit any user personal data. All calculations are performed locally on the user\'s device without involving any remote servers or third-party services.\n\n6. Compliance Statement\nThis app strictly complies with the Cybersecurity Law of the People\'s Republic of China, the Measures for the Administration of Internet Information Services, and other relevant laws and regulations, does not disseminate feudal superstition content, and adheres to the positioning of traditional cultural research and exchange.\n\n7. Intellectual Property\nThe algorithm logic, code implementation, and interface design in this app are protected by intellectual property rights and may not be copied, modified, or used for commercial purposes without authorization.\n\n8. Governing Law and Jurisdiction\nThis disclaimer shall be governed by and construed in accordance with the laws of the People\'s Republic of China. Any disputes arising from the use of this app shall be resolved through amicable negotiation; if negotiation fails, the dispute shall be submitted to the competent people\'s court at the developer\'s location. For overseas users, this disclaimer is additionally protected by the laws of the user\'s jurisdiction.\n\n9. Termination\nIf you do not agree with any of the above terms, please stop using this app immediately and uninstall it. Continued use of this app constitutes acceptance of all terms of this disclaimer and any subsequent updates.</string>
+
+    <!-- Language settings -->
+    <string name="lang_settings">Language</string>
+    <string name="lang_simplified_chinese">Simplified Chinese</string>
+    <string name="lang_traditional_chinese">Traditional Chinese</string>
+    <string name="lang_english">English</string>
+    <string name="lang_restart_hint">The app will restart after changing language</string>
+
+    <!-- Common -->
+    <string name="common_back">Back</string>
+    <string name="common_menu">Menu</string>
+    <string name="common_confirm">Confirm</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_save">Save</string>
+    <string name="common_delete">Delete</string>
+    <string name="common_add">Add</string>
+    <string name="common_ok">OK</string>
+    <string name="common_year">Year</string>
+    <string name="common_month">Month</string>
+    <string name="common_day">Day</string>
+
+    <!-- Weekday names (short) -->
+    <string name="weekday_mon">Mon</string>
+    <string name="weekday_tue">Tue</string>
+    <string name="weekday_wed">Wed</string>
+    <string name="weekday_thu">Thu</string>
+    <string name="weekday_fri">Fri</string>
+    <string name="weekday_sat">Sat</string>
+    <string name="weekday_sun">Sun</string>
+
+    <!-- Weekday names (full) -->
+    <string name="weekday_full_mon">Monday</string>
+    <string name="weekday_full_tue">Tuesday</string>
+    <string name="weekday_full_wed">Wednesday</string>
+    <string name="weekday_full_thu">Thursday</string>
+    <string name="weekday_full_fri">Friday</string>
+    <string name="weekday_full_sat">Saturday</string>
+    <string name="weekday_full_sun">Sunday</string>
+
+    <!-- Lunar month names -->
+    <string name="lunar_month_1">1st Month</string>
+    <string name="lunar_month_2">2nd Month</string>
+    <string name="lunar_month_3">3rd Month</string>
+    <string name="lunar_month_4">4th Month</string>
+    <string name="lunar_month_5">5th Month</string>
+    <string name="lunar_month_6">6th Month</string>
+    <string name="lunar_month_7">7th Month</string>
+    <string name="lunar_month_8">8th Month</string>
+    <string name="lunar_month_9">9th Month</string>
+    <string name="lunar_month_10">10th Month</string>
+    <string name="lunar_month_11">11th Month</string>
+    <string name="lunar_month_12">12th Month</string>
+
+    <!-- Changelog screen -->
+    <string name="changelog_empty">No updates yet</string>
+
+    <!-- Solar Terms (节气) -->
+    <string name="solar_term_0">Start of Spring</string>
+    <string name="solar_term_1">Rain Water</string>
+    <string name="solar_term_2">Awakening of Insects</string>
+    <string name="solar_term_3">Spring Equinox</string>
+    <string name="solar_term_4">Clear and Bright</string>
+    <string name="solar_term_5">Grain Rain</string>
+    <string name="solar_term_6">Start of Summer</string>
+    <string name="solar_term_7">Grain Buds</string>
+    <string name="solar_term_8">Grain in Ear</string>
+    <string name="solar_term_9">Summer Solstice</string>
+    <string name="solar_term_10">Minor Heat</string>
+    <string name="solar_term_11">Major Heat</string>
+    <string name="solar_term_12">Start of Autumn</string>
+    <string name="solar_term_13">End of Heat</string>
+    <string name="solar_term_14">White Dew</string>
+    <string name="solar_term_15">Autumn Equinox</string>
+    <string name="solar_term_16">Cold Dew</string>
+    <string name="solar_term_17">Frost\'s Descent</string>
+    <string name="solar_term_18">Start of Winter</string>
+    <string name="solar_term_19">Minor Snow</string>
+    <string name="solar_term_20">Major Snow</string>
+    <string name="solar_term_21">Winter Solstice</string>
+    <string name="solar_term_22">Minor Cold</string>
+    <string name="solar_term_23">Major Cold</string>
+
+    <!-- Zodiac (生肖) -->
+    <string name="zodiac_0">Rat</string>
+    <string name="zodiac_1">Ox</string>
+    <string name="zodiac_2">Tiger</string>
+    <string name="zodiac_3">Rabbit</string>
+    <string name="zodiac_4">Dragon</string>
+    <string name="zodiac_5">Snake</string>
+    <string name="zodiac_6">Horse</string>
+    <string name="zodiac_7">Goat</string>
+    <string name="zodiac_8">Monkey</string>
+    <string name="zodiac_9">Rooster</string>
+    <string name="zodiac_10">Dog</string>
+    <string name="zodiac_11">Pig</string>
+
+    <!-- Four Symbols (四象) -->
+    <string name="four_symbol_0">Azure Dragon</string>
+    <string name="four_symbol_1">White Tiger</string>
+    <string name="four_symbol_2">Vermilion Bird</string>
+    <string name="four_symbol_3">Black Tortoise</string>
+
+    <!-- Seasons (季节) -->
+    <string name="season_0">Spring</string>
+    <string name="season_1">Summer</string>
+    <string name="season_2">Autumn</string>
+    <string name="season_3">Winter</string>
+
+    <!-- Moon Phase Names (月相) -->
+    <string name="moon_phase_0">New Moon</string>
+    <string name="moon_phase_1">Waxing Crescent</string>
+    <string name="moon_phase_2">First Quarter</string>
+    <string name="moon_phase_3">Waxing Gibbous</string>
+    <string name="moon_phase_4">Full Moon</string>
+    <string name="moon_phase_5">Waning Gibbous</string>
+    <string name="moon_phase_6">Last Quarter</string>
+    <string name="moon_phase_7">Waning Crescent</string>
+
+    <!-- 28 Mansions (星宿) -->
+    <string name="mansion_0">Jiao</string>
+    <string name="mansion_1">Kang</string>
+    <string name="mansion_2">Di</string>
+    <string name="mansion_3">Fang</string>
+    <string name="mansion_4">Xin</string>
+    <string name="mansion_5">Wei</string>
+    <string name="mansion_6">Ji</string>
+    <string name="mansion_7">Dou</string>
+    <string name="mansion_8">Niu</string>
+    <string name="mansion_9">Nü</string>
+    <string name="mansion_10">Xu</string>
+    <string name="mansion_11">Wei2</string>
+    <string name="mansion_12">Shi</string>
+    <string name="mansion_13">Bi</string>
+    <string name="mansion_14">Kui</string>
+    <string name="mansion_15">Lou</string>
+    <string name="mansion_16">Wei3</string>
+    <string name="mansion_17">Mao</string>
+    <string name="mansion_18">Bi2</string>
+    <string name="mansion_19">Zi</string>
+    <string name="mansion_20">Shen</string>
+    <string name="mansion_21">Jing</string>
+    <string name="mansion_22">Gui</string>
+    <string name="mansion_23">Liu</string>
+    <string name="mansion_24">Xing</string>
+    <string name="mansion_25">Zhang</string>
+    <string name="mansion_26">Yi</string>
+    <string name="mansion_27">Zhen</string>
+
+    <!-- Lunar Day Names (农历日名) -->
+    <string name="lunar_day_0">1st</string>
+    <string name="lunar_day_1">2nd</string>
+    <string name="lunar_day_2">3rd</string>
+    <string name="lunar_day_3">4th</string>
+    <string name="lunar_day_4">5th</string>
+    <string name="lunar_day_5">6th</string>
+    <string name="lunar_day_6">7th</string>
+    <string name="lunar_day_7">8th</string>
+    <string name="lunar_day_8">9th</string>
+    <string name="lunar_day_9">10th</string>
+    <string name="lunar_day_10">11th</string>
+    <string name="lunar_day_11">12th</string>
+    <string name="lunar_day_12">13th</string>
+    <string name="lunar_day_13">14th</string>
+    <string name="lunar_day_14">15th</string>
+    <string name="lunar_day_15">16th</string>
+    <string name="lunar_day_16">17th</string>
+    <string name="lunar_day_17">18th</string>
+    <string name="lunar_day_18">19th</string>
+    <string name="lunar_day_19">20th</string>
+    <string name="lunar_day_20">21st</string>
+    <string name="lunar_day_21">22nd</string>
+    <string name="lunar_day_22">23rd</string>
+    <string name="lunar_day_23">24th</string>
+    <string name="lunar_day_24">25th</string>
+    <string name="lunar_day_25">26th</string>
+    <string name="lunar_day_26">27th</string>
+    <string name="lunar_day_27">28th</string>
+    <string name="lunar_day_28">29th</string>
+    <string name="lunar_day_29">30th</string>
+
+    <!-- Five Elements (五行) -->
+    <string name="wuxing_0">Wood</string>
+    <string name="wuxing_1">Fire</string>
+    <string name="wuxing_2">Earth</string>
+    <string name="wuxing_3">Metal</string>
+    <string name="wuxing_4">Water</string>
+
+    <!-- Heavenly Stems (天干) -->
+    <string name="tian_gan_0">甲</string>
+    <string name="tian_gan_1">乙</string>
+    <string name="tian_gan_2">丙</string>
+    <string name="tian_gan_3">丁</string>
+    <string name="tian_gan_4">戊</string>
+    <string name="tian_gan_5">己</string>
+    <string name="tian_gan_6">庚</string>
+    <string name="tian_gan_7">辛</string>
+    <string name="tian_gan_8">壬</string>
+    <string name="tian_gan_9">癸</string>
+
+    <!-- Earthly Branches (地支) -->
+    <string name="di_zhi_0">子</string>
+    <string name="di_zhi_1">丑</string>
+    <string name="di_zhi_2">寅</string>
+    <string name="di_zhi_3">卯</string>
+    <string name="di_zhi_4">辰</string>
+    <string name="di_zhi_5">巳</string>
+    <string name="di_zhi_6">午</string>
+    <string name="di_zhi_7">未</string>
+    <string name="di_zhi_8">申</string>
+    <string name="di_zhi_9">酉</string>
+    <string name="di_zhi_10">戌</string>
+    <string name="di_zhi_11">亥</string>
+
+    <!-- Northern Lunar Month Names (北农历月名) -->
+    <string name="north_lunar_month_0">N. 1st Month</string>
+    <string name="north_lunar_month_1">N. 2nd Month</string>
+    <string name="north_lunar_month_2">N. 3rd Month</string>
+    <string name="north_lunar_month_3">N. 4th Month</string>
+    <string name="north_lunar_month_4">N. 5th Month</string>
+    <string name="north_lunar_month_5">N. 6th Month</string>
+    <string name="north_lunar_month_6">N. 7th Month</string>
+    <string name="north_lunar_month_7">N. 8th Month</string>
+    <string name="north_lunar_month_8">N. 9th Month</string>
+    <string name="north_lunar_month_9">N. 10th Month</string>
+    <string name="north_lunar_month_10">N. 11th Month</string>
+    <string name="north_lunar_month_11">N. 12th Month</string>
+
+    <!-- Southern Lunar Month Names (南农历月名) -->
+    <string name="south_lunar_month_0">S. 1st Month</string>
+    <string name="south_lunar_month_1">S. 2nd Month</string>
+    <string name="south_lunar_month_2">S. 3rd Month</string>
+    <string name="south_lunar_month_3">S. 4th Month</string>
+    <string name="south_lunar_month_4">S. 5th Month</string>
+    <string name="south_lunar_month_5">S. 6th Month</string>
+    <string name="south_lunar_month_6">S. 7th Month</string>
+    <string name="south_lunar_month_7">S. 8th Month</string>
+    <string name="south_lunar_month_8">S. 9th Month</string>
+    <string name="south_lunar_month_9">S. 10th Month</string>
+    <string name="south_lunar_month_10">S. 11th Month</string>
+    <string name="south_lunar_month_11">S. 12th Month</string>
+
+    <!-- Additional common strings -->
+    <string name="leap_month_prefix">Leap</string>
+    <string name="gregorian_year"></string>
+    <string name="gregorian_month"></string>
+    <string name="gregorian_day"></string>
+    <string name="gregorian_label">Gregorian</string>
+    <string name="solar_term_label">Solar Term</string>
+
+    <!-- Gregorian month names (for date formatting) -->
+    <string name="month_name_1">January</string>
+    <string name="month_name_2">February</string>
+    <string name="month_name_3">March</string>
+    <string name="month_name_4">April</string>
+    <string name="month_name_5">May</string>
+    <string name="month_name_6">June</string>
+    <string name="month_name_7">July</string>
+    <string name="month_name_8">August</string>
+    <string name="month_name_9">September</string>
+    <string name="month_name_10">October</string>
+    <string name="month_name_11">November</string>
+    <string name="month_name_12">December</string>
+
+    <!-- Date format strings -->
+    <string name="format_solar_term_datetime">%2$s %3$d, %1$s %4$02d:%5$02d</string>
+    <string name="format_solar_term_local_datetime">%2$s %3$d, %1$s %4$02d:%5$02d</string>
+    <string name="format_year_month">%2$s %1$s</string>
+    <string name="format_year">%s</string>
+    <string name="format_month">%s</string>
+    <string name="home_north_solar_date">%1$s, %2$s</string>
+
+    <!-- Privacy Policy screen -->
+    <string name="title_privacy_policy">Privacy Policy</string>
+    <string name="privacy_policy_text">[Southern Hemisphere Calendar Privacy Policy]\n\nEffective Date: June 6, 2026\n\nSouthern Hemisphere Calendar (hereinafter referred to as \"this App\") understands the importance of your personal information. We will protect your personal information and privacy in accordance with applicable laws and regulations. This App is a purely locally-operated calendar tool that does not involve any network data transmission. Our privacy policy is as follows:\n\n1. Information Collection\nThis App does not collect, obtain, store, or transmit any personal information of users, including but not limited to names, phone numbers, email addresses, device identifiers, geographic locations, contacts, photos, etc. All calendar calculations, star lodge deductions, solar term conversions, and other functions are performed locally on your device without involving any remote servers or cloud services.\n\n2. Information Storage\nAll data of this App is stored locally on your device, including but not limited to schedule records, city selection preferences, language settings, etc. This App does not upload any data to servers. When you uninstall this App, all local data will be deleted along with it.\n\n3. Third-Party Services\nThis App does not integrate any third-party analytics tools, advertising SDKs, push notification services, or social login features. This App does not share any user data with third parties because this App itself does not collect any data.\n\n4. Cookies and Tracking\nThis App does not use cookies, web beacons, pixel tags, or any other tracking technologies. This App does not track your behavior or activities during use.\n\n5. Children\'s Privacy\nThis App does not provide dedicated services for minors, nor does it collect personal information of users of any age. If you are the guardian of a minor, you can safely allow minors to use this App, as it does not collect any personal information.\n\n6. Data Security\nAlthough this App does not collect any data, we still take reasonable technical measures to protect the security of your local data on your device. We recommend that you keep your device safe and set a device lock screen password to prevent unauthorized access to your device.\n\n7. Changes to Privacy Policy\nThis App may update this privacy policy from time to time. Any changes will be notified to you by updating the privacy policy page within this App. Continued use of this App constitutes your agreement to the revised privacy policy.\n\n8. Contact Us\nIf you have any questions, opinions, or suggestions about this privacy policy, please contact us through the feedback function within this App. We will respond within a reasonable time.</string>
+
+</resources>
