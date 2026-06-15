@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>南半球历法 | Southern Hemisphere Calendar</title>
+<script src="https://cdn.jsdelivr.net/npm/lunar-javascript@1.6.12/lunar.min.js"></script>
+<style>
+:root {
+  --sky-blue: #1565C0;
+  --sky-light: #E3F2FD;
+  --navy: #0D47A1;
+  --gold: #F9A825;
+  --card-bg: #FFFFFF;
+  --text-dark: #212121;
+  --text-mid: #424242;
+  --text-light: #757575;
+  --north-bg: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+  --south-bg: linear-gradient(135deg, #FCE4EC 0%, #F8BBD0 100%);
+  --radius: 16px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, 'Noto Sans SC', 'Noto Sans TC', 'Segoe UI', sans-serif;
+  background: #F5F5F5;
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--sky-blue) 0%, var(--navy) 100%);
+  color: white;
+  padding: 20px 16px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '☯';
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  font-size: 120px;
+  opacity: 0.08;
+}
+.header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+.header .subtitle {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* Language Switcher */
+.lang-bar {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: white;
+  border-bottom: 1px solid #E0E0E0;
+}
+.lang-btn {
+  padding: 6px 14px;
+  border: 1.5px solid var(--sky-blue);
+  border-radius: 20px;
+  background: white;
+  color: var(--sky-blue);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lang-btn.active {
+  background: var(--sky-blue);
+  color: white;
+}
+.lang-btn:hover { opacity: 0.85; }
+
+/* Date Picker */
+.date-picker-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: white;
+}
+.date-picker-bar input[type="date"] {
+  padding: 8px 14px;
+  border: 1.5px solid #BBDEFB;
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--sky-blue);
+  outline: none;
+}
+.date-picker-bar input[type="date"]:focus {
+  border-color: var(--sky-blue);
+  box-shadow: 0 0 0 3px rgba(21,101,192,0.1);
+}
+.today-btn {
+  padding: 8px 16px;
+  background: var(--sky-blue);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.today-btn:hover { background: var(--navy); }
+
+/* Tai Chi Divider */
+.taichi-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0 8px;
+  gap: 12px;
+}
+.taichi-divider .line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sky-blue), transparent);
+}
+.taichi-symbol {
+  font-size: 28px;
+  animation: spin 20s linear infinite;
+}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* Dual Cards Container */
+.dual-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 12px 12px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .dual-cards { grid-template-columns: 1fr; }
+}
+
+/* Card Base */
+.card {
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.card-north {
+  background: var(--north-bg);
+  color: var(--text-dark);
+}
+.card-south {
+  background: var(--south-bg);
+  color: #4E342E;
+}
+.card-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.card-north .card-label { color: var(--sky-blue); }
+.card-south .card-label { color: #C2185B; }
+.card-label .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.card-north .dot { background: var(--sky-blue); }
+.card-south .dot { background: #C2185B; }
+
+/* Solar Date */
+.solar-date {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.card-south .solar-date { color: #5D4037; }
+
+/* Lunar Date */
+.lunar-date {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  display: inline-block;
+}
+.card-north .lunar-date { background: rgba(21,101,192,0.1); color: var(--sky-blue); }
+.card-south .lunar-date { background: rgba(194,24,91,0.1); color: #C2185B; }
+
+/* Info Rows */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 14px;
+}
+.card-south .info-row { border-bottom-color: rgba(194,24,91,0.12); }
+.info-row:last-child { border-bottom: none; }
+.info-label { opacity: 0.7; font-size: 13px; }
+.info-value { font-weight: 600; }
+.card-south .info-value { color: #C2185B; }
+
+/* Moon Phase */
+.moon-phase {
+  text-align: center;
+  padding: 12px 0 4px;
+}
+
+/* Four Pillars Vertical */
+.pillars-section {
+  padding: 0 12px 12px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.pillars-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+.pillars-card h3 {
+  font-size: 14px;
+  color: var(--text-mid);
+  margin-bottom: 10px;
+  text-align: center;
+}
+.pillars-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #F5F5F5;
+}
+.pillars-row:last-child { border-bottom: none; }
+.pillars-row-label {
+  width: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-light);
+  text-align: center;
+  flex-shrink: 0;
+}
+.pillars-row-north {
+  flex: 1;
+  text-align: center;
+  font-family: 'Noto Serif SC', 'SimSun', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sky-blue);
+  background: var(--sky-light);
+  border-radius: 8px;
+  padding: 6px 0;
+  margin: 0 4px;
+}
+.pillars-row-south {
+  flex: 1;
+  text-align: center;
+  font-family: 'Noto Serif SC', 'SimSun', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #C2185B;
+  background: #FCE4EC;
+  border-radius: 8px;
+  padding: 6px 0;
+  margin: 0 4px;
+}
+
+/* Unified Comparison Table */
+.compare-section {
+  grid-column: 1 / -1;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+.compare-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.compare-header {
+  display: flex;
+  background: #FAFAFA;
+  border-bottom: 1px solid #E0E0E0;
+}
+.compare-header-label {
+  width: 60px;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-light);
+  flex-shrink: 0;
+}
+.compare-header-north {
+  flex: 1;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sky-blue);
+  background: var(--sky-light);
+}
+.compare-header-south {
+  flex: 1;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #C2185B;
+  background: #FCE4EC;
+}
+.compare-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #F5F5F5;
+}
+.compare-row:last-child { border-bottom: none; }
+.compare-row-label {
+  width: 60px;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+  flex-shrink: 0;
+}
+.compare-row-north {
+  flex: 1;
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sky-blue);
+  background: rgba(227,242,253,0.3);
+  margin: 2px 2px;
+  border-radius: 6px;
+}
+.compare-row-south {
+  flex: 1;
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #C2185B;
+  background: rgba(252,228,236,0.3);
+  margin: 2px 2px;
+  border-radius: 6px;
+}
+.compare-row-north.ganzhi {
+  font-family: 'Noto Serif SC', 'SimSun', serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+.compare-row-south.ganzhi {
+  font-family: 'Noto Serif SC', 'SimSun', serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+.moon-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.moon-inline .moon-emoji-sm { font-size: 22px; }
+.moon-inline .moon-name-sm { font-size: 13px; }
+.moon-emoji {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 4px;
+}
+.moon-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Solar Term Card */
+.solar-term-section {
+  padding: 0 12px 12px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.solar-term-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  box-shadow: var(--shadow);
+}
+.solar-term-card h3 {
+  font-size: 15px;
+  color: var(--sky-blue);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.solar-term-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.st-item {
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+.st-north {
+  background: var(--sky-light);
+  border-left: 3px solid var(--sky-blue);
+}
+.st-south {
+  background: #E8EAF6;
+  border-left: 3px solid var(--navy);
+}
+.st-item .st-name { font-weight: 600; }
+.st-item .st-date { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+.st-south .st-name { color: var(--navy); }
+.st-north .st-name { color: var(--sky-blue); }
+
+
+/* Knowledge Cards (Collapsible) */
+.knowledge-section {
+  padding: 0 12px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.knowledge-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sky-blue);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.k-card {
+  background: #E3F2FD;
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+.k-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+.k-card-header:hover {
+  background: rgba(21,101,192,0.08);
+}
+.k-card-header h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--sky-blue);
+  margin: 0;
+}
+.k-card-arrow {
+  font-size: 14px;
+  color: var(--sky-blue);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.k-card.open .k-card-arrow {
+  transform: rotate(90deg);
+}
+.k-card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.k-card.open .k-card-body {
+  max-height: 2000px;
+}
+.k-card-content {
+  padding: 0 16px 16px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-mid);
+  white-space: pre-line;
+}
+
+/* Lite Notice */
+.lite-notice-section {
+  padding: 0 12px 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.lite-notice-card {
+  background: linear-gradient(135deg, #E8EAF6 0%, #C5CAE9 100%);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  border: 1px solid #9FA8DA;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.lite-notice-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.lite-notice-card p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #283593;
+  margin: 0;
+}
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px 16px 30px;
+  color: var(--text-light);
+  font-size: 12px;
+}
+.footer a {
+  color: var(--sky-blue);
+  text-decoration: none;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-light);
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1 id="headerTitle">南半球历法</h1>
+  <div class="subtitle" id="headerSubtitle">太极生两仪 · 南北半球历法对照</div>
+</div>
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('zh')">简体中文</button>
+  <button class="lang-btn" onclick="setLang('tw')">繁體中文</button>
+  <button class="lang-btn" onclick="setLang('en')">English</button>
+  <button class="lang-btn" onclick="setLang('es')">Español</button>
+</div>
+
+<div class="date-picker-bar">
+  <input type="date" id="dateInput" />
+  <button class="today-btn" id="todayBtn" onclick="goToday()">今天</button>
+</div>
+
+<div class="taichi-divider">
+  <div class="line"></div>
+  <div class="taichi-symbol">☯</div>
+  <div class="line"></div>
+</div>
+
+<div class="dual-cards" id="dualCards">
+  <div class="loading" id="loadingMsg">加载中...</div>
+</div>
+
+<div class="solar-term-section" id="solarTermSection"></div>
+
+<div class="knowledge-section" id="knowledgeSection">
+  <div class="knowledge-section-title" id="knowledgeSectionTitle">📚 历法知识</div>
+  <div class="k-card" id="kCard1">
+    <div class="k-card-header" onclick="toggleKCard('kCard1')">
+      <h4 id="k1Title"></h4>
+      <span class="k-card-arrow">▶</span>
+    </div>
+    <div class="k-card-body"><div class="k-card-content" id="k1Content"></div></div>
+  </div>
+  <div class="k-card" id="kCard2">
+    <div class="k-card-header" onclick="toggleKCard('kCard2')">
+      <h4 id="k2Title"></h4>
+      <span class="k-card-arrow">▶</span>
+    </div>
+    <div class="k-card-body"><div class="k-card-content" id="k2Content"></div></div>
+  </div>
+  <div class="k-card" id="kCard3">
+    <div class="k-card-header" onclick="toggleKCard('kCard3')">
+      <h4 id="k3Title"></h4>
+      <span class="k-card-arrow">▶</span>
+    </div>
+    <div class="k-card-body"><div class="k-card-content" id="k3Content"></div></div>
+  </div>
+  <div class="k-card" id="kCard4">
+    <div class="k-card-header" onclick="toggleKCard('kCard4')">
+      <h4 id="k4Title"></h4>
+      <span class="k-card-arrow">▶</span>
+    </div>
+    <div class="k-card-body"><div class="k-card-content" id="k4Content"></div></div>
+  </div>
+  <div class="k-card" id="kCard5">
+    <div class="k-card-header" onclick="toggleKCard('kCard5')">
+      <h4 id="k5Title"></h4>
+      <span class="k-card-arrow">▶</span>
+    </div>
+    <div class="k-card-body"><div class="k-card-content" id="k5Content"></div></div>
+  </div>
+</div>
+
+<div class="lite-notice-section">
+  <div class="lite-notice-card">
+    <span class="lite-notice-icon">📱</span>
+    <p id="liteNoticeText"></p>
+  </div>
+</div>
+
+<div class="footer">
+  <p id="footerText">南半球历法 · 太极对称历法体系</p>
+  <p style="margin-top:6px"><a href="https://github.com" id="footerLink">GitHub</a> · <a href="https://gitee.com" id="footerLink2">Gitee</a></p>
+</div>
+
+<script>
+// ==================== I18N ====================
+const I18N = {
+  zh: {
+    headerTitle: '南半球历法',
+    headerSubtitle: '太极生两仪 · 南北半球历法对照',
+    today: '今天',
+    northHemisphere: '北半球',
+    southHemisphere: '南半球',
+    solarDate: '公历',
+    lunarDate: '农历',
+    solarTerm: '节气',
+    moonPhase: '月相',
+    zodiac: '生肖',
+    fourPillars: '四柱八字',
+    yearPillar: '年柱',
+    monthPillar: '月柱',
+    dayPillar: '日柱',
+    northCity: '中国·上海 北纬31.2° 东经121.5° UTC+8',
+    southCity: '阿根廷·布宜诺斯艾利斯 南纬31.2° 西经58.5° UTC-4',
+    year: '年',
+    month: '月',
+    day: '日',
+    nextTerm: '下一节气',
+    prevTerm: '上一节气',
+    liteNotice: '此为极简体验版，仅展示核心对照功能。下载安装「南半球万年历」App 获取完整功能：日程管理、值日星宿、月躔星宿、历法知识、多城市时区等。',
+    k1Title: '一、南北半球历法换算原理',
+    k1Content: '北半球与南半球的季节完全相反，当北半球是夏季时，南半球是冬季。\n\n【阳历换算】南半球月份 = 北半球月份 + 6（超过12则减12），年份根据是否跨年调整。\n例：北半球2026年1月 → 南半球2025年7月；北半球2026年7月 → 南半球2026年1月。\n\n【农历换算】南半球农历月份 = 北半球农历月份 + 6（超过12则减12），闰月同步偏移。\n\n【太极对立日】南半球农历日 = 北半球农历日 + 15（超过当月天数则减当月天数，月份进位）。\n例：北半球农历四月十八 → 南半球农历十月初三。\n\n太极对立日的本质：农历日+15意味着在朔望月圆上相隔180°，月相形态恰好翻转。',
+    k2Title: '二、月相翻转 · 太极验证',
+    k2Content: '月相是连接南北半球历法的天然验证工具。\n月相由月球绕地球公转产生，全球同一时刻月相相同，但南北半球看到的亮面朝向呈镜像对称。\n\n【月相对照】\n北半球：新月 → D形蛾眉月 → 上弦月（右半亮）→ 盈凸月 → 满月\n南半球：新月 → 反D形蛾眉月 → 上弦月（左半亮）→ 盈凸月 → 满月\n\n满月在全球各地一样圆，但渐圆的方向相反：中国的月亮D形渐圆，阿根廷的反D形渐圆，殊途同归，一样圆。\n\n【统一与对立】\n· 统一：月相日数全球一致，满月全球同圆\n· 对立：亮面朝向镜像对称，渐圆方向相反\n· 太极：朔望圆上相隔180°，正是太极双鱼图的旋转对称',
+    k3Title: '三、南半球节气对应关系',
+    k3Content: '节气本质反映太阳黄经位置，南北半球同一时刻看到的太阳位置对称相反。\n\n【对应关系】\n北半球立春 ↔ 南半球立秋\n北半球雨水 ↔ 南半球处暑\n北半球惊蛰 ↔ 南半球白露\n北半球春分 ↔ 南半球秋分\n北半球清明 ↔ 南半球寒露\n北半球谷雨 ↔ 南半球霜降\n北半球立夏 ↔ 南半球立冬\n北半球小满 ↔ 南半球小雪\n北半球芒种 ↔ 南半球大雪\n北半球夏至 ↔ 南半球冬至\n\n规律：北半球第N个节气 ↔ 南半球第(N+12)个节气（超过24则减24）',
+    k4Title: '四、科里奥利力与旋转方向',
+    k4Content: '科里奥利力是地球自转产生的惯性力，影响大尺度运动系统的旋转方向。\n\n【南北半球旋转对比】\n台风/飓风/气旋：北半球逆时针 ↺ / 南半球顺时针 ↻\n反气旋（高压）：北半球顺时针 ↻ / 南半球逆时针 ↺\n大洋环流（副热带）：北半球顺时针 ↻ / 南半球逆时针 ↺\n地球自转方向：北半球逆时针 / 南半球顺时针\n\n数学本质：F = -2m(ω × v)\n在北半球，科里奥利力使运动物体向右偏转；在南半球向左偏转。\n只有几百公里以上的大尺度系统才受显著影响，小尺度不受影响。',
+    k5Title: '五、南半球历法的意义',
+    k5Content: '传统中国历法基于北半球天文观测制定，直接应用于南半球存在季节错位。\n\n南半球历法通过太极对称原理，将北半球历法系统转换为南半球对应体系，使南半球的华人社区也能使用符合当地季节的农历系统。\n\n【太极对称的哲学基础】\n太极双鱼图揭示：对立统一是宇宙的基本法则。\n北半球与南半球的历法关系，正是太极双鱼图的现实映射：\n· 阳历月份+6，如双鱼旋转180°\n· 农历日+15，如朔望圆上对径点\n· 节气对称，如阴阳消长互根\n· 月相镜像，如双鱼眼的对望',
+    footer: '南半球历法 · 太极对称历法体系',
+    loading: '加载中...',
+    northPrefix: '北',
+    southPrefix: '南',
+    leapPrefix: '闰',
+    lunarMonths: ['正月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+    lunarDays: ['初一','初二','初三','初四','初五','初六','初七','初八','初九','初十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十','廿一','廿二','廿三','廿四','廿五','廿六','廿七','廿八','廿九','三十'],
+    solarTerms: ['立春','雨水','惊蛰','春分','清明','谷雨','立夏','小满','芒种','夏至','小暑','大暑','立秋','处暑','白露','秋分','寒露','霜降','立冬','小雪','大雪','冬至','小寒','大寒'],
+    moonPhases: ['新月','蛾眉月','上弦月','盈凸月','满月','亏凸月','下弦月','残月'],
+    southMoonPhases: ['新月','残月','下弦月','亏凸月','满月','盈凸月','上弦月','蛾眉月'],
+    zodiacs: ['鼠','牛','虎','兔','龙','蛇','马','羊','猴','鸡','狗','猪'],
+    gregorianMonths: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+  },
+  tw: {
+    headerTitle: '南半球曆法',
+    headerSubtitle: '太極生兩儀 · 南北半球曆法對照',
+    today: '今天',
+    northHemisphere: '北半球',
+    southHemisphere: '南半球',
+    solarDate: '公曆',
+    lunarDate: '農曆',
+    solarTerm: '節氣',
+    moonPhase: '月相',
+    zodiac: '生肖',
+    fourPillars: '四柱八字',
+    yearPillar: '年柱',
+    monthPillar: '月柱',
+    dayPillar: '日柱',
+    northCity: '中國·上海 北緯31.2° 東經121.5° UTC+8',
+    southCity: '阿根廷·布宜諾斯艾利斯 南緯31.2° 西經58.5° UTC-4',
+    year: '年',
+    month: '月',
+    day: '日',
+    nextTerm: '下一節氣',
+    prevTerm: '上一節氣',
+    liteNotice: '此為極簡體驗版，僅展示核心對照功能。下載安裝「南半球萬年曆」App 獲取完整功能：日程管理、值日星宿、月躔星宿、曆法知識、多城市時區等。',
+    k1Title: '一、南北半球曆法換算原理',
+    k1Content: '北半球與南半球的季節完全相反，當北半球是夏季時，南半球是冬季。\n\n【陽曆換算】南半球月份 = 北半球月份 + 6（超過12則減12），年份根據是否跨年調整。\n例：北半球2026年1月 → 南半球2025年7月；北半球2026年7月 → 南半球2026年1月。\n\n【農曆換算】南半球農曆月份 = 北半球農曆月份 + 6（超過12則減12），閏月同步偏移。\n\n【太極對立日】南半球農曆日 = 北半球農曆日 + 15（超過當月天數則減當月天數，月份進位）。\n例：北半球農曆四月十八 → 南半球農曆十月初三。\n\n太極對立日的本質：農曆日+15意味著在朔望月圓上相隔180°，月相形態恰好翻轉。',
+    k2Title: '二、月相翻轉 · 太極驗證',
+    k2Content: '月相是連接南北半球曆法的天然驗證工具。\n月相由月球繞地球公轉產生，全球同一時刻月相相同，但南北半球看到的亮面朝向呈鏡像對稱。\n\n【月相對照】\n北半球：新月 → D形蛾眉月 → 上弦月（右半亮）→ 盈凸月 → 滿月\n南半球：新月 → 反D形蛾眉月 → 上弦月（左半亮）→ 盈凸月 → 滿月\n\n滿月在全球各地一樣圓，但漸圓的方向相反：中國的月亮D形漸圓，阿根廷的反D形漸圓，殊途同歸，一樣圓。\n\n【統一與對立】\n· 統一：月相日數全球一致，滿月全球同圓\n· 對立：亮面朝向鏡像對稱，漸圓方向相反\n· 太極：朔望圓上相隔180°，正是太極雙魚圖的旋轉對稱',
+    k3Title: '三、南半球節氣對應關係',
+    k3Content: '節氣本質反映太陽黃經位置，南北半球同一時刻看到的太陽位置對稱相反。\n\n【對應關係】\n北半球立春 ↔ 南半球立秋\n北半球雨水 ↔ 南半球處暑\n北半球驚蟄 ↔ 南半球白露\n北半球春分 ↔ 南半球秋分\n北半球清明 ↔ 南半球寒露\n北半球穀雨 ↔ 南半球霜降\n北半球立夏 ↔ 南半球立冬\n北半球小滿 ↔ 南半球小雪\n北半球芒種 ↔ 南半球大雪\n北半球夏至 ↔ 南半球冬至\n\n規律：北半球第N個節氣 ↔ 南半球第(N+12)個節氣（超過24則減24）',
+    k4Title: '四、科里奧利力與旋轉方向',
+    k4Content: '科里奧利力是地球自轉產生的慣性力，影響大尺度運動系統的旋轉方向。\n\n【南北半球旋轉對比】\n颱風/颶風/氣旋：北半球逆時針 ↺ / 南半球順時針 ↻\n反氣旋（高壓）：北半球順時針 ↻ / 南半球逆時針 ↺\n大洋環流（副熱帶）：北半球順時針 ↻ / 南半球逆時針 ↺\n地球自轉方向：北半球逆時針 / 南半球順時針\n\n數學本質：F = -2m(ω × v)\n在北半球，科里奧利力使運動物體向右偏轉；在南半球向左偏轉。\n只有幾百公里以上的大尺度系統才受顯著影響，小尺度不受影響。',
+    k5Title: '五、南半球曆法的意義',
+    k5Content: '傳統中國曆法基於北半球天文觀測制定，直接應用於南半球存在季節錯位。\n\n南半球曆法通過太極對稱原理，將北半球曆法系統轉換為南半球對應體系，使南半球的華人社區也能使用符合當地季節的農曆系統。\n\n【太極對稱的哲學基礎】\n太極雙魚圖揭示：對立統一是宇宙的基本法則。\n北半球與南半球的曆法關係，正是太極雙魚圖的現實映射：\n· 陽曆月份+6，如雙魚旋轉180°\n· 農曆日+15，如朔望圓上對徑點\n· 節氣對稱，如陰陽消長互根\n· 月相鏡像，如雙魚眼的對望',
+    footer: '南半球曆法 · 太極對稱曆法體系',
+    loading: '載入中...',
+    northPrefix: '北',
+    southPrefix: '南',
+    leapPrefix: '閏',
+    lunarMonths: ['正月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+    lunarDays: ['初一','初二','初三','初四','初五','初六','初七','初八','初九','初十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十','廿一','廿二','廿三','廿四','廿五','廿六','廿七','廿八','廿九','三十'],
+    solarTerms: ['立春','雨水','驚蟄','春分','清明','穀雨','立夏','小滿','芒種','夏至','小暑','大暑','立秋','處暑','白露','秋分','寒露','霜降','立冬','小雪','大雪','冬至','小寒','大寒'],
+    moonPhases: ['新月','蛾眉月','上弦月','盈凸月','滿月','虧凸月','下弦月','殘月'],
+    southMoonPhases: ['新月','殘月','下弦月','虧凸月','滿月','盈凸月','上弦月','蛾眉月'],
+    zodiacs: ['鼠','牛','虎','兔','龍','蛇','馬','羊','猴','雞','狗','豬'],
+    gregorianMonths: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+  },
+  en: {
+    headerTitle: 'Southern Hemisphere Calendar',
+    headerSubtitle: 'Tai Chi Duality · North & South Hemisphere Calendar',
+    today: 'Today',
+    northHemisphere: 'Northern Hemisphere',
+    southHemisphere: 'Southern Hemisphere',
+    solarDate: 'Gregorian',
+    lunarDate: 'Lunar',
+    solarTerm: 'Solar Term',
+    moonPhase: 'Moon Phase',
+    zodiac: 'Zodiac',
+    fourPillars: 'Four Pillars',
+    yearPillar: 'Year',
+    monthPillar: 'Month',
+    dayPillar: 'Day',
+    northCity: 'Shanghai, China 31.2°N 121.5°E UTC+8',
+    southCity: 'Buenos Aires, Argentina 31.2°S 58.5°W UTC-4',
+    year: 'Year',
+    month: 'Month',
+    day: 'Day',
+    nextTerm: 'Next Term',
+    prevTerm: 'Prev Term',
+    liteNotice: 'This is a lite demo showing only core comparison features. Download the "Nanbanqiu Wannianli" App for full features: schedule management, daily lunar mansion, moon mansion, calendar knowledge, multi-city time zones, and more.',
+    k1Title: '1. Calendar Conversion Principles',
+    k1Content: 'The seasons of the Northern and Southern Hemispheres are completely opposite — when it is summer in the North, it is winter in the South.\n\n【Gregorian Conversion】Southern month = Northern month + 6 (subtract 12 if over 12), year adjusted accordingly.\nExample: North Jan 2026 → South Jul 2025; North Jul 2026 → South Jan 2026.\n\n【Lunar Conversion】Southern lunar month = Northern lunar month + 6 (subtract 12 if over 12), leap months shifted accordingly.\n\n【Tai Chi Opposing Day】Southern lunar day = Northern lunar day + 15 (subtract month length if exceeded, carry to next month).\nExample: North 18th of 4th lunar month → South 3rd of 10th lunar month.\n\nEssence: Lunar day +15 means 180° apart on the synodic cycle, so the moon phase is exactly inverted.',
+    k2Title: '2. Moon Phase Mirroring · Tai Chi Verification',
+    k2Content: 'Moon phases are a natural verification tool connecting both hemispheres.\nPhases are produced by the Moon orbiting Earth — globally identical at the same moment, but the illuminated side appears mirror-symmetric between hemispheres.\n\n【Phase Comparison】\nNorthern: New Moon → D-shaped Waxing Crescent → First Quarter (right half lit) → Waxing Gibbous → Full Moon\nSouthern: New Moon → Reverse-D Waxing Crescent → First Quarter (left half lit) → Waxing Gibbous → Full Moon\n\nFull Moon looks the same everywhere, but the waxing direction is opposite: China sees a D-shape waxing, Argentina sees a reverse-D waxing — different paths, same full circle.\n\n【Unity & Opposition】\n· Unity: Phase day count is globally identical; Full Moon is universally round\n· Opposition: Illuminated side is mirror-symmetric; waxing direction is reversed\n· Tai Chi: 180° apart on the synodic cycle — the rotational symmetry of the Tai Chi dual fish',
+    k3Title: '3. Southern Hemisphere Solar Term Correspondence',
+    k3Content: 'Solar terms reflect the Sun\'s ecliptic longitude. Both hemispheres see symmetrically opposite solar positions at the same moment.\n\n【Correspondence】\nNorth Start of Spring ↔ South Start of Autumn\nNorth Rain Water ↔ South End of Heat\nNorth Awakening ↔ South White Dew\nNorth Vernal Equinox ↔ South Autumnal Equinox\nNorth Clear & Bright ↔ South Cold Dew\nNorth Grain Rain ↔ South Frost\nNorth Start of Summer ↔ South Start of Winter\nNorth Grain Buds ↔ South Minor Snow\nNorth Grain in Ear ↔ South Major Snow\nNorth Summer Solstice ↔ South Winter Solstice\n\nRule: Northern term N ↔ Southern term (N+12) mod 24',
+    k4Title: '4. Coriolis Force & Rotation Direction',
+    k4Content: 'The Coriolis force is an inertial force from Earth\'s rotation, affecting the rotation direction of large-scale motion systems.\n\n【North-South Rotation Comparison】\nTyphoons/Hurricanes/Cyclones: North counterclockwise ↺ / South clockwise ↻\nAnticyclones (high pressure): North clockwise ↻ / South counterclockwise ↺\nOcean gyres (subtropical): North clockwise ↻ / South counterclockwise ↺\nEarth rotation: North counterclockwise / South clockwise\n\nMathematical essence: F = -2m(ω × v)\nIn the Northern Hemisphere, the Coriolis force deflects moving objects to the right; in the Southern Hemisphere, to the left.\nOnly large-scale systems (hundreds of km+) are significantly affected; small-scale systems are not.',
+    k5Title: '5. Significance of the Southern Hemisphere Calendar',
+    k5Content: 'Traditional Chinese calendars are based on Northern Hemisphere astronomical observations. Applying them directly to the Southern Hemisphere creates seasonal misalignment.\n\nThe Southern Hemisphere Calendar uses Tai Chi symmetry to convert the Northern system into its Southern counterpart, enabling Chinese communities in the Southern Hemisphere to use a lunar calendar that matches their local seasons.\n\n【Philosophical Foundation of Tai Chi Symmetry】\nThe Tai Chi dual-fish diagram reveals: unity of opposites is the fundamental law of the universe.\nThe calendar relationship between hemispheres is a real-world mapping of the Tai Chi diagram:\n· Gregorian month +6, like dual fish rotating 180°\n· Lunar day +15, like antipodal points on the synodic circle\n· Solar term symmetry, like Yin-Yang mutual rooting\n· Moon phase mirroring, like the gaze between the two fish eyes',
+    footer: 'Southern Hemisphere Calendar · Tai Chi Symmetrical Calendar System',
+    loading: 'Loading...',
+    northPrefix: 'N.',
+    southPrefix: 'S.',
+    leapPrefix: 'Leap ',
+    lunarMonths: ['1st Month','2nd Month','3rd Month','4th Month','5th Month','6th Month','7th Month','8th Month','9th Month','10th Month','11th Month','12th Month'],
+    lunarDays: ['1st','2nd','3rd','4th','5th','6th','7th','8th','9th','10th','11th','12th','13th','14th','15th','16th','17th','18th','19th','20th','21st','22nd','23rd','24th','25th','26th','27th','28th','29th','30th'],
+    solarTerms: ['Start of Spring','Rain Water','Awakening','Vernal Equinox','Clear & Bright','Grain Rain','Start of Summer','Grain Buds','Grain in Ear','Summer Solstice','Minor Heat','Major Heat','Start of Autumn','End of Heat','White Dew','Autumnal Equinox','Cold Dew','Frost','Start of Winter','Minor Snow','Major Snow','Winter Solstice','Minor Cold','Major Cold'],
+    moonPhases: ['New Moon','Waxing Crescent','First Quarter','Waxing Gibbous','Full Moon','Waning Gibbous','Last Quarter','Waning Crescent'],
+    southMoonPhases: ['New Moon','Waning Crescent','Last Quarter','Waning Gibbous','Full Moon','Waxing Gibbous','First Quarter','Waxing Crescent'],
+    zodiacs: ['Rat','Ox','Tiger','Rabbit','Dragon','Snake','Horse','Goat','Monkey','Rooster','Dog','Pig'],
+    gregorianMonths: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+  },
+  es: {
+    headerTitle: 'Calendario del Hemisferio Sur',
+    headerSubtitle: 'Dualidad Tai Chi · Calendario Hemisferios Norte y Sur',
+    today: 'Hoy',
+    northHemisphere: 'Hemisferio Norte',
+    southHemisphere: 'Hemisferio Sur',
+    solarDate: 'Gregoriano',
+    lunarDate: 'Lunar',
+    solarTerm: 'Término Solar',
+    moonPhase: 'Fase Lunar',
+    zodiac: 'Zodiaco',
+    fourPillars: 'Cuatro Pilares',
+    yearPillar: 'Año',
+    monthPillar: 'Mes',
+    dayPillar: 'Día',
+    northCity: 'Shanghái, China 31.2°N 121.5°E UTC+8',
+    southCity: 'Buenos Aires, Argentina 31.2°S 58.5°O UTC-4',
+    year: 'Año',
+    month: 'Mes',
+    day: 'Día',
+    nextTerm: 'Próximo Término',
+    prevTerm: 'Término Anterior',
+    liteNotice: 'Esta es una versión demo ligera que muestra solo las funciones de comparación principales. Descarga la App "Nanbanqiu Wannianli" para obtener todas las funciones: gestión de horarios, mansión lunar diaria, mansión de la luna, conocimientos calendarios, zonas horarias de múltiples ciudades y más.',
+    k1Title: '1. Principios de conversión calendaria',
+    k1Content: 'Las estaciones de los hemisferios norte y sur son completamente opuestas — cuando es verano en el norte, es invierno en el sur.\n\n【Conversión gregoriana】Mes sur = Mes norte + 6 (restar 12 si supera 12), año ajustado según corresponda.\nEjemplo: Norte Ene 2026 → Sur Jul 2025; Norte Jul 2026 → Sur Ene 2026.\n\n【Conversión lunar】Mes lunar sur = Mes lunar norte + 6 (restar 12 si supera 12), meses intercalares desplazados igualmente.\n\n【Día opuesto Tai Chi】Día lunar sur = Día lunar norte + 15 (restar duración del mes si se excede, pasar al mes siguiente).\nEjemplo: Norte 18 del 4to mes lunar → Sur 3 del 10mo mes lunar.\n\nEsencia: Día lunar +15 significa 180° de separación en el ciclo sinódico, la fase lunar se invierte exactamente.',
+    k2Title: '2. Espejo de fases lunares · Verificación Tai Chi',
+    k2Content: 'Las fases lunares son una herramienta natural de verificación que conecta ambos hemisferios.\nLas fases son producidas por la Luna orbitando la Tierra — idénticas globalmente en el mismo momento, pero el lado iluminado aparece en espejo entre hemisferios.\n\n【Comparación de fases】\nNorte: Luna Nueva → Creciente forma D → Cuarto Creciente (mitad derecha iluminada) → Gibosa Creciente → Luna Llena\nSur: Luna Nueva → Creciente forma D invertida → Cuarto Creciente (mitad izquierda iluminada) → Gibosa Creciente → Luna Llena\n\nLa Luna Llena se ve igual en todas partes, pero la dirección de crecimiento es opuesta: China ve una forma D creciente, Argentina ve una D invertida — caminos diferentes, mismo círculo completo.\n\n【Unidad y Oposición】\n· Unidad: El conteo de días de fase es globalmente idéntico; la Luna Llena es universalmente redonda\n· Oposición: El lado iluminado es simétrico en espejo; la dirección de crecimiento es invertida\n· Tai Chi: 180° de separación en el ciclo sinódico — la simetría rotacional de los dos peces Tai Chi',
+    k3Title: '3. Correspondencia de términos solares del hemisferio sur',
+    k3Content: 'Los términos solares reflejan la longitud eclíptica del Sol. Ambos hemisferios ven posiciones solares simétricamente opuestas en el mismo momento.\n\n【Correspondencia】\nNorte Inicio de Primavera ↔ Sur Inicio de Otoño\nNorte Lluvia ↔ Sur Fin del Calor\nNorte Despertar de Insectos ↔ Sur Rocío Blanco\nNorte Equinoccio de Primavera ↔ Sur Equinoccio de Otoño\nNorte Claridad ↔ Sur Rocío Frío\nNorte Lluvia de Grano ↔ Sur Descenso de Escarcha\nNorte Inicio de Verano ↔ Sur Inicio de Invierno\nNorte Brote de Grano ↔ Sur Nieve Menor\nNorte Grano en Espiga ↔ Sur Gran Nevada\nNorte Solsticio de Verano ↔ Sur Solsticio de Invierno\n\nRegla: Término norte N ↔ Término sur (N+12) mod 24',
+    k4Title: '4. Fuerza de Coriolis y dirección de rotación',
+    k4Content: 'La fuerza de Coriolis es una fuerza inercial producto de la rotación terrestre, que afecta la dirección de rotación de sistemas de movimiento a gran escala.\n\n【Comparación de rotación norte-sur】\nTifones/Huracanes/Ciclones: Norte sentido antihorario ↺ / Sur sentido horario ↻\nAnticiclones (alta presión): Norte sentido horario ↻ / Sur sentido antihorario ↺\nGiros oceánicos (subtropicales): Norte sentido horario ↻ / Sur sentido antihorario ↺\nRotación terrestre: Norte antihorario / Sur horario\n\nEsencia matemática: F = -2m(ω × v)\nEn el hemisferio norte, la fuerza de Coriolis desvía los objetos en movimiento hacia la derecha; en el sur, hacia la izquierda.\nSolo los sistemas a gran escala (cientos de km+) se ven significativamente afectados.',
+    k5Title: '5. Significado del calendario del hemisferio sur',
+    k5Content: 'Los calendarios tradicionales chinos se basan en observaciones astronómicas del hemisferio norte. Aplicarlos directamente al hemisferio sur crea desalineación estacional.\n\nEl Calendario del Hemisferio Sur utiliza la simetría Tai Chi para convertir el sistema norteño en su contraparte sureña, permitiendo a las comunidades chinas en el hemisferio sur usar un calendario lunar que coincide con sus estaciones locales.\n\n【Fundamento filosófico de la simetría Tai Chi】\nEl diagrama de los dos peces Tai Chi revela: la unidad de los opuestos es la ley fundamental del universo.\nLa relación calendaria entre hemisferios es un mapeo real del diagrama Tai Chi:\n· Mes gregoriano +6, como los dos peces rotando 180°\n· Día lunar +15, como puntos antipodales en el círculo sinódico\n· Simetría de términos solares, como el enraizamiento mutuo Yin-Yang\n· Espejo de fases lunares, como la mirada entre los ojos de los dos peces',
+    footer: 'Calendario del Hemisferio Sur · Sistema Calendario Simétrico Tai Chi',
+    loading: 'Cargando...',
+    northPrefix: 'N.',
+    southPrefix: 'S.',
+    leapPrefix: 'Intercalar ',
+    lunarMonths: ['1er Mes','2do Mes','3er Mes','4to Mes','5to Mes','6to Mes','7mo Mes','8vo Mes','9no Mes','10mo Mes','11vo Mes','12vo Mes'],
+    lunarDays: ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30'],
+    solarTerms: ['Inicio de Primavera','Lluvia','Despertar de Insectos','Equinoccio de Primavera','Claridad','Lluvia de Grano','Inicio de Verano','Brote de Grano','Grano en Espiga','Solsticio de Verano','Calor Menor','Calor Mayor','Inicio de Otoño','Fin del Calor','Rocío Blanco','Equinoccio de Otoño','Rocío Frío','Descenso de Escarcha','Inicio de Invierno','Nieve Menor','Gran Nevada','Solsticio de Invierno','Frío Menor','Frío Mayor'],
+    moonPhases: ['Luna Nueva','Creciente','Cuarto Creciente','Gibosa Creciente','Luna Llena','Gibosa Menguante','Cuarto Menguante','Menguante'],
+    southMoonPhases: ['Luna Nueva','Menguante','Cuarto Menguante','Gibosa Menguante','Luna Llena','Gibosa Creciente','Cuarto Creciente','Creciente'],
+    zodiacs: ['Rata','Buey','Tigre','Conejo','Dragón','Serpiente','Caballo','Cabra','Mono','Gallo','Perro','Cerdo'],
+    gregorianMonths: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']
+  }
+};
+
+let currentLang = 'zh';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  updateUI();
+}
+
+function t(key) { return I18N[currentLang][key] || I18N['zh'][key]; }
+
+// ==================== CALENDAR ENGINE ====================
+
+// Moon phase emoji (Northern Hemisphere)
+const MOON_EMOJIS = ['🌑','🌒','🌓','🌔','🌕','🌖','🌗','🌘'];
+
+function getMoonPhaseIndex(lunarDay) {
+  // Approximate moon phase from lunar day (1-30)
+  if (lunarDay === 1 || lunarDay === 30) return 0; // New moon
+  if (lunarDay >= 2 && lunarDay <= 6) return 1;    // Waxing crescent
+  if (lunarDay >= 7 && lunarDay <= 8) return 2;    // First quarter
+  if (lunarDay >= 9 && lunarDay <= 13) return 3;   // Waxing gibbous
+  if (lunarDay >= 14 && lunarDay <= 16) return 4;  // Full moon
+  if (lunarDay >= 17 && lunarDay <= 21) return 5;  // Waning gibbous
+  if (lunarDay >= 22 && lunarDay <= 23) return 6;  // Last quarter
+  return 7; // Waning crescent
+}
+
+function getSouthMoonEmoji(phaseIndex) {
+  return MOON_EMOJIS[(8 - phaseIndex) % 8];
+}
+
+function computeSouthLunar(northLunarYear, northLunarMonth, northLunarDay, isNorthLeap) {
+  // Southern hemisphere lunar month = north month + 6 (with year boundary)
+  let southYear, southMonth;
+  if (northLunarMonth >= 7) {
+    southYear = northLunarYear;
+    southMonth = northLunarMonth - 6;
+  } else {
+    southYear = northLunarYear - 1;
+    southMonth = northLunarMonth + 6;
+  }
+
+  // Southern hemisphere leap month = (north leap month + 6) % 12
+  // For simplicity in demo, we check if current month is leap
+  let southIsLeap = false;
+  // The south leap month calculation
+  try {
+    const northLeapMonth = getNorthLeapMonth(northLunarYear);
+    let southLeapMonth = 0;
+    if (northLeapMonth > 0) {
+      southLeapMonth = (northLeapMonth + 6) % 12;
+      if (southLeapMonth === 0) southLeapMonth = 12;
+    }
+    southIsLeap = (southLeapMonth === southMonth && isNorthLeap);
+  } catch(e) {}
+
+  // Tai Chi opposing day: lunar day + 15 with rollover
+  let oppositeDay = ((northLunarDay - 1 + 15) % 30) + 1;
+
+  return { southYear, southMonth, oppositeDay, southIsLeap };
+}
+
+function getNorthLeapMonth(lunarYear) {
+  // Use lunar-javascript to find leap month
+  for (let m = 1; m <= 12; m++) {
+    try {
+      const testLunar = Lunar.fromYmd(lunarYear, -m, 1);
+      if (testLunar) return m;
+    } catch(e) {}
+  }
+  return 0;
+}
+
+function computeSouthSolar(year, month) {
+  // Southern hemisphere solar: month + 6, year boundary at month 7
+  let southYear, southMonth;
+  if (month >= 7) {
+    southYear = year;
+    southMonth = month - 6;
+  } else {
+    southYear = year - 1;
+    southMonth = month + 6;
+  }
+  return { southYear, southMonth };
+}
+
+// ==================== SOLAR TERMS ====================
+
+// Heavenly Stems and Earthly Branches for South Hemisphere 四柱
+const TIAN_GAN = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+const DI_ZHI = ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+
+// South hemisphere 四柱 = North 四柱 each shifted by +6 (Tai Chi symmetry)
+function shiftGanZhi(ganZhi) {
+  // e.g. "丙午" → stem 丙(2)+6=壬(8), branch 午(6)+6=子(0) → "壬子"
+  const ganIdx = TIAN_GAN.indexOf(ganZhi[0]);
+  const zhiIdx = DI_ZHI.indexOf(ganZhi[1]);
+  return TIAN_GAN[(ganIdx + 6) % 10] + DI_ZHI[(zhiIdx + 6) % 12];
+}
+
+function buildPillarsHtml(yearGZ, monthGZ, dayGZ, side) {
+  const labelColor = side === 'north' ? 'var(--sky-blue)' : '#C2185B';
+  return `
+    <div class="pillars-container">
+      <div class="pillar-item">
+        <span class="pillar-label" style="color:${labelColor}">${t('yearPillar')}</span>
+        <span class="pillar-gan">${yearGZ[0]}</span>
+        <span class="pillar-zhi">${yearGZ[1]}</span>
+      </div>
+      <div class="pillar-item">
+        <span class="pillar-label" style="color:${labelColor}">${t('monthPillar')}</span>
+        <span class="pillar-gan">${monthGZ[0]}</span>
+        <span class="pillar-zhi">${monthGZ[1]}</span>
+      </div>
+      <div class="pillar-item">
+        <span class="pillar-label" style="color:${labelColor}">${t('dayPillar')}</span>
+        <span class="pillar-gan">${dayGZ[0]}</span>
+        <span class="pillar-zhi">${dayGZ[1]}</span>
+      </div>
+    </div>
+  `;
+}
+
+function getCurrentAndNextSolarTerm(solar) {
+  // lunar-javascript: JieQi is on Lunar object, not Solar
+  // lunar.getJieQi() returns current day's jieqi name (empty string if none)
+  const lunar = solar.getLunar();
+  const currentName = lunar.getJieQi();
+  let current = null, next = null, prev = null;
+
+  if (currentName) {
+    current = { name: currentName, date: formatSolarDateObj(solar) };
+  }
+
+  // Find next solar term by scanning forward
+  for (let i = 1; i <= 31; i++) {
+    const nextSolar = Solar.fromYmd(solar.getYear(), solar.getMonth(), solar.getDay() + i);
+    const jq = nextSolar.getLunar().getJieQi();
+    if (jq) {
+      next = { name: jq, date: formatSolarDateObj(nextSolar) };
+      break;
+    }
+  }
+
+  // Find prev solar term by scanning backward
+  for (let i = 1; i <= 31; i++) {
+    const prevSolar = Solar.fromYmd(solar.getYear(), solar.getMonth(), solar.getDay() - i);
+    const jq = prevSolar.getLunar().getJieQi();
+    if (jq) {
+      prev = { name: jq, date: formatSolarDateObj(prevSolar) };
+      break;
+    }
+  }
+
+  return { current, next, prev };
+}
+
+function formatSolarDateObj(solar) {
+  return `${solar.getYear()}.${String(solar.getMonth()).padStart(2,'0')}.${String(solar.getDay()).padStart(2,'0')}`;
+}
+
+function getSolarTermIndex(name) {
+  const allTerms = I18N.zh.solarTerms;
+  return allTerms.indexOf(name);
+}
+
+// Find the actual date of the opposite (southern hemisphere) solar term
+// by searching for when that term occurs in the calendar
+function findOppositeSolarTermDate(solar, southTermIdx) {
+  const southTermName = I18N.zh.solarTerms[southTermIdx];
+  // Search forward and backward from current date to find this term
+  // The opposite term is ~6 months away, so search ±200 days
+  for (let offset = -200; offset <= 200; offset++) {
+    if (offset === 0) continue;
+    try {
+      const testSolar = Solar.fromYmd(solar.getYear(), solar.getMonth(), solar.getDay() + offset);
+      const jq = testSolar.getLunar().getJieQi();
+      if (jq === southTermName) {
+        return formatSolarDateObj(testSolar);
+      }
+    } catch(e) { continue; }
+  }
+  return '';
+}
+
+// Find opposite solar term date given the north term name
+function findOppositeSolarTermDateByName(northTermName, southTermIdx) {
+  const southTermName = I18N.zh.solarTerms[southTermIdx];
+  // Find the north term date first, then search around that area
+  const northIdx = I18N.zh.solarTerms.indexOf(northTermName);
+  // The south opposite term is ~6 months after/before the north term
+  // Search forward from north term date
+  const now = new Date();
+  const solar = Solar.fromYmd(now.getFullYear(), now.getMonth() + 1, now.getDate());
+  for (let offset = -200; offset <= 400; offset++) {
+    try {
+      const testSolar = Solar.fromYmd(solar.getYear(), solar.getMonth(), solar.getDay() + offset);
+      const jq = testSolar.getLunar().getJieQi();
+      if (jq === southTermName) {
+        return formatSolarDateObj(testSolar);
+      }
+    } catch(e) { continue; }
+  }
+  return '';
+}
+
+// ==================== RENDER ====================
+
+function formatDate(solar) {
+  const y = solar.getYear();
+  const m = solar.getMonth();
+  const d = solar.getDay();
+  if (currentLang === 'zh' || currentLang === 'tw') {
+    return `${y}${t('year')}${m}${t('month')}${d}${t('day')}`;
+  } else if (currentLang === 'en') {
+    return `${t('gregorianMonths')[m-1]} ${d}, ${y}`;
+  } else {
+    return `${d} de ${t('gregorianMonths')[m-1]} de ${y}`;
+  }
+}
+
+function formatLunarDate(prefix, month, day, isLeap) {
+  const leapStr = isLeap ? t('leapPrefix') : '';
+  const monthName = t('lunarMonths')[month - 1];
+  const dayName = t('lunarDays')[day - 1];
+  if (currentLang === 'zh' || currentLang === 'tw') {
+    return `${leapStr}${prefix}${monthName}${dayName}`;
+  } else {
+    return `${prefix} ${leapStr}${monthName} ${dayName}`;
+  }
+}
+
+function formatSouthLunarDate(prefix, month, oppositeDay, isLeap) {
+  const leapStr = isLeap ? t('leapPrefix') : '';
+  const monthName = t('lunarMonths')[month - 1];
+  const dayName = t('lunarDays')[oppositeDay - 1];
+  if (currentLang === 'zh' || currentLang === 'tw') {
+    return `${leapStr}${prefix}${monthName}${dayName}`;
+  } else {
+    return `${prefix} ${leapStr}${monthName} ${dayName}`;
+  }
+}
+
+function updateUI() {
+  const dateStr = document.getElementById('dateInput').value;
+  if (!dateStr) return;
+
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const solar = Solar.fromYmd(y, m, d);
+  const lunar = solar.getLunar();
+
+  // North hemisphere data
+  const northLunarYear = lunar.getYear();
+  const northLunarMonth = Math.abs(lunar.getMonth());
+  const northLunarDay = lunar.getDay();
+  const isNorthLeap = lunar.getMonth() < 0;
+  const ganZhiYear = lunar.getYearInGanZhi();
+  const ganZhiMonth = lunar.getMonthInGanZhi();
+  const ganZhiDay = lunar.getDayInGanZhi();
+
+  // South hemisphere data
+  const south = computeSouthLunar(northLunarYear, northLunarMonth, northLunarDay, isNorthLeap);
+  const southSolar = computeSouthSolar(y, m);
+  // South 四柱: all three pillars shifted by +6 from North
+  const southGanZhiYear = shiftGanZhi(ganZhiYear);
+  const southGanZhiMonth = shiftGanZhi(ganZhiMonth);
+  const southGanZhiDay = shiftGanZhi(ganZhiDay);
+  // Zodiac derived from year pillar's Earthly Branch (not year number)
+  const northZodiacIndex = DI_ZHI.indexOf(ganZhiYear[1]);
+  const southZodiacIndex = DI_ZHI.indexOf(southGanZhiYear[1]);
+  const northZodiacName = t('zodiacs')[northZodiacIndex];
+  const southZodiacName = t('zodiacs')[southZodiacIndex];
+
+  // Moon phase
+  const moonPhaseIdx = getMoonPhaseIndex(northLunarDay);
+
+  // Solar terms
+  const terms = getCurrentAndNextSolarTerm(solar);
+
+  // Update header
+  document.getElementById('headerTitle').textContent = t('headerTitle');
+  document.getElementById('headerSubtitle').textContent = t('headerSubtitle');
+  document.getElementById('todayBtn').textContent = t('today');
+
+  // Build dual cards
+  const northLunarStr = formatLunarDate(t('northPrefix'), northLunarMonth, northLunarDay, isNorthLeap);
+  const southLunarStr = formatSouthLunarDate(t('southPrefix'), south.southMonth, south.oppositeDay, south.southIsLeap);
+
+  const northSolarStr = formatDate(solar);
+  const southSolarStr = (currentLang === 'zh' || currentLang === 'tw')
+    ? `${southSolar.southYear}${t('year')}${southSolar.southMonth}${t('month')}${d}${t('day')}`
+    : (currentLang === 'en')
+      ? `${t('gregorianMonths')[southSolar.southMonth-1]} ${d}, ${southSolar.southYear}`
+      : `${d} de ${t('gregorianMonths')[southSolar.southMonth-1]} de ${southSolar.southYear}`;
+
+  const northMoonEmoji = MOON_EMOJIS[moonPhaseIdx];
+  const southMoonEmoji = getSouthMoonEmoji(moonPhaseIdx);
+  const northMoonName = t('moonPhases')[moonPhaseIdx];
+  const southMoonName = t('southMoonPhases')[moonPhaseIdx];
+
+  // Solar term display with actual dates
+  let northTermDisplay = '—';
+  let southTermDisplay = '—';
+  let northTermDate = '';
+  let southTermDate = '';
+  let nextNorthTermName = '';
+  let nextNorthTermDate = '';
+  let nextSouthTermName = '';
+  let nextSouthTermDate = '';
+
+  if (terms.current) {
+    const idx = getSolarTermIndex(terms.current.name);
+    if (idx >= 0) {
+      northTermDisplay = t('solarTerms')[idx];
+      northTermDate = formatSolarDateObj(solar);
+      const southIdx = (idx + 12) % 24;
+      southTermDisplay = t('solarTerms')[southIdx];
+      southTermDate = findOppositeSolarTermDate(solar, southIdx);
+    }
+  }
+  if (terms.next) {
+    const idx = getSolarTermIndex(terms.next.name);
+    if (idx >= 0) {
+      nextNorthTermName = t('solarTerms')[idx];
+      nextNorthTermDate = terms.next.date;
+      const southIdx = (idx + 12) % 24;
+      nextSouthTermName = t('solarTerms')[southIdx];
+      nextSouthTermDate = findOppositeSolarTermDateByName(terms.next.name, southIdx);
+    }
+  }
+
+  // Comparison table (without solar terms - those go in separate card)
+  const compareHtml = `
+    <div class="compare-section">
+      <div class="compare-card">
+        <div class="compare-header">
+          <div class="compare-header-label"></div>
+          <div class="compare-header-north">${t('northHemisphere')}<br><span style="font-size:10px;font-weight:400;opacity:0.7">${t('northCity')}</span></div>
+          <div class="compare-header-south">${t('southHemisphere')}<br><span style="font-size:10px;font-weight:400;opacity:0.7">${t('southCity')}</span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">${t('solarDate')}</div>
+          <div class="compare-row-north">${northSolarStr}</div>
+          <div class="compare-row-south">${southSolarStr}</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">${t('lunarDate')}</div>
+          <div class="compare-row-north">${northLunarStr}</div>
+          <div class="compare-row-south">${southLunarStr}</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">${t('yearPillar')}</div>
+          <div class="compare-row-north ganzhi">${ganZhiYear}</div>
+          <div class="compare-row-south ganzhi">${southGanZhiYear}</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">${t('monthPillar')}</div>
+          <div class="compare-row-north ganzhi">${ganZhiMonth}</div>
+          <div class="compare-row-south ganzhi">${southGanZhiMonth}</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">${t('dayPillar')}</div>
+          <div class="compare-row-north ganzhi">${ganZhiDay}</div>
+          <div class="compare-row-south ganzhi">${southGanZhiDay}</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">${t('zodiac')}</div>
+          <div class="compare-row-north">${northZodiacName} · ${ganZhiYear}</div>
+          <div class="compare-row-south">${southZodiacName} · ${southGanZhiYear}</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-row-label">${t('moonPhase')}</div>
+          <div class="compare-row-north"><span class="moon-inline"><span class="moon-emoji-sm">${northMoonEmoji}</span><span class="moon-name-sm">${northMoonName}</span></span></div>
+          <div class="compare-row-south"><span class="moon-inline"><span class="moon-emoji-sm">${southMoonEmoji}</span><span class="moon-name-sm">${southMoonName}</span></span></div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('dualCards').innerHTML = compareHtml;
+
+  // Solar term section (separate card)
+  let stHtml = `<div class="solar-term-card"><h3>📅 ${t('solarTerm')}</h3><div class="solar-term-grid">`;
+  if (terms.current) {
+    const idx = getSolarTermIndex(terms.current.name);
+    if (idx >= 0) {
+      const southIdx = (idx + 12) % 24;
+      stHtml += `
+        <div class="st-item st-north">
+          <div class="st-name">${t('northHemisphere')}: ${t('solarTerms')[idx]}</div>
+          <div class="st-date">${northTermDate}</div>
+        </div>
+        <div class="st-item st-south">
+          <div class="st-name">${t('southHemisphere')}: ${t('solarTerms')[southIdx]}</div>
+          <div class="st-date">${southTermDate}</div>
+        </div>
+      `;
+    }
+  }
+  if (terms.next) {
+    const idx = getSolarTermIndex(terms.next.name);
+    if (idx >= 0) {
+      const southIdx = (idx + 12) % 24;
+      stHtml += `
+        <div class="st-item st-north">
+          <div class="st-name">${t('northHemisphere')}: ${nextNorthTermName}</div>
+          <div class="st-date">${nextNorthTermDate}</div>
+        </div>
+        <div class="st-item st-south">
+          <div class="st-name">${t('southHemisphere')}: ${nextSouthTermName}</div>
+          <div class="st-date">${nextSouthTermDate}</div>
+        </div>
+      `;
+    }
+  }
+  stHtml += '</div></div>';
+  document.getElementById('solarTermSection').innerHTML = stHtml;
+
+  // Knowledge cards
+  const kTitleKeys = ['k1Title','k2Title','k3Title','k4Title','k5Title'];
+  const kContentKeys = ['k1Content','k2Content','k3Content','k4Content','k5Content'];
+  kTitleKeys.forEach((key, i) => {
+    document.getElementById(key).textContent = t(key);
+  });
+  kContentKeys.forEach((key, i) => {
+    document.getElementById(key).textContent = t(key);
+  });
+  // Knowledge section title
+  const sectionTitles = { zh: '📚 历法知识', tw: '📚 曆法知識', en: '📚 Calendar Knowledge', es: '📚 Conocimiento Calendario' };
+  document.getElementById('knowledgeSectionTitle').textContent = sectionTitles[currentLang] || sectionTitles.zh;
+
+  document.getElementById('liteNoticeText').textContent = t('liteNotice');
+  document.getElementById('footerText').textContent = t('footer');
+}
+
+function toggleKCard(cardId) {
+  document.getElementById(cardId).classList.toggle('open');
+}
+
+function goToday() {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  document.getElementById('dateInput').value = `${y}-${m}-${d}`;
+  updateUI();
+}
+
+// ==================== INIT ====================
+document.getElementById('dateInput').addEventListener('change', updateUI);
+goToday();
+</script>
+</body>
+</html>
