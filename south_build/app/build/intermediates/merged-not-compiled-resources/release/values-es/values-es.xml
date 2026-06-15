@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Calendario Hemisferio Sur</string>
+    <string msgid="6128938260108474660" name="bottom_sheet_collapse_description">"Contrae la hoja inferior"</string>
+    <string msgid="1918297411568599192" name="bottom_sheet_dismiss_description">"Cierra la hoja inferior"</string>
+    <string msgid="7772321844937772780" name="bottom_sheet_drag_handle_description">"Controlador de arrastre"</string>
+    <string msgid="4324434199045499117" name="bottom_sheet_expand_description">"Despliega la hoja inferior"</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Responder"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Vídeo"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"Rechazar"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Colgar"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Llamada entrante"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Llamada en curso"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Filtrando una llamada entrante"</string>
+    <string name="changelog_empty">Sin actualizaciones aún</string>
+    <string msgid="406453423630273620" name="close_drawer">"Cerrar menú de navegación"</string>
+    <string msgid="7573152094250666567" name="close_sheet">"Cerrar hoja"</string>
+    <string msgid="5389587048670450460" name="collapsed">"Contraído"</string>
+    <string name="common_add">Agregar</string>
+    <string name="common_back">Volver</string>
+    <string name="common_cancel">Cancelar</string>
+    <string name="common_confirm">Confirmar</string>
+    <string name="common_day">Día</string>
+    <string name="common_delete">Eliminar</string>
+    <string name="common_menu">Menú</string>
+    <string name="common_month">Mes</string>
+    <string name="common_ok">Aceptar</string>
+    <string name="common_save">Guardar</string>
+    <string name="common_year">Año</string>
+    <string msgid="3499643850558715142" name="date_input_headline">"Fecha introducida"</string>
+    <string msgid="8562356184193964298" name="date_input_headline_description">"Fecha introducida: %1$s"</string>
+    <string msgid="5281836720766682161" name="date_input_invalid_for_pattern">"La fecha no coincide con el patrón esperado: %1$s"</string>
+    <string msgid="6114792992433444995" name="date_input_invalid_not_allowed">"Fecha no permitida: %1$s"</string>
+    <string msgid="8434112129235255568" name="date_input_invalid_year_range">"Fecha fuera del intervalo de años previsto: %1$s - %2$s"</string>
+    <string msgid="5194825853981987218" name="date_input_label">"Fecha"</string>
+    <string msgid="5722931102250207748" name="date_input_no_input_description">"Ninguna"</string>
+    <string msgid="3010396677286327048" name="date_input_title">"Seleccionar fecha"</string>
+    <string msgid="2846784065735639969" name="date_picker_headline">"Fecha seleccionada"</string>
+    <string msgid="4627306862713137085" name="date_picker_headline_description">"Selección: %1$s"</string>
+    <string msgid="5152441868029453612" name="date_picker_navigate_to_year_description">"Ir al año %1$s"</string>
+    <string msgid="5724377114289981899" name="date_picker_no_selection_description">"Ninguno"</string>
+    <string msgid="8911933542023210271" name="date_picker_scroll_to_earlier_years">"Desplázate para ver los años anteriores"</string>
+    <string msgid="3226341140390493774" name="date_picker_scroll_to_later_years">"Desplázate para ver los últimos años"</string>
+    <string msgid="9029369254443419167" name="date_picker_switch_to_calendar_mode">"Cambiar al modo de introducción de calendario"</string>
+    <string msgid="145089358343568971" name="date_picker_switch_to_day_selection">"Desliza el dedo para seleccionar un año o toca para volver a seleccionar un día"</string>
+    <string msgid="1496750567914156598" name="date_picker_switch_to_input_mode">"Cambiar al modo de escritura"</string>
+    <string msgid="8313783187901412102" name="date_picker_switch_to_next_month">"Cambiar al mes siguiente"</string>
+    <string msgid="7596294429748914881" name="date_picker_switch_to_previous_month">"Cambiar al mes anterior"</string>
+    <string msgid="3412370019845183965" name="date_picker_switch_to_year_selection">"Cambiar para seleccionar un año"</string>
+    <string msgid="9208721003668059792" name="date_picker_title">"Seleccionar fecha"</string>
+    <string msgid="4775802721403526937" name="date_picker_today_description">"Hoy"</string>
+    <string msgid="8140324713311804736" name="date_picker_year_picker_pane_title">"Selector de año visible"</string>
+    <string msgid="1891592555781755601" name="date_range_input_invalid_range_input">"El intervalo de fechas no es válido"</string>
+    <string msgid="2366412111888449406" name="date_range_input_title">"Introducir fechas"</string>
+    <string msgid="9048690781645835833" name="date_range_picker_day_in_range">"Dentro del intervalo"</string>
+    <string msgid="4766270708882012148" name="date_range_picker_end_headline">"Fecha de finalización"</string>
+    <string msgid="51495506931835470" name="date_range_picker_scroll_to_next_month">"Desplázate para ver el mes siguiente"</string>
+    <string msgid="4371570854614540700" name="date_range_picker_scroll_to_previous_month">"Desplázate para ver el mes anterior"</string>
+    <string msgid="5759491386723090559" name="date_range_picker_start_headline">"Fecha de inicio"</string>
+    <string msgid="690080476639943577" name="date_range_picker_title">"Seleccionar fechas"</string>
+    <string msgid="8038256446254964252" name="default_error_message">"Entrada no válida"</string>
+    <string msgid="6312721426453364202" name="default_popup_window_title">"Ventana emergente"</string>
+    <string name="di_zhi_0">子</string>
+    <string name="di_zhi_1">丑</string>
+    <string name="di_zhi_10">戌</string>
+    <string name="di_zhi_11">亥</string>
+    <string name="di_zhi_2">寅</string>
+    <string name="di_zhi_3">卯</string>
+    <string name="di_zhi_4">辰</string>
+    <string name="di_zhi_5">巳</string>
+    <string name="di_zhi_6">午</string>
+    <string name="di_zhi_7">未</string>
+    <string name="di_zhi_8">申</string>
+    <string name="di_zhi_9">酉</string>
+    <string msgid="4057925834421392736" name="dialog">"Cuadro de diálogo"</string>
+    <string name="disclaimer_text">[Importante: Lea detenidamente este aviso legal]\n\nEsta aplicación (Calendario del Hemisferio Sur) es una herramienta calendario basada en la cultura del calendario tradicional chino combinada con características geográficas del hemisferio Sur. Todas las funciones (incluidas pero no limitadas a selección de fechas, Cuatro Pilares, conversión de términos solares, inversión de fases lunares, visualización de mansiones estelares, análisis de fuerza de Coriolis, etc.) se derivan de la investigación de la cultura folclórica tradicional china y el conocimiento astronómico moderno, y están destinadas únicamente para aprendizaje, investigación e intercambio.\n\n1. Posicionamiento de Investigación Cultural\nTodos los cálculos de calendario, deducciones Bagua y determinaciones de auspiciosidad proporcionados por esta aplicación se basan en algoritmos antiguos tradicionales y teorías de cultura folclórica, perteneciendo a la categoría de investigación cultural tradicional, y no constituyen ninguna forma de predicción, adivinación o superstición.\n\n2. No para Toma de Decisiones\nCualquier información generada por esta aplicación (incluidas pero no limitadas a recomendaciones de fechas auspiciosas, auspiciosidad de horas, análisis de mansiones estelares, etc.) no deberá utilizarse como base para decisiones sobre:\n(1) Decisiones importantes de la vida como bodas, funerales, mudanzas o inauguraciones de negocios;\n(2) Decisiones profesionales en salud, inversiones, asuntos legales, etc.;\n(3) Cualquier decisión que pueda tener consecuencias legales.\n\n3. Limitación de Responsabilidad\nAl usar esta aplicación, usted reconoce y acepta que:\n(1) El desarrollador no será responsable de ningún daño directo, indirecto, incidental, especial, punitivo o consecuente derivado del uso o confianza en la información de la aplicación;\n(2) Los usuarios deben juzgar independientemente la aplicabilidad de la información y asumir las consecuencias de uso;\n(3) Esta aplicación se reserva el derecho de modificar funciones y contenido sin previo aviso;\n(4) No se ofrece garantía expresa o implícita sobre la disponibilidad continua, precisión o puntualidad de las funciones.\n\n4. Sin Garantía\nEsta aplicación se proporciona \"tal cual\" sin garantías de ningún tipo, ya sean expresas o implícitas, incluyendo pero no limitándose a garantías implícitas de comercialidad, idoneidad para un propósito particular y no infracción. El desarrollador no garantiza que la aplicación funcione de manera ininterrumpida, oportuna, segura o sin errores.\n\n5. Datos y Privacidad\nEsta aplicación no recopila, almacena ni transmite datos personales del usuario. Todos los cálculos se realizan localmente en el dispositivo del usuario sin involucrar servidores remotos ni servicios de terceros.\n\n6. Declaración de Cumplimiento\nEsta aplicación cumple estrictamente con la Ley de Ciberseguridad de la República Popular China, las Medidas de Administración de Servicios de Información de Internet y otras leyes y regulaciones pertinentes, no difunde contenido supersticioso feudal y mantiene el posicionamiento de investigación e intercambio cultural tradicional.\n\n7. Propiedad Intelectual\nLa lógica algorítmica, implementación de código y diseño de interfaz de esta aplicación están protegidos por derechos de propiedad intelectual. Queda prohibida su copia, modificación o uso comercial sin autorización.\n\n8. Ley Aplicable y Jurisdicción\nEste aviso se regirá e interpretará de acuerdo con las leyes de la República Popular China. Cualquier disputa derivada del uso de esta aplicación se resolverá mediante negociación amistosa; si la negociación fracasa, la disputa se someterá al tribunal popular competente en la ubicación del desarrollador. Para usuarios en el extranjero, este aviso está adicionalmente protegido por las leyes de la jurisdicción del usuario.\n\n9. Terminación\nSi no está de acuerdo con alguno de los términos anteriores, deje de usar esta aplicación inmediatamente y desinstálela. El uso continuado de esta aplicación constituye la aceptación de todos los términos de este aviso y sus actualizaciones posteriores.</string>
+    <string name="drawer_title">Calendario Hemisferio Sur</string>
+    <string msgid="1890207353314751437" name="dropdown_menu">"Menú desplegable"</string>
+    <string msgid="5974471714631304645" name="expanded">"Desplegado"</string>
+    <string name="feedback_email_subject">Comentarios del Calendario del Hemisferio Sur</string>
+    <string name="feedback_error_empty">Por favor ingrese su comentario</string>
+    <string name="feedback_error_no_email">No se puede abrir la aplicación de correo, verifique si tiene un cliente de correo instalado</string>
+    <string name="feedback_error_prohibited">El contenido contiene palabras prohibidas, por favor modifíquelo</string>
+    <string name="feedback_intro">¡Gracias por usar el Calendario del Hemisferio Sur!\nSi tiene algún comentario o sugerencia, por favor ingréselo aquí. Valoramos cada opinión.</string>
+    <string name="feedback_placeholder">Ingrese su comentario o sugerencia...</string>
+    <string name="feedback_submit">Enviar Comentario</string>
+    <string name="format_month">%s</string>
+    <string name="format_solar_term_datetime">%3$d de %2$s de %1$s, %4$02d:%5$02d</string>
+    <string name="format_solar_term_local_datetime">%3$d de %2$s de %1$s, %4$02d:%5$02d</string>
+    <string name="format_year">%s</string>
+    <string name="format_year_month">%2$s de %1$s</string>
+    <string name="four_symbol_0">Dragón Azul</string>
+    <string name="four_symbol_1">Tigre Blanco</string>
+    <string name="four_symbol_2">Ave Bermellón</string>
+    <string name="four_symbol_3">Tortuga Negra</string>
+    <string name="gregorian_day"/>
+    <string name="gregorian_label">Gregoriano</string>
+    <string name="gregorian_month"/>
+    <string name="gregorian_year"/>
+    <string name="home_calendar_conversion">Calendario Norte   ⟷   Calendario Sur</string>
+    <string name="home_daily_star">Mansión Estelar Diaria</string>
+    <string name="home_day_pillar">Pilar del Día</string>
+    <string name="home_days_later">%d días después</string>
+    <string name="home_decrease">Disminuir</string>
+    <string name="home_four_pillars">Cuatro Pilares (Bazi)</string>
+    <string name="home_ganzhi">Gan-Zhi</string>
+    <string name="home_hour_pillar">Pilar de la Hora</string>
+    <string name="home_increase">Aumentar</string>
+    <string name="home_leap_month">Mes Intercalar</string>
+    <string name="home_lunar_calendar">Lunar</string>
+    <string name="home_month_pillar">Pilar del Mes</string>
+    <string name="home_moon_phase">Fase Lunar</string>
+    <string name="home_moon_star">Mansión Estelar Lunar</string>
+    <string name="home_next_month">Mes Siguiente</string>
+    <string name="home_no">No</string>
+    <string name="home_no_solar_term">Sin datos de términos solares</string>
+    <string name="home_north_hemisphere">☀️Norte</string>
+    <string name="home_north_lunar">Lunar N.</string>
+    <string name="home_north_season">Estación Norte</string>
+    <string name="home_north_solar">Solar Norte</string>
+    <string name="home_north_solar_date">%1$s, %2$s</string>
+    <string name="home_north_term">T. Norte</string>
+    <string name="home_prev_month">Mes Anterior</string>
+    <string name="home_reference">Ref.</string>
+    <string name="home_select_year_month">Seleccionar Año y Mes</string>
+    <string name="home_solar_calendar">Solar</string>
+    <string name="home_solar_star">Mansión Estelar Solar</string>
+    <string name="home_solar_term">Término Solar</string>
+    <string name="home_solar_term_conversion">Términos Solares Norte   ⟷   Términos Solares Sur</string>
+    <string name="home_south_hemisphere">🌏Sur</string>
+    <string name="home_south_lunar">Lunar S.</string>
+    <string name="home_south_season">Estación Sur</string>
+    <string name="home_south_solar">Solar Sur</string>
+    <string name="home_south_term">T. Sur</string>
+    <string name="home_time_diff">Diferencia</string>
+    <string name="home_title">Calendario Norte ⟷ Calendario Sur</string>
+    <string name="home_today">Hoy</string>
+    <string name="home_weekday">Día de la Semana</string>
+    <string name="home_year_pillar">Pilar del Año</string>
+    <string name="home_yes">Sí</string>
+    <string name="home_zodiac">Zodiaco</string>
+    <string msgid="6827826412747255547" name="in_progress">"En curso"</string>
+    <string msgid="7933458017204019916" name="indeterminate">"Marcado parcialmente"</string>
+    <string name="knowledge_content_1">Las estaciones en los hemisferios Norte y Sur son completamente opuestas. Cuando es verano en el Norte, es invierno en el Sur.\n\n[Calendario Solar] Mes Sur = Mes Norte + 6 (restar 12 si excede 12), el año se ajusta según corresponda.\nEjemplo: Norte Ene 2026 → Sur Jul 2025; Norte Jul 2026 → Sur Ene 2026.\n\n[Calendario Lunar] Mes lunar Sur = Mes lunar Norte + 6 (restar 12 si excede 12), meses intercalares se desplazan sincrónicamente.\nMes intercalar Sur = (Mes intercalar Norte + 6 - 1) % 12 + 1.\n\n[Día Opuesto Tai Chi] Día lunar Sur = Día lunar Norte + 15 (restar duración del mes si se excede, llevar al mes siguiente).\nEjemplo: Norte lunar 4° mes 18° día → Sur lunar 10° mes 3° día (18+15=33, menos 29=4, 4° día del mes siguiente).\n\nLa esencia: día lunar +15 significa 180° de separación en el ciclo sinódico, con la fase lunar exactamente invertida.</string>
+    <string name="knowledge_content_2">[Principio Central] Las fases lunares son una herramienta natural de verificación que conecta los calendarios de los hemisferios Norte y Sur.\nLas fases lunares son producidas por la Luna orbitando la Tierra. En cualquier momento, la fase lunar es la misma globalmente, pero el lado iluminado aparece como una imagen especular entre hemisferios.\n\n[Comparación de Fases Lunares]\nNorte: Luna Nueva → Creciente en forma D → Cuarto Creciente (mitad derecha iluminada) → Gibosa Creciente → Luna Llena\nSur: Luna Nueva → Creciente en forma D invertida → Cuarto Creciente (mitad izquierda iluminada) → Gibosa Creciente → Luna Llena\n\nLa Luna Llena es igualmente redonda en todas partes, pero la dirección de creciente es opuesta:\nLa luna de China crece en forma D, la de Argentina en forma D invertida, diferentes caminos a la misma luna llena.\n\n[Verificación de Fecha Lunar Sur mediante Fase Lunar]\n1. Observe la fase lunar del día para determinar el número de día lunar (globalmente consistente)\n2. Día lunar Norte + 15 = Día Opuesto Tai Chi Sur\n3. Ejemplo: Norte lunar 8° día (Cuarto Creciente) → Sur lunar 23° día (Cuarto Menguante)\n4. Verificación: la fase del 8° día (mitad derecha) y del 23° día (mitad izquierda) son exactamente simétricas en espejo\n\n[Unidad y Oposición]\n· Unidad: los números de día lunar son globalmente consistentes, la luna llena es la misma en todas partes\n· Oposición: la dirección del lado iluminado es simétrica en espejo, la dirección de creciente es opuesta\n· Tai Chi: 180° de separación en el ciclo sinódico, exactamente la simetría rotacional del símbolo Tai Chi Yin-Yang</string>
+    <string name="knowledge_content_3">Los términos solares reflejan la longitud eclíptica del Sol. Los hemisferios Norte y Sur ven al Sol en posiciones simétricamente opuestas al mismo momento.\n\n[Correspondencia]\nNorte Lichun (Inicio Primavera) ↔ Sur Liqiu (Inicio Otoño)\nNorte Yushui (Lluvia) ↔ Sur Chushu (Fin Calor)\nNorte Jingzhe (Despertar) ↔ Sur Bailu (Rocío Blanco)\nNorte Chunfen (Equinoccio Primavera) ↔ Sur Qiufen (Equinoccio Otoño)\nNorte Qingming (Claridad) ↔ Sur Hanlu (Rocío Frío)\nNorte Guyu (Lluvia Grano) ↔ Sur Shuangjiang (Escarcha)\nNorte Lixia (Inicio Verano) ↔ Sur Lidong (Inicio Invierno)\nNorte Xiaoman (Pequeña Plenitud) ↔ Sur Xiaoxue (Pequeña Nieve)\nNorte Mangzhong (Grano Espiga) ↔ Sur Daxue (Gran Nieve)\nNorte Xiazhi (Solsticio Verano) ↔ Sur Dongzhi (Solsticio Invierno)\n\nRegla: N-ésimo término solar Norte ↔ (N+12)-ésimo término solar Sur (restar 24 si excede 24)</string>
+    <string name="knowledge_content_4">El hemisferio Norte usa la dirección del puntero de la Osa Mayor para determinar las estaciones. El hemisferio Sur no puede observar la Osa Mayor ni la Estrella Polar, y debe usar otras constelaciones.\n\n[Método del Puntero de Centauro]\nCentaurus es el equivalente más cercano en el hemisferio Sur a la Osa Mayor. La línea de Alpha y Beta Centauri extendida hacia el sur unas 4.5 veces la distancia apunta al Polo Celestial Sur, estableciendo un sistema estacional similar al puntero de la Osa Mayor.\nCuando la línea Alpha-Beta Centauri apunta al sur = invierno sur (junio), apunta al este = primavera sur (septiembre).\n\n[Método de Antares]\nAntares es una estrella estacional compartida por ambos hemisferios, magnitud 1.0, apareciendo alta en el cielo sur en atardeceres de verano.\nHemisferio Norte: Antares alto en atardecer → Verano; Hemisferio Sur: Antares alto en atardecer → Invierno.\nLos significados estacionales son exactamente opuestos, consistentes con la simetría Tai Chi. El método de Antares tiene la mayor precisión.\n\n[Método de Canopus]\nCanopus, magnitud -0.74, es la segunda estrella más brillante. Su variación de altitud: más alta en atardeceres de invierno sur, más baja en verano, sirviendo como indicador estacional auxiliar.\n\n[Método de las Nubes de Magallanes]\nLas Nubes Grande y Pequeña de Magallanes orbitan el Polo Celestial Sur. Su acimut relativo al polo cambia con las estaciones.\nGran Nube de Magallanes al sureste del polo = verano sur, al noroeste = invierno.\n\n[Verificación Integral]\n1. Método de Antares como principal (mayor precisión, compartido por ambos hemisferios)\n2. Método del puntero de Centauro como secundario (más cercano a la función de la Osa Mayor)\n3. Canopus y Nubes de Magallanes para verificación cruzada\n4. Todos los significados estelares estacionales son opuestos al hemisferio Norte, reflejando simetría Tai Chi</string>
+    <string name="knowledge_content_5">El lado iluminado de la Luna aparece como una imagen especular entre los hemisferios Norte y Sur.\n\nEn el hemisferio Norte, el lado iluminado del Cuarto Creciente está a la derecha (forma D); en el hemisferio Sur, está a la izquierda (forma D invertida).\n\nEsta aplicación refleja esta diferencia rotando los símbolos de fase lunar 180°: Norte usa ☾, Sur usa ☽.\n\n[Nombres de Fases Lunares vs. Diferencia Visual]\nLos nombres de fases lunares definen la posición orbital de la Luna, no la dirección visual de iluminación.\nEn cualquier momento, la posición orbital de la Luna es única, por lo que los nombres de fases son globalmente consistentes.\nLa diferencia visual entre hemisferios es solo en la dirección izquierda-derecha de la iluminación.\n\n[Nombres de Fases Lunares Hemisferio Sur (por apariencia visual)]\nNorte Creciente → Sur Menguante (visual)\nNorte Cuarto Creciente → Sur Cuarto Menguante (visual)\nNorte Gibosa Creciente → Sur Gibosa Menguante (visual)\nNorte Luna Llena → Sur Luna Llena (sin cambio)\nEsta aplicación intercambia los nombres de fases lunares del hemisferio Sur según la apariencia visual, mientras los iconos mantienen el espejo izquierdo-derecho.</string>
+    <string name="knowledge_content_6_intro">La fuerza de Coriolis es una fuerza inercial producida por la rotación de la Tierra, que afecta la dirección de rotación de sistemas de movimiento a gran escala.</string>
+    <string name="knowledge_content_6_math">Esencia matemática: F = -2m(ω × v), donde ω es el vector de velocidad angular de rotación de la Tierra.\n\nEn el hemisferio Norte, la fuerza de Coriolis desvía los objetos en movimiento hacia la derecha; en el hemisferio Sur, hacia la izquierda.\n\nEfecto de escala: Solo los sistemas a gran escala de varios cientos de kilómetros o más (tifones, giros oceánicos) se ven significativamente afectados; los fenómenos a pequeña escala (desagüe de bañera) no se ven afectados.</string>
+    <string name="knowledge_content_6_row1_north">Sentido Antihorario ↺</string>
+    <string name="knowledge_content_6_row1_south">Sentido Horario ↻</string>
+    <string name="knowledge_content_6_row1_system">Tifón/Huracán/Ciclón (Baja Presión)</string>
+    <string name="knowledge_content_6_row2_north">Sentido Horario ↻</string>
+    <string name="knowledge_content_6_row2_south">Sentido Antihorario ↺</string>
+    <string name="knowledge_content_6_row2_system">Anticiclón (Alta Presión)</string>
+    <string name="knowledge_content_6_row3_north">Sentido Horario ↻</string>
+    <string name="knowledge_content_6_row3_south">Sentido Antihorario ↺</string>
+    <string name="knowledge_content_6_row3_system">Giro Oceánico (Subtropical)</string>
+    <string name="knowledge_content_6_row4_north">Sentido Antihorario</string>
+    <string name="knowledge_content_6_row4_south">Sentido Horario</string>
+    <string name="knowledge_content_6_row4_system">Rotación de la Tierra</string>
+    <string name="knowledge_content_6_table_header_north">Norte</string>
+    <string name="knowledge_content_6_table_header_south">Sur</string>
+    <string name="knowledge_content_6_table_header_system">Tipo de Sistema</string>
+    <string name="knowledge_content_7">Los Cuatro Pilares (pilar del año, mes, día y hora) se calculan según las horas solares locales.\n\n[Horas Solares y Hora Local]\nLas horas solares corresponden al tiempo solar aparente local. La misma hora del reloj en diferentes zonas horarias puede pertenecer a diferentes horas solares.\nEsta aplicación permite seleccionar diferentes zonas horarias de ciudades y calcula automáticamente los Cuatro Pilares correspondientes a la hora solar local.\n\n[Diferencias de Cuatro Pilares entre Hemisferios]\nPilar del Año: Limitado por Lichun (Inicio de Primavera), que difiere en 6 meses entre hemisferios; los pilares del año pueden diferir.\nPilar del Mes: Limitado por términos solares, que son simétricamente opuestos; las ramas terrenales del pilar mensual difieren.\nPilar del Día: Limitado por la hora Zi (11PM-1AM), diferentes zonas horarias pueden cruzar límites de día; los pilares diarios pueden diferir.\nPilar de la Hora: Depende directamente de la hora solar local, necesariamente diferente entre zonas horarias.\n\nEsta aplicación asegura una diferencia horaria estricta de 12 horas entre ciudades del hemisferio Norte y Sur, haciendo que los Cuatro Pilares presenten simetría Tai Chi.</string>
+    <string name="knowledge_content_8">[Mansión Estelar Diaria] Las 28 Mansiones rotan en secuencia fija día a día, globalmente unificadas independientemente del hemisferio.\nLa Mansión Estelar Diaria se basa en el conteo de días Gan-Zhi, que es globalmente unificado mediante la conversión del Día Juliano.\nCalibración: 1 de enero de 2025 = Mansión Shen (índice 20).\n\n[Mansión Estelar Lunar] La mansión correspondiente a la posición de la longitud eclíptica de la Luna, reflejando la posición astronómica real de la Luna.\nLa Mansión Estelar Lunar se determina calculando la longitud eclíptica de la Luna mediante algoritmo astronómico, luego coincidiendo con los límites de las 28 Mansiones.\n\nAmbas son fenómenos astronómicos globalmente unificados, sin cambios por hemisferio.</string>
+    <string name="knowledge_content_9">El calendario tradicional chino se basa en observaciones astronómicas del hemisferio Norte. Su aplicación directa al hemisferio Sur resulta en desalineación estacional.\n\nEl calendario del hemisferio Sur convierte el sistema Norte mediante principios de simetría Tai Chi.\n\nEsto permite que las comunidades chinas en el hemisferio Sur utilicen un sistema de calendario lunar que coincide con sus estaciones locales.\n\n[Fundamento Filosófico de la Simetría Tai Chi]\nEl símbolo Tai Chi Yin-Yang revela: la unidad de opuestos es la ley fundamental del universo.\nLa relación entre los calendarios de los hemisferios Norte y Sur es un mapeo del mundo real del símbolo Tai Chi:\n· Mes solar +6, como los peces Yin-Yang rotando 180°\n· Día lunar +15, como puntos antipodales en el ciclo sinódico\n· Simetría de términos solares, como el creciente y menguante del Yin-Yang como raíces mutuas\n· Espejo de fases lunares, como los ojos de los peces Yin-Yang mirándose</string>
+    <string name="knowledge_section_1">1. Principios de Conversión del Calendario</string>
+    <string name="knowledge_section_2">2. Inversión de Fases Lunares · Verificación Tai Chi</string>
+    <string name="knowledge_section_3">3. Correspondencia de Términos Solares Sur</string>
+    <string name="knowledge_section_4">4. Determinación de Términos Solares por Estrellas</string>
+    <string name="knowledge_section_5">5. Fases Lunares y Hemisferios</string>
+    <string name="knowledge_section_6">6. Fuerza de Coriolis y Rotación</string>
+    <string name="knowledge_section_7">7. Cuatro Pilares y Horas Solares</string>
+    <string name="knowledge_section_8">8. Mansiones Estelares Diarias y Lunares</string>
+    <string name="knowledge_section_9">9. Significado del Calendario del Sur</string>
+    <string name="lang_english">Inglés</string>
+    <string name="lang_restart_hint">La aplicación se reiniciará después de cambiar el idioma</string>
+    <string name="lang_settings">Idioma</string>
+    <string name="lang_simplified_chinese">Chino Simplificado</string>
+    <string name="lang_traditional_chinese">Chino Tradicional</string>
+    <string name="leap_month_prefix">Intercalar</string>
+    <string name="lunar_day_0">1</string>
+    <string name="lunar_day_1">2</string>
+    <string name="lunar_day_10">11</string>
+    <string name="lunar_day_11">12</string>
+    <string name="lunar_day_12">13</string>
+    <string name="lunar_day_13">14</string>
+    <string name="lunar_day_14">15</string>
+    <string name="lunar_day_15">16</string>
+    <string name="lunar_day_16">17</string>
+    <string name="lunar_day_17">18</string>
+    <string name="lunar_day_18">19</string>
+    <string name="lunar_day_19">20</string>
+    <string name="lunar_day_2">3</string>
+    <string name="lunar_day_20">21</string>
+    <string name="lunar_day_21">22</string>
+    <string name="lunar_day_22">23</string>
+    <string name="lunar_day_23">24</string>
+    <string name="lunar_day_24">25</string>
+    <string name="lunar_day_25">26</string>
+    <string name="lunar_day_26">27</string>
+    <string name="lunar_day_27">28</string>
+    <string name="lunar_day_28">29</string>
+    <string name="lunar_day_29">30</string>
+    <string name="lunar_day_3">4</string>
+    <string name="lunar_day_4">5</string>
+    <string name="lunar_day_5">6</string>
+    <string name="lunar_day_6">7</string>
+    <string name="lunar_day_7">8</string>
+    <string name="lunar_day_8">9</string>
+    <string name="lunar_day_9">10</string>
+    <string name="lunar_month_1">1er Mes</string>
+    <string name="lunar_month_10">10mo Mes</string>
+    <string name="lunar_month_11">11vo Mes</string>
+    <string name="lunar_month_12">12vo Mes</string>
+    <string name="lunar_month_2">2do Mes</string>
+    <string name="lunar_month_3">3er Mes</string>
+    <string name="lunar_month_4">4to Mes</string>
+    <string name="lunar_month_5">5to Mes</string>
+    <string name="lunar_month_6">6to Mes</string>
+    <string name="lunar_month_7">7mo Mes</string>
+    <string name="lunar_month_8">8vo Mes</string>
+    <string name="lunar_month_9">9no Mes</string>
+    <string name="mansion_0">Jiao (Cuerno)</string>
+    <string name="mansion_1">Kang (Cuello)</string>
+    <string name="mansion_10">Xu (Vacío)</string>
+    <string name="mansion_11">Wei (Peligro)</string>
+    <string name="mansion_12">Shi (Habitación)</string>
+    <string name="mansion_13">Bi (Muro)</string>
+    <string name="mansion_14">Kui (Muslo)</string>
+    <string name="mansion_15">Lou (Atadura)</string>
+    <string name="mansion_16">Wei (Estómago)</string>
+    <string name="mansion_17">Mao (Pléyades)</string>
+    <string name="mansion_18">Bi (Red)</string>
+    <string name="mansion_19">Zi (Pico)</string>
+    <string name="mansion_2">Di (Raíz)</string>
+    <string name="mansion_20">Shen (Orion)</string>
+    <string name="mansion_21">Jing (Pozo)</string>
+    <string name="mansion_22">Gui (Fantasma)</string>
+    <string name="mansion_23">Liu (Sauce)</string>
+    <string name="mansion_24">Xing (Estrella)</string>
+    <string name="mansion_25">Zhang (Extensión)</string>
+    <string name="mansion_26">Yi (Ala)</string>
+    <string name="mansion_27">Zhen (Carro)</string>
+    <string name="mansion_3">Fang (Habitación)</string>
+    <string name="mansion_4">Xin (Corazón)</string>
+    <string name="mansion_5">Wei (Cola)</string>
+    <string name="mansion_6">Ji (Cedazo)</string>
+    <string name="mansion_7">Dou (Cucharón)</string>
+    <string name="mansion_8">Niu (Buey)</string>
+    <string name="mansion_9">Nü (Mujer)</string>
+    <string name="menu_changelog">Registro de Actualizaciones</string>
+    <string name="menu_disclaimer">Aviso Legal</string>
+    <string name="menu_feedback">Comentarios</string>
+    <string name="menu_home">Inicio</string>
+    <string name="menu_knowledge">Conocimiento del Calendario</string>
+    <string name="menu_schedule">Agenda</string>
+    <string name="menu_settings">Configuración de Zona Horaria</string>
+    <string name="month_name_1">enero</string>
+    <string name="month_name_10">octubre</string>
+    <string name="month_name_11">noviembre</string>
+    <string name="month_name_12">diciembre</string>
+    <string name="month_name_2">febrero</string>
+    <string name="month_name_3">marzo</string>
+    <string name="month_name_4">abril</string>
+    <string name="month_name_5">mayo</string>
+    <string name="month_name_6">junio</string>
+    <string name="month_name_7">julio</string>
+    <string name="month_name_8">agosto</string>
+    <string name="month_name_9">septiembre</string>
+    <string name="moon_phase_0">Luna Nueva</string>
+    <string name="moon_phase_1">Creciente</string>
+    <string name="moon_phase_2">Cuarto Creciente</string>
+    <string name="moon_phase_3">Gibosa Creciente</string>
+    <string name="moon_phase_4">Luna Llena</string>
+    <string name="moon_phase_5">Gibosa Menguante</string>
+    <string name="moon_phase_6">Cuarto Menguante</string>
+    <string name="moon_phase_7">Menguante</string>
+    <string msgid="542007171693138492" name="navigation_menu">"Menú de navegación"</string>
+    <string name="north_lunar_month_0">N. 1er Mes</string>
+    <string name="north_lunar_month_1">N. 2do Mes</string>
+    <string name="north_lunar_month_10">N. 11vo Mes</string>
+    <string name="north_lunar_month_11">N. 12vo Mes</string>
+    <string name="north_lunar_month_2">N. 3er Mes</string>
+    <string name="north_lunar_month_3">N. 4to Mes</string>
+    <string name="north_lunar_month_4">N. 5to Mes</string>
+    <string name="north_lunar_month_5">N. 6to Mes</string>
+    <string name="north_lunar_month_6">N. 7mo Mes</string>
+    <string name="north_lunar_month_7">N. 8vo Mes</string>
+    <string name="north_lunar_month_8">N. 9no Mes</string>
+    <string name="north_lunar_month_9">N. 10mo Mes</string>
+    <string msgid="6610465462668679431" name="not_selected">"No seleccionado"</string>
+    <string msgid="875452955155264703" name="off">"Desactivado"</string>
+    <string msgid="8655164131929253426" name="on">"Activado"</string>
+    <string name="privacy_policy_text">[Política de Privacidad del Calendario del Hemisferio Sur]\n\nFecha de vigencia: 6 de junio de 2026\n\nEl Calendario del Hemisferio Sur (en adelante, \"esta Aplicación\") comprende la importancia de su información personal. Protegeremos su información personal y privacidad de acuerdo con las leyes y regulaciones aplicables. Esta Aplicación es una herramienta calendario que funciona exclusivamente de forma local, sin transmisión de datos por red. Nuestra política de privacidad es la siguiente:\n\n1. Recopilación de Información\nEsta Aplicación no recopila, obtiene, almacena ni transmite ninguna información personal de los usuarios, incluyendo pero no limitándose a nombres, números de teléfono, direcciones de correo electrónico, identificadores de dispositivo, ubicaciones geográficas, contactos, fotos, etc. Todos los cálculos de calendario, deducciones de mansiones estelares, conversiones de términos solares y otras funciones se realizan localmente en su dispositivo sin involucrar servidores remotos ni servicios en la nube.\n\n2. Almacenamiento de Información\nTodos los datos de esta Aplicación se almacenan localmente en su dispositivo, incluyendo pero no limitándose a registros de horarios, preferencias de selección de ciudad, configuración de idioma, etc. Esta Aplicación no carga ningún dato a servidores. Al desinstalar esta Aplicación, todos los datos locales se eliminarán junto con ella.\n\n3. Servicios de Terceros\nEsta Aplicación no integra herramientas de análisis de terceros, SDKs de publicidad, servicios de notificaciones push ni funciones de inicio de sesión social. Esta Aplicación no comparte ningún dato de usuario con terceros porque esta Aplicación en sí no recopila ningún dato.\n\n4. Cookies y Rastreo\nEsta Aplicación no utiliza cookies, balizas web, etiquetas de píxel ni ninguna otra tecnología de rastreo. Esta Aplicación no rastrea su comportamiento o actividades durante el uso.\n\n5. Privacidad de Menores\nEsta Aplicación no proporciona servicios dedicados para menores, ni recopila información personal de usuarios de ninguna edad. Si usted es tutor de un menor, puede permitir con tranquilidad que los menores usen esta Aplicación, ya que no recopila ninguna información personal.\n\n6. Seguridad de Datos\nAunque esta Aplicación no recopila ningún dato, aún tomamos medidas técnicas razonables para proteger la seguridad de sus datos locales en su dispositivo. Recomendamos que guarde su dispositivo de forma segura y configure una contraseña de bloqueo de pantalla para evitar el acceso no autorizado a su dispositivo.\n\n7. Cambios en la Política de Privacidad\nEsta Aplicación puede actualizar esta política de privacidad periódicamente. Cualquier cambio se notificará mediante la actualización de la página de política de privacidad dentro de esta Aplicación. El uso continuado de esta Aplicación constituye su aceptación de la política de privacidad revisada.\n\n8. Contáctenos\nSi tiene alguna pregunta, opinión o sugerencia sobre esta política de privacidad, contáctenos a través de la función de comentarios dentro de esta Aplicación. Responderemos en un tiempo razonable.</string>
+    <string msgid="5941395253238309765" name="range_end">"Fin del intervalo"</string>
+    <string msgid="7097486360902471446" name="range_start">"Inicio del intervalo"</string>
+    <string name="schedule_add">Agregar Evento</string>
+    <string name="schedule_cancel">Cancelar</string>
+    <string name="schedule_countdown">%d días restantes</string>
+    <string name="schedule_delete">Eliminar</string>
+    <string name="schedule_delete_confirm">Confirmar Eliminación</string>
+    <string name="schedule_delete_message">¿Eliminar \"%s\"?</string>
+    <string name="schedule_edit">Editar Evento</string>
+    <string name="schedule_empty">Sin Eventos</string>
+    <string name="schedule_empty_hint">Pulse + para agregar un nuevo evento</string>
+    <string name="schedule_expired">Expirado</string>
+    <string name="schedule_lunar_date_label">Fecha Lunar</string>
+    <string name="schedule_lunar_prefix">Lunar</string>
+    <string name="schedule_note_label">Nota</string>
+    <string name="schedule_recurring">Anual</string>
+    <string name="schedule_recurring_label">Repetir Anualmente</string>
+    <string name="schedule_save">Guardar</string>
+    <string name="schedule_tab_all">Todos</string>
+    <string name="schedule_tab_anniversary">Aniversario</string>
+    <string name="schedule_tab_birthday">Cumpleaños</string>
+    <string name="schedule_tab_meeting">Reunión</string>
+    <string name="schedule_tab_todo">Pendiente</string>
+    <string name="schedule_title_label">Título</string>
+    <string name="schedule_type_label">Tipo</string>
+    <string msgid="6420018528474762666" name="search_bar_search">"Buscar"</string>
+    <string name="season_0">Primavera</string>
+    <string name="season_1">Verano</string>
+    <string name="season_2">Otoño</string>
+    <string name="season_3">Invierno</string>
+    <string msgid="6043586758067023" name="selected">"Seleccionado"</string>
+    <string name="settings_antipode">🌏 Antípoda</string>
+    <string name="settings_auto_calculated">Calculado automáticamente desde la antípoda de %s</string>
+    <string name="settings_close">Cerrar</string>
+    <string name="settings_east_lon">Lon. E</string>
+    <string name="settings_north_lat">Lat. N</string>
+    <string name="settings_select_north_timezone">Seleccionar Zona Horaria Norte</string>
+    <string name="settings_selected">Seleccionado</string>
+    <string name="settings_south_lat">Lat. S</string>
+    <string name="settings_timezone_label">Zona Horaria:</string>
+    <string name="settings_timezone_select">☀️ Zona Horaria</string>
+    <string name="settings_west_lon">Lon. O</string>
+    <string msgid="3962933905051144957" name="snackbar_dismiss">"Cerrar"</string>
+    <string name="solar_term_0">Inicio de Primavera</string>
+    <string name="solar_term_1">Lluvia</string>
+    <string name="solar_term_10">Calor Menor</string>
+    <string name="solar_term_11">Calor Mayor</string>
+    <string name="solar_term_12">Inicio de Otoño</string>
+    <string name="solar_term_13">Fin del Calor</string>
+    <string name="solar_term_14">Rocío Blanco</string>
+    <string name="solar_term_15">Equinoccio de Otoño</string>
+    <string name="solar_term_16">Rocío Frío</string>
+    <string name="solar_term_17">Descenso de Escarcha</string>
+    <string name="solar_term_18">Inicio de Invierno</string>
+    <string name="solar_term_19">Nieve Menor</string>
+    <string name="solar_term_2">Despertar de Insectos</string>
+    <string name="solar_term_20">Gran Nevada</string>
+    <string name="solar_term_21">Solsticio de Invierno</string>
+    <string name="solar_term_22">Frío Menor</string>
+    <string name="solar_term_23">Frío Mayor</string>
+    <string name="solar_term_3">Equinoccio de Primavera</string>
+    <string name="solar_term_4">Claridad</string>
+    <string name="solar_term_5">Lluvia de Grano</string>
+    <string name="solar_term_6">Inicio de Verano</string>
+    <string name="solar_term_7">Brote de Grano</string>
+    <string name="solar_term_8">Grano en Espiga</string>
+    <string name="solar_term_9">Solsticio de Verano</string>
+    <string name="solar_term_label">Término Solar</string>
+    <string name="south_lunar_month_0">S. 1er Mes</string>
+    <string name="south_lunar_month_1">S. 2do Mes</string>
+    <string name="south_lunar_month_10">S. 11vo Mes</string>
+    <string name="south_lunar_month_11">S. 12vo Mes</string>
+    <string name="south_lunar_month_2">S. 3er Mes</string>
+    <string name="south_lunar_month_3">S. 4to Mes</string>
+    <string name="south_lunar_month_4">S. 5to Mes</string>
+    <string name="south_lunar_month_5">S. 6to Mes</string>
+    <string name="south_lunar_month_6">S. 7mo Mes</string>
+    <string name="south_lunar_month_7">S. 8vo Mes</string>
+    <string name="south_lunar_month_8">S. 9no Mes</string>
+    <string name="south_lunar_month_9">S. 10mo Mes</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="7189888345201419934" name="suggestions_available">"Sugerencias a continuación"</string>
+    <string msgid="2561197295334830845" name="switch_role">"Interruptor"</string>
+    <string msgid="1672349317127674378" name="tab">"Pestaña"</string>
+    <string msgid="5946805113151406391" name="template_percent">"<ns1:g id="PERCENTAGE">%1$d</ns1:g> por cien."</string>
+    <string name="tian_gan_0">甲</string>
+    <string name="tian_gan_1">乙</string>
+    <string name="tian_gan_2">丙</string>
+    <string name="tian_gan_3">丁</string>
+    <string name="tian_gan_4">戊</string>
+    <string name="tian_gan_5">己</string>
+    <string name="tian_gan_6">庚</string>
+    <string name="tian_gan_7">辛</string>
+    <string name="tian_gan_8">壬</string>
+    <string name="tian_gan_9">癸</string>
+    <string msgid="5096144640014509074" name="time_picker_am">"AM"</string>
+    <string msgid="7241191970823415723" name="time_picker_hour">"Hora"</string>
+    <string msgid="4149641012513526783" name="time_picker_hour_24h_suffix">"%1$d horas"</string>
+    <string msgid="6081676287789101196" name="time_picker_hour_selection">"Seleccionar hora"</string>
+    <string msgid="6952032626122080528" name="time_picker_hour_suffix">"%1$d en punto"</string>
+    <string msgid="5298761125390275834" name="time_picker_hour_text_field">"por hora"</string>
+    <string msgid="6116528647594005945" name="time_picker_minute">"Minutos"</string>
+    <string msgid="8494777394375441602" name="time_picker_minute_selection">"Seleccionar minutos"</string>
+    <string msgid="3206486707779478173" name="time_picker_minute_suffix">"%1$d minutos"</string>
+    <string msgid="994099543833979061" name="time_picker_minute_text_field">"por minutos"</string>
+    <string msgid="7352665290700284516" name="time_picker_period_toggle_description">"Selecciona AM o PM"</string>
+    <string msgid="2232702812657998674" name="time_picker_pm">"PM"</string>
+    <string name="title_changelog">Registro de Actualizaciones</string>
+    <string name="title_disclaimer">Aviso Legal</string>
+    <string name="title_eclipse">Eclipses Solares y Lunares</string>
+    <string name="title_feedback">Comentarios</string>
+    <string name="title_knowledge">Conocimiento del Calendario</string>
+    <string name="title_privacy_policy">Política de Privacidad</string>
+    <string name="title_schedule">Agenda</string>
+    <string name="title_settings">Configuración de Zona Horaria</string>
+    <string name="title_zeri">Selección de Fecha</string>
+    <string msgid="2732804537909054941" name="tooltip_long_press_label">"Mostrar descripción emergente"</string>
+    <string msgid="8191239805703103845" name="tooltip_pane_description">"Descripción emergente"</string>
+    <string name="weekday_fri">Vie</string>
+    <string name="weekday_full_fri">Viernes</string>
+    <string name="weekday_full_mon">Lunes</string>
+    <string name="weekday_full_sat">Sábado</string>
+    <string name="weekday_full_sun">Domingo</string>
+    <string name="weekday_full_thu">Jueves</string>
+    <string name="weekday_full_tue">Martes</string>
+    <string name="weekday_full_wed">Miércoles</string>
+    <string name="weekday_mon">Lun</string>
+    <string name="weekday_sat">Sáb</string>
+    <string name="weekday_sun">Dom</string>
+    <string name="weekday_thu">Jue</string>
+    <string name="weekday_tue">Mar</string>
+    <string name="weekday_wed">Mié</string>
+    <string name="wuxing_0">Madera</string>
+    <string name="wuxing_1">Fuego</string>
+    <string name="wuxing_2">Tierra</string>
+    <string name="wuxing_3">Metal</string>
+    <string name="wuxing_4">Agua</string>
+    <string name="zeri_maintenance">La selección de fecha está en mantenimiento, intente más tarde</string>
+    <string name="zodiac_0">Rata</string>
+    <string name="zodiac_1">Buey</string>
+    <string name="zodiac_10">Perro</string>
+    <string name="zodiac_11">Cerdo</string>
+    <string name="zodiac_2">Tigre</string>
+    <string name="zodiac_3">Conejo</string>
+    <string name="zodiac_4">Dragón</string>
+    <string name="zodiac_5">Serpiente</string>
+    <string name="zodiac_6">Caballo</string>
+    <string name="zodiac_7">Cabra</string>
+    <string name="zodiac_8">Mono</string>
+    <string name="zodiac_9">Gallo</string>
+</resources>

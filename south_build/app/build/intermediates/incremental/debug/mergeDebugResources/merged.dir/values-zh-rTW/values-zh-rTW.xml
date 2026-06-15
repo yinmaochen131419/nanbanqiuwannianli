@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">南半球萬年曆</string>
+    <string msgid="6128938260108474660" name="bottom_sheet_collapse_description">"收合底部功能表"</string>
+    <string msgid="1918297411568599192" name="bottom_sheet_dismiss_description">"關閉底部功能表"</string>
+    <string msgid="7772321844937772780" name="bottom_sheet_drag_handle_description">"拖曳控點"</string>
+    <string msgid="4324434199045499117" name="bottom_sheet_expand_description">"展開底部功能表"</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"接聽"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"視訊"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"拒接"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"掛斷"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"來電"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"通話中"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"正在過濾來電"</string>
+    <string name="changelog_empty">暫無更新記錄</string>
+    <string msgid="406453423630273620" name="close_drawer">"關閉導覽選單"</string>
+    <string msgid="7573152094250666567" name="close_sheet">"關閉功能表"</string>
+    <string msgid="5389587048670450460" name="collapsed">"已收合"</string>
+    <string name="common_add">添加</string>
+    <string name="common_back">返回</string>
+    <string name="common_cancel">取消</string>
+    <string name="common_confirm">確認</string>
+    <string name="common_day">日</string>
+    <string name="common_delete">刪除</string>
+    <string name="common_menu">選單</string>
+    <string name="common_month">月</string>
+    <string name="common_ok">確定</string>
+    <string name="common_save">保存</string>
+    <string name="common_year">年</string>
+    <string msgid="3499643850558715142" name="date_input_headline">"輸入的日期"</string>
+    <string msgid="8562356184193964298" name="date_input_headline_description">"輸入的日期：%1$s"</string>
+    <string msgid="5281836720766682161" name="date_input_invalid_for_pattern">"日期格式不符：%1$s"</string>
+    <string msgid="6114792992433444995" name="date_input_invalid_not_allowed">"不允許的日期：%1$s"</string>
+    <string msgid="8434112129235255568" name="date_input_invalid_year_range">"日期超出預期的年份範圍：%1$s - %2$s"</string>
+    <string msgid="5194825853981987218" name="date_input_label">"日期"</string>
+    <string msgid="5722931102250207748" name="date_input_no_input_description">"無"</string>
+    <string msgid="3010396677286327048" name="date_input_title">"選取日期"</string>
+    <string msgid="2846784065735639969" name="date_picker_headline">"所選日期"</string>
+    <string msgid="4627306862713137085" name="date_picker_headline_description">"目前選項：%1$s"</string>
+    <string msgid="5152441868029453612" name="date_picker_navigate_to_year_description">"前往 %1$s 年"</string>
+    <string msgid="5724377114289981899" name="date_picker_no_selection_description">"無"</string>
+    <string msgid="8911933542023210271" name="date_picker_scroll_to_earlier_years">"捲動即可顯示先前的年分"</string>
+    <string msgid="3226341140390493774" name="date_picker_scroll_to_later_years">"捲動即可顯示之後的年分"</string>
+    <string msgid="9029369254443419167" name="date_picker_switch_to_calendar_mode">"切換至日曆輸入模式"</string>
+    <string msgid="145089358343568971" name="date_picker_switch_to_day_selection">"滑動可選取年分，也可輕觸返回選取日期"</string>
+    <string msgid="1496750567914156598" name="date_picker_switch_to_input_mode">"切換至文字輸入模式"</string>
+    <string msgid="8313783187901412102" name="date_picker_switch_to_next_month">"改成下個月"</string>
+    <string msgid="7596294429748914881" name="date_picker_switch_to_previous_month">"改成上個月"</string>
+    <string msgid="3412370019845183965" name="date_picker_switch_to_year_selection">"改為選取年份"</string>
+    <string msgid="9208721003668059792" name="date_picker_title">"選取日期"</string>
+    <string msgid="4775802721403526937" name="date_picker_today_description">"今天"</string>
+    <string msgid="8140324713311804736" name="date_picker_year_picker_pane_title">"顯示年份挑選器"</string>
+    <string msgid="1891592555781755601" name="date_range_input_invalid_range_input">"輸入的日期範圍無效"</string>
+    <string msgid="2366412111888449406" name="date_range_input_title">"輸入日期"</string>
+    <string msgid="9048690781645835833" name="date_range_picker_day_in_range">"在指定日期範圍內"</string>
+    <string msgid="4766270708882012148" name="date_range_picker_end_headline">"結束日期"</string>
+    <string msgid="51495506931835470" name="date_range_picker_scroll_to_next_month">"捲動即可顯示下一個月"</string>
+    <string msgid="4371570854614540700" name="date_range_picker_scroll_to_previous_month">"捲動即可顯示上一個月"</string>
+    <string msgid="5759491386723090559" name="date_range_picker_start_headline">"開始日期"</string>
+    <string msgid="690080476639943577" name="date_range_picker_title">"選取日期"</string>
+    <string msgid="8038256446254964252" name="default_error_message">"輸入內容無效"</string>
+    <string msgid="6312721426453364202" name="default_popup_window_title">"彈出式視窗"</string>
+    <string name="di_zhi_0">子</string>
+    <string name="di_zhi_1">丑</string>
+    <string name="di_zhi_10">戌</string>
+    <string name="di_zhi_11">亥</string>
+    <string name="di_zhi_2">寅</string>
+    <string name="di_zhi_3">卯</string>
+    <string name="di_zhi_4">辰</string>
+    <string name="di_zhi_5">巳</string>
+    <string name="di_zhi_6">午</string>
+    <string name="di_zhi_7">未</string>
+    <string name="di_zhi_8">申</string>
+    <string name="di_zhi_9">酉</string>
+    <string msgid="4057925834421392736" name="dialog">"對話方塊"</string>
+    <string name="disclaimer_text">【重要提示：請仔細閱讀本免責聲明】\n\n本應用（南半球曆法）是一款基於中國傳統曆法文化並結合南半球地理特徵的曆法工具軟件，所有功能（包括但不限於擇日、四柱八字、節氣換算、月相翻轉、星宿顯示、科里奧利力分析等）均來源於中國傳統民俗文化研究與現代天文學知識，僅供學習、研究、交流之用。\n\n一、文化研究定位\n本應用提供的所有曆法計算、八卦推演、吉凶推斷等信息，均基於傳統古籍算法和民俗文化理論，屬於傳統文化研究範疇，不構成任何形式的預測、占卜或迷信行為。\n\n二、非決策依據\n本應用輸出的任何信息（包括但不限於吉日推薦、時辰吉凶、星宿分析等）均不得作為以下用途的決策依據：\n（1）婚喪嫁娶、喬遷開業等重要生活決策；\n（2）醫療健康、投資理財、法律事務等專業領域決策；\n（3）任何可能產生法律後果的行為決策。\n\n三、責任豁免\n用戶使用本應用即表示已充分理解並同意：\n（1）本應用開發者不對因使用或信賴本應用信息而產生的任何直接或間接損失承擔責任；\n（2）用戶應自行判斷信息的適用性，並獨立承擔使用後果；\n（3）本應用有權在另行不通知的情況下修改功能和內容。\n\n四、合規聲明\n本應用嚴格遵守《中華人民共和國網絡安全法》《互聯網信息服務管理辦法》等相關法律法規，不傳播封建迷信內容，堅持傳統文化研究交流定位。\n\n五、知識產權\n本應用中的算法邏輯、代碼實現、界面設計均受知識產權保護，未經授權不得複製、修改或用於商業用途。\n\n如您不同意以上條款，請立即停止使用本應用並卸載。</string>
+    <string name="drawer_title">南半球曆法</string>
+    <string msgid="1890207353314751437" name="dropdown_menu">"下拉式選單"</string>
+    <string msgid="5974471714631304645" name="expanded">"已展開"</string>
+    <string name="feedback_email_subject">南半球萬年曆意見反饋</string>
+    <string name="feedback_error_empty">請輸入反饋內容</string>
+    <string name="feedback_error_no_email">無法打開郵件應用，請檢查是否安裝了郵件客戶端</string>
+    <string name="feedback_error_prohibited">內容包含違規詞彙，請修改後提交</string>
+    <string name="feedback_intro">感謝您使用南半球萬年曆！\n如有任何意見或建議，請在此輸入，我們將認真對待每一條反饋。</string>
+    <string name="feedback_placeholder">請輸入您的意見或建議...</string>
+    <string name="feedback_submit">提交反饋</string>
+    <string name="format_month">%s月</string>
+    <string name="format_solar_term_datetime">%1$s年公曆%2$s月%3$d日%4$02d:%5$02d</string>
+    <string name="format_solar_term_local_datetime">%1$s年公曆%2$s月%3$d日%4$02d:%5$02d</string>
+    <string name="format_year">%s年</string>
+    <string name="format_year_month">%1$s年%2$s月</string>
+    <string name="four_symbol_0">青龍</string>
+    <string name="four_symbol_1">白虎</string>
+    <string name="four_symbol_2">朱雀</string>
+    <string name="four_symbol_3">玄武</string>
+    <string name="gregorian_day">日</string>
+    <string name="gregorian_label">公曆</string>
+    <string name="gregorian_month">月</string>
+    <string name="gregorian_year">年</string>
+    <string name="home_calendar_conversion">北半球曆法   換算   南半球曆法</string>
+    <string name="home_daily_star">值日星宿</string>
+    <string name="home_day_pillar">日柱</string>
+    <string name="home_days_later">%d天後</string>
+    <string name="home_decrease">減一</string>
+    <string name="home_four_pillars">四柱八字</string>
+    <string name="home_ganzhi">干支</string>
+    <string name="home_hour_pillar">時柱</string>
+    <string name="home_increase">加一</string>
+    <string name="home_leap_month">閏月</string>
+    <string name="home_lunar_calendar">農曆</string>
+    <string name="home_month_pillar">月柱</string>
+    <string name="home_moon_phase">月相</string>
+    <string name="home_moon_star">月躔星宿</string>
+    <string name="home_next_month">下個月</string>
+    <string name="home_no">否</string>
+    <string name="home_no_solar_term">暫無節氣數據</string>
+    <string name="home_north_hemisphere">☀️北半球</string>
+    <string name="home_north_lunar">北農曆</string>
+    <string name="home_north_season">北半球季節</string>
+    <string name="home_north_solar">北半球陽曆</string>
+    <string name="home_north_term">北節</string>
+    <string name="home_prev_month">上個月</string>
+    <string name="home_reference">參考</string>
+    <string name="home_select_year_month">選擇年月</string>
+    <string name="home_solar_calendar">公曆</string>
+    <string name="home_solar_star">日躔星宿</string>
+    <string name="home_solar_term">節氣</string>
+    <string name="home_solar_term_conversion">北半球節氣   換算   南半球節氣</string>
+    <string name="home_south_hemisphere">🌏南半球</string>
+    <string name="home_south_lunar">南農曆</string>
+    <string name="home_south_season">南半球季節</string>
+    <string name="home_south_solar">南半球陽曆</string>
+    <string name="home_south_term">南節</string>
+    <string name="home_time_diff">時差</string>
+    <string name="home_title">北半球曆法 換算 南半球曆法</string>
+    <string name="home_today">今天</string>
+    <string name="home_weekday">星期</string>
+    <string name="home_year_pillar">年柱</string>
+    <string name="home_yes">是</string>
+    <string name="home_zodiac">生肖</string>
+    <string msgid="6827826412747255547" name="in_progress">"處理中"</string>
+    <string msgid="7933458017204019916" name="indeterminate">"部分檢查"</string>
+    <string name="knowledge_content_1">北半球與南半球的季節完全相反，當北半球是夏季時，南半球是冬季。\n\n【陽曆換算】南半球月份 = 北半球月份 + 6（超過12則減12），年份根據是否跨年調整。\n例：北半球2026年1月 → 南半球2025年7月；北半球2026年7月 → 南半球2026年1月。\n\n【農曆換算】南半球農曆月份 = 北半球農曆月份 + 6（超過12則減12），閏月同步偏移。\n南半球閏月 = (北半球閏月 + 6 - 1) % 12 + 1。\n\n【太極對立日】南半球農曆日 = 北半球農曆日 + 15（超過當月天數則減當月天數，月份進位）。\n例：北半球農曆四月十八 → 南半球農曆十月初三（18+15=33，減29天=4，次月初四）。\n\n太極對立日的本質：農曆日+15意味著在朔望月圓上相隔180°，月相形態恰好翻轉。</string>
+    <string name="knowledge_content_2">【核心原理】月相是連接南北半球曆法的天然驗證工具。\n月相由月球繞地球公轉產生，全球同一時刻月相相同，但南北半球看到的亮面朝向呈鏡像對稱。\n\n【月相對照表】\n北半球：新月 → D形蛾眉月 → 上弦月（右半亮）→ 盈凸月 → 滿月\n南半球：新月 → 反D形蛾眉月 → 上弦月（左半亮）→ 盈凸月 → 滿月\n\n滿月在全球各地一樣圓，但漸圓的方向相反：\n中國的月亮D形漸圓，阿根廷的反D形漸圓，殊途同歸，一樣圓。\n\n【通過月相驗證南半球農曆日期】\n1. 觀測當天月相，確定農曆日數（全球一致）\n2. 北半球農曆日 + 15 = 南半球太極對立日\n3. 例：北半球農曆初八（上弦月）→ 南半球農曆二十三（下弦月）\n4. 驗證：初八的月相（右半亮）與二十三的月相（左半亮）恰好鏡像對稱\n\n【統一與對立】\n· 統一：月相日數全球一致，滿月全球同圓\n· 對立：亮面朝向鏡像對面朝向鏡像對稱，漸圓方向相反\n· 太極：朔望圓上相隔180°，正是太極雙魚圖的旋轉對稱</string>
+    <string name="knowledge_content_3">節氣本質反映太陽黃經位置，南北半球同一時刻看到的太陽位置對稱相反。\n\n【對應關係】\n北半球立春 ↔ 南半球立秋\n北半球雨水 ↔ 南半球處暑\n北半球驚蟄 ↔ 南半球白露\n北半球春分 ↔ 南半球秋分\n北半球清明 ↔ 南半球寒露\n北半球穀雨 ↔ 南半球霜降\n北半球立夏 ↔ 南半球立冬\n北半球小滿 ↔ 南半球小雪\n北半球芒種 ↔ 南半球大雪\n北半球夏至 ↔ 南半球冬至\n\n規律：北半球第N個節氣 ↔ 南半球第(N+12)個節氣（超過24則減24）</string>
+    <string name="knowledge_content_4">北半球用北斗七星斗柄指向定季節，南半球無法觀測北斗七星和北極星，需用其他星象。\n\n【半人馬座指針法】\n半人馬座是南半球最接近北斗七星功能的星象。南門二（α Centauri）和馬腹一（β Centauri）\n連線向南延伸約4.5倍距離指向南天極，可建立類似斗柄指向的季節系統。\n南門二和馬腹一連線指向正南時為南半球冬季（6月），指向正東時為春季（9月）。\n\n【天蠍座心宿二法】\n心宿二（Antares）是南北半球共用的季節星，亮度1.0等，夏季傍晚出現在南方天空。\n北半球：心宿二傍晚高懸 → 夏季；南半球：心宿二傍晚高懸 → 冬季。\n季節含義恰好相反，符合太極對稱原理。心宿二法精度最高。\n\n【老人星法】\n老人星（Canopus）亮度-0.74等，是全天第二亮星。其高度角變化規律：\n南半球冬季傍晚高度角最高，夏季傍晚高度角最低，可作為季節輔助標誌。\n\n【麥哲倫星雲法】\n大小麥哲倫星雲圍繞南天極旋轉，其與南天極連線的方位角變化可輔助判斷季節。\n大麥哲倫星雲位於南天極偏東南時為南半球夏季，偏西北時為冬季。\n\n【綜合驗證方案】\n1. 心宿二法為主（精度最高，南北半球共用）\n2. 半人馬座指針法為輔（功能最接近北斗七星）\n3. 老人星和麥哲倫星雲作為交叉驗證\n4. 所有星象的季節含義與北半球相反，體現太極對稱</string>
+    <string name="knowledge_content_5">月球亮面朝向在南北半球視覺上呈鏡像對稱。\n\n北半球上弦月亮面在右側（D形），南半球上弦月亮面在左側（反D形）。\n\n本應用通過月相符號旋轉180°來體現這一差異：北半球用☾，南半球用☽。\n\n【月相名稱與視覺差異】\n月相名稱定義的是月亮在軌道上的位置，而非視覺亮面朝向。\n同一時刻月亮在軌道上位置唯一，故月相名稱全球一致。\n南北半球月相視覺差異僅在於亮面左右朝向不同。\n\n【南半球月相名稱（按目視）】\n北半球蛾眉月 → 南半球殘月（目視）\n北半球上弦月 → 南半球下弦月（目視）\n北半球盈凸月 → 南半球虧凸月（目視）\n北半球滿月 → 南半球滿月（不變）\n本應用中南半球月相名稱已按目視反向互換，圖標保持左右鏡像。</string>
+    <string name="knowledge_content_6_intro">科里奧利力是地球自轉產生的慣性力，影響大尺度運動系統的旋轉方向。</string>
+    <string name="knowledge_content_6_math">數學本質：F = -2m(ω × v)，其中ω為地球自轉角速度矢量。\n\n在北半球，科里奧利力使運動物體向右偏轉；在南半球向左偏轉。\n\n尺度效應：只有幾百公里以上的大尺度系統（颱風、大洋環流）才受顯著影響，小尺度（浴缸排水）不受影響。</string>
+    <string name="knowledge_content_6_row1_north">逆時針 ↺</string>
+    <string name="knowledge_content_6_row1_south">順時針 ↻</string>
+    <string name="knowledge_content_6_row1_system">颱風/颶風/氣旋（低壓）</string>
+    <string name="knowledge_content_6_row2_north">順時針 ↻</string>
+    <string name="knowledge_content_6_row2_south">逆時針 ↺</string>
+    <string name="knowledge_content_6_row2_system">反氣旋（高壓系統）</string>
+    <string name="knowledge_content_6_row3_north">順時針 ↻</string>
+    <string name="knowledge_content_6_row3_south">逆時針 ↺</string>
+    <string name="knowledge_content_6_row3_system">大洋環流（副熱帶）</string>
+    <string name="knowledge_content_6_row4_north">逆時針</string>
+    <string name="knowledge_content_6_row4_south">順時針</string>
+    <string name="knowledge_content_6_row4_system">地球自轉方向</string>
+    <string name="knowledge_content_6_table_header_north">北半球</string>
+    <string name="knowledge_content_6_table_header_south">南半球</string>
+    <string name="knowledge_content_6_table_header_system">系統類型</string>
+    <string name="knowledge_content_7">四柱八字（年柱、月柱、日柱、時柱）基於當地時辰計算。\n\n【時辰與當地時間】\n時辰對應當地太陽時，不同時區的同一時刻可能屬於不同時辰。\n本應用支持選擇不同城市時區，自動計算當地時辰對應的四柱。\n\n【南北半球四柱差異】\n年柱：以立春為界，南北半球立春相差6個月，年柱可能不同。\n月柱：以節氣為界，南北半球節氣對稱相反，月柱地支不同。\n日柱：以子時為界，不同時區可能跨日，日柱可能不同。\n時柱：直接取決於當地時辰，不同時區必然不同。\n\n本應用確保南北半球城市時差嚴格為12小時，使四柱呈太極對稱。</string>
+    <string name="knowledge_content_8">【值日星宿】28宿按固定順序逐日輪值，全球統一，不分南北半球。\n值日星宿基於干支紀日，干支紀日通過儒略日轉換，全球統一。\n基準校準：2025年1月1日為參宿（index 20）。\n\n【月躔星宿】月球在黃道上的位置所對應的星宿，反映月球的實際天文位置。\n月躔星宿通過天文算法計算月球黃經，再匹配28宿邊界確定。\n\n兩者均為全球統一的天文現象，不因南北半球而改變。</string>
+    <string name="knowledge_content_9">傳統中國曆法基於北半球天文觀測制定，直接應用於南半球存在季節錯位。\n\n南半球曆法通過太極對稱原理，將北半球曆法系統轉換為南半球對應體系。\n\n這使得南半球的華人社區也能使用符合當地季節的農曆系統。\n\n【太極對稱的哲學基礎】\n太極雙魚圖揭示：對立統一是宇宙的基本法則。\n北半球與南半球的曆法關係，正是太極雙魚圖的現實映射：\n· 陽曆月份+6，如雙魚旋轉180°\n· 農曆日+15，如朔望圓上對徑點\n· 節氣對稱，如陰陽消長互根\n· 月相鏡像，如雙魚眼的對望</string>
+    <string name="knowledge_section_1">一、南北半球曆法換算原理</string>
+    <string name="knowledge_section_2">二、月相翻轉 · 太極驗證</string>
+    <string name="knowledge_section_3">三、南半球節氣對應關係</string>
+    <string name="knowledge_section_4">四、南半球星象定節氣</string>
+    <string name="knowledge_section_5">五、月相與南北半球</string>
+    <string name="knowledge_section_6">六、科里奧利力與旋轉方向</string>
+    <string name="knowledge_section_7">七、四柱八字與時辰</string>
+    <string name="knowledge_section_8">八、值日星宿與月躔星宿</string>
+    <string name="knowledge_section_9">九、南半球曆法的意義</string>
+    <string name="lang_english">English</string>
+    <string name="lang_restart_hint">切換語言後將重新啟動應用</string>
+    <string name="lang_settings">語言設置</string>
+    <string name="lang_simplified_chinese">簡體中文</string>
+    <string name="lang_traditional_chinese">繁體中文</string>
+    <string name="leap_month_prefix">閏</string>
+    <string name="lunar_day_0">初一</string>
+    <string name="lunar_day_1">初二</string>
+    <string name="lunar_day_10">十一</string>
+    <string name="lunar_day_11">十二</string>
+    <string name="lunar_day_12">十三</string>
+    <string name="lunar_day_13">十四</string>
+    <string name="lunar_day_14">十五</string>
+    <string name="lunar_day_15">十六</string>
+    <string name="lunar_day_16">十七</string>
+    <string name="lunar_day_17">十八</string>
+    <string name="lunar_day_18">十九</string>
+    <string name="lunar_day_19">二十</string>
+    <string name="lunar_day_2">初三</string>
+    <string name="lunar_day_20">廿一</string>
+    <string name="lunar_day_21">廿二</string>
+    <string name="lunar_day_22">廿三</string>
+    <string name="lunar_day_23">廿四</string>
+    <string name="lunar_day_24">廿五</string>
+    <string name="lunar_day_25">廿六</string>
+    <string name="lunar_day_26">廿七</string>
+    <string name="lunar_day_27">廿八</string>
+    <string name="lunar_day_28">廿九</string>
+    <string name="lunar_day_29">三十</string>
+    <string name="lunar_day_3">初四</string>
+    <string name="lunar_day_4">初五</string>
+    <string name="lunar_day_5">初六</string>
+    <string name="lunar_day_6">初七</string>
+    <string name="lunar_day_7">初八</string>
+    <string name="lunar_day_8">初九</string>
+    <string name="lunar_day_9">初十</string>
+    <string name="lunar_month_1">正月</string>
+    <string name="lunar_month_10">十月</string>
+    <string name="lunar_month_11">冬月</string>
+    <string name="lunar_month_12">臘月</string>
+    <string name="lunar_month_2">二月</string>
+    <string name="lunar_month_3">三月</string>
+    <string name="lunar_month_4">四月</string>
+    <string name="lunar_month_5">五月</string>
+    <string name="lunar_month_6">六月</string>
+    <string name="lunar_month_7">七月</string>
+    <string name="lunar_month_8">八月</string>
+    <string name="lunar_month_9">九月</string>
+    <string name="mansion_0">角</string>
+    <string name="mansion_1">亢</string>
+    <string name="mansion_10">虛</string>
+    <string name="mansion_11">危</string>
+    <string name="mansion_12">室</string>
+    <string name="mansion_13">壁</string>
+    <string name="mansion_14">奎</string>
+    <string name="mansion_15">婁</string>
+    <string name="mansion_16">胃</string>
+    <string name="mansion_17">昴</string>
+    <string name="mansion_18">畢</string>
+    <string name="mansion_19">觜</string>
+    <string name="mansion_2">氐</string>
+    <string name="mansion_20">參</string>
+    <string name="mansion_21">井</string>
+    <string name="mansion_22">鬼</string>
+    <string name="mansion_23">柳</string>
+    <string name="mansion_24">星</string>
+    <string name="mansion_25">張</string>
+    <string name="mansion_26">翼</string>
+    <string name="mansion_27">軫</string>
+    <string name="mansion_3">房</string>
+    <string name="mansion_4">心</string>
+    <string name="mansion_5">尾</string>
+    <string name="mansion_6">箕</string>
+    <string name="mansion_7">斗</string>
+    <string name="mansion_8">牛</string>
+    <string name="mansion_9">女</string>
+    <string name="menu_changelog">更新日誌</string>
+    <string name="menu_disclaimer">免責聲明</string>
+    <string name="menu_feedback">意見反饋</string>
+    <string name="menu_home">首頁</string>
+    <string name="menu_knowledge">曆法知識</string>
+    <string name="menu_schedule">日程管理</string>
+    <string name="menu_settings">時區設置</string>
+    <string name="month_name_1">1</string>
+    <string name="month_name_10">10</string>
+    <string name="month_name_11">11</string>
+    <string name="month_name_12">12</string>
+    <string name="month_name_2">2</string>
+    <string name="month_name_3">3</string>
+    <string name="month_name_4">4</string>
+    <string name="month_name_5">5</string>
+    <string name="month_name_6">6</string>
+    <string name="month_name_7">7</string>
+    <string name="month_name_8">8</string>
+    <string name="month_name_9">9</string>
+    <string name="moon_phase_0">新月</string>
+    <string name="moon_phase_1">蛾眉月</string>
+    <string name="moon_phase_2">上弦月</string>
+    <string name="moon_phase_3">盈凸月</string>
+    <string name="moon_phase_4">滿月</string>
+    <string name="moon_phase_5">虧凸月</string>
+    <string name="moon_phase_6">下弦月</string>
+    <string name="moon_phase_7">殘月</string>
+    <string msgid="542007171693138492" name="navigation_menu">"導覽選單"</string>
+    <string name="north_lunar_month_0">北正月</string>
+    <string name="north_lunar_month_1">北二月</string>
+    <string name="north_lunar_month_10">北十一月</string>
+    <string name="north_lunar_month_11">北十二月</string>
+    <string name="north_lunar_month_2">北三月</string>
+    <string name="north_lunar_month_3">北四月</string>
+    <string name="north_lunar_month_4">北五月</string>
+    <string name="north_lunar_month_5">北六月</string>
+    <string name="north_lunar_month_6">北七月</string>
+    <string name="north_lunar_month_7">北八月</string>
+    <string name="north_lunar_month_8">北九月</string>
+    <string name="north_lunar_month_9">北十月</string>
+    <string msgid="6610465462668679431" name="not_selected">"未選取"</string>
+    <string msgid="875452955155264703" name="off">"已關閉"</string>
+    <string msgid="8655164131929253426" name="on">"已開啟"</string>
+    <string msgid="5941395253238309765" name="range_end">"範圍終點"</string>
+    <string msgid="7097486360902471446" name="range_start">"範圍起點"</string>
+    <string name="schedule_add">添加日程</string>
+    <string name="schedule_cancel">取消</string>
+    <string name="schedule_countdown">距今 %d 天</string>
+    <string name="schedule_delete">刪除</string>
+    <string name="schedule_delete_confirm">確認刪除</string>
+    <string name="schedule_delete_message">確定要刪除「%s」嗎？</string>
+    <string name="schedule_edit">編輯日程</string>
+    <string name="schedule_empty">暫無日程</string>
+    <string name="schedule_empty_hint">點擊右下角 + 添加新日程</string>
+    <string name="schedule_expired">已過期</string>
+    <string name="schedule_lunar_date_label">農曆日期</string>
+    <string name="schedule_lunar_prefix">農曆</string>
+    <string name="schedule_note_label">備註</string>
+    <string name="schedule_recurring">每年</string>
+    <string name="schedule_recurring_label">每年重複</string>
+    <string name="schedule_save">保存</string>
+    <string name="schedule_tab_all">全部</string>
+    <string name="schedule_tab_anniversary">紀念</string>
+    <string name="schedule_tab_birthday">生日</string>
+    <string name="schedule_tab_meeting">會議</string>
+    <string name="schedule_tab_todo">待辦</string>
+    <string name="schedule_title_label">標題</string>
+    <string name="schedule_type_label">類型</string>
+    <string msgid="6420018528474762666" name="search_bar_search">"搜尋"</string>
+    <string name="season_0">春</string>
+    <string name="season_1">夏</string>
+    <string name="season_2">秋</string>
+    <string name="season_3">冬</string>
+    <string msgid="6043586758067023" name="selected">"已選取"</string>
+    <string name="settings_antipode">🌏 對蹠點</string>
+    <string name="settings_auto_calculated">由%s對蹠自動推算</string>
+    <string name="settings_close">關閉</string>
+    <string name="settings_east_lon">東經</string>
+    <string name="settings_north_lat">北緯</string>
+    <string name="settings_select_north_timezone">選擇北半球時區</string>
+    <string name="settings_selected">已選擇</string>
+    <string name="settings_south_lat">南緯</string>
+    <string name="settings_timezone_label">時區:</string>
+    <string name="settings_timezone_select">☀️時區選擇</string>
+    <string name="settings_west_lon">西經</string>
+    <string msgid="3962933905051144957" name="snackbar_dismiss">"關閉"</string>
+    <string name="solar_term_0">立春</string>
+    <string name="solar_term_1">雨水</string>
+    <string name="solar_term_10">小暑</string>
+    <string name="solar_term_11">大暑</string>
+    <string name="solar_term_12">立秋</string>
+    <string name="solar_term_13">處暑</string>
+    <string name="solar_term_14">白露</string>
+    <string name="solar_term_15">秋分</string>
+    <string name="solar_term_16">寒露</string>
+    <string name="solar_term_17">霜降</string>
+    <string name="solar_term_18">立冬</string>
+    <string name="solar_term_19">小雪</string>
+    <string name="solar_term_2">驚蟄</string>
+    <string name="solar_term_20">大雪</string>
+    <string name="solar_term_21">冬至</string>
+    <string name="solar_term_22">小寒</string>
+    <string name="solar_term_23">大寒</string>
+    <string name="solar_term_3">春分</string>
+    <string name="solar_term_4">清明</string>
+    <string name="solar_term_5">穀雨</string>
+    <string name="solar_term_6">立夏</string>
+    <string name="solar_term_7">小滿</string>
+    <string name="solar_term_8">芒種</string>
+    <string name="solar_term_9">夏至</string>
+    <string name="solar_term_label">節氣</string>
+    <string name="south_lunar_month_0">南正月</string>
+    <string name="south_lunar_month_1">南二月</string>
+    <string name="south_lunar_month_10">南十一月</string>
+    <string name="south_lunar_month_11">南十二月</string>
+    <string name="south_lunar_month_2">南三月</string>
+    <string name="south_lunar_month_3">南四月</string>
+    <string name="south_lunar_month_4">南五月</string>
+    <string name="south_lunar_month_5">南六月</string>
+    <string name="south_lunar_month_6">南七月</string>
+    <string name="south_lunar_month_7">南八月</string>
+    <string name="south_lunar_month_8">南九月</string>
+    <string name="south_lunar_month_9">南十月</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="7189888345201419934" name="suggestions_available">"建議如下"</string>
+    <string msgid="2561197295334830845" name="switch_role">"切換鈕"</string>
+    <string msgid="1672349317127674378" name="tab">"Tab 鍵"</string>
+    <string msgid="5946805113151406391" name="template_percent">"百分之 <ns1:g id="PERCENTAGE">%1$d</ns1:g>。"</string>
+    <string name="tian_gan_0">甲</string>
+    <string name="tian_gan_1">乙</string>
+    <string name="tian_gan_2">丙</string>
+    <string name="tian_gan_3">丁</string>
+    <string name="tian_gan_4">戊</string>
+    <string name="tian_gan_5">己</string>
+    <string name="tian_gan_6">庚</string>
+    <string name="tian_gan_7">辛</string>
+    <string name="tian_gan_8">壬</string>
+    <string name="tian_gan_9">癸</string>
+    <string msgid="5096144640014509074" name="time_picker_am">"上午"</string>
+    <string msgid="7241191970823415723" name="time_picker_hour">"小時"</string>
+    <string msgid="4149641012513526783" name="time_picker_hour_24h_suffix">"%1$d 時"</string>
+    <string msgid="6081676287789101196" name="time_picker_hour_selection">"選取小時"</string>
+    <string msgid="6952032626122080528" name="time_picker_hour_suffix">"%1$d 點"</string>
+    <string msgid="5298761125390275834" name="time_picker_hour_text_field">"小時"</string>
+    <string msgid="6116528647594005945" name="time_picker_minute">"分鐘"</string>
+    <string msgid="8494777394375441602" name="time_picker_minute_selection">"選取分鐘"</string>
+    <string msgid="3206486707779478173" name="time_picker_minute_suffix">"%1$d 分鐘"</string>
+    <string msgid="994099543833979061" name="time_picker_minute_text_field">"分鐘"</string>
+    <string msgid="7352665290700284516" name="time_picker_period_toggle_description">"選取上午或下午"</string>
+    <string msgid="2232702812657998674" name="time_picker_pm">"下午"</string>
+    <string name="title_changelog">更新日誌</string>
+    <string name="title_disclaimer">免責聲明</string>
+    <string name="title_eclipse">日食月食</string>
+    <string name="title_feedback">意見反饋</string>
+    <string name="title_knowledge">曆法知識</string>
+    <string name="title_schedule">日程管理</string>
+    <string name="title_settings">時區設置</string>
+    <string name="title_zeri">擇日</string>
+    <string msgid="2732804537909054941" name="tooltip_long_press_label">"顯示工具提示"</string>
+    <string msgid="8191239805703103845" name="tooltip_pane_description">"工具提示"</string>
+    <string name="weekday_fri">五</string>
+    <string name="weekday_full_fri">星期五</string>
+    <string name="weekday_full_mon">星期一</string>
+    <string name="weekday_full_sat">星期六</string>
+    <string name="weekday_full_sun">星期日</string>
+    <string name="weekday_full_thu">星期四</string>
+    <string name="weekday_full_tue">星期二</string>
+    <string name="weekday_full_wed">星期三</string>
+    <string name="weekday_mon">一</string>
+    <string name="weekday_sat">六</string>
+    <string name="weekday_sun">日</string>
+    <string name="weekday_thu">四</string>
+    <string name="weekday_tue">二</string>
+    <string name="weekday_wed">三</string>
+    <string name="wuxing_0">木</string>
+    <string name="wuxing_1">火</string>
+    <string name="wuxing_2">土</string>
+    <string name="wuxing_3">金</string>
+    <string name="wuxing_4">水</string>
+    <string name="zeri_maintenance">擇日功能維護中，請稍後再試</string>
+    <string name="zodiac_0">鼠</string>
+    <string name="zodiac_1">牛</string>
+    <string name="zodiac_10">狗</string>
+    <string name="zodiac_11">豬</string>
+    <string name="zodiac_2">虎</string>
+    <string name="zodiac_3">兔</string>
+    <string name="zodiac_4">龍</string>
+    <string name="zodiac_5">蛇</string>
+    <string name="zodiac_6">馬</string>
+    <string name="zodiac_7">羊</string>
+    <string name="zodiac_8">猴</string>
+    <string name="zodiac_9">雞</string>
+</resources>
