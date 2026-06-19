@@ -2,6 +2,7 @@
 
 # ☯ 南半球万年历
 
+[在线预览效果](https://yinmaochen131419.github.io/nanbanqiuwannianli/)
 > 「太极生两仪——北半球庆春之际，南半球正逢金秋。」
 
 ## 项目愿景
