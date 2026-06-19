@@ -4,6 +4,7 @@ drawable ic_launcher
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 mipmap ic_launcher
+mipmap ic_launcher_round
 string app_name
 string changelog_empty
 string common_add
@@ -72,6 +73,7 @@ string home_north_hemisphere
 string home_north_lunar
 string home_north_season
 string home_north_solar
+string home_north_solar_date
 string home_north_term
 string home_prev_month
 string home_reference
@@ -241,6 +243,8 @@ string north_lunar_month_6
 string north_lunar_month_7
 string north_lunar_month_8
 string north_lunar_month_9
+string opensource_text
+string privacy_policy_text
 string schedule_add
 string schedule_cancel
 string schedule_countdown
@@ -331,6 +335,8 @@ string title_disclaimer
 string title_eclipse
 string title_feedback
 string title_knowledge
+string title_opensource
+string title_privacy_policy
 string title_schedule
 string title_settings
 string title_zeri

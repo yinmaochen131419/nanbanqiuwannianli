@@ -73,7 +73,9 @@ object XiuBoundary {
     )
 
     fun findXiu(eclipticLon: Double): Int {
-        val n = (eclipticLon % 360.0 + 360.0) % 360.0
+        val raw = (eclipticLon % 360.0 + 360.0) % 360.0
+        // 归一化到6位小数，消除浮点运算精度误差
+        val n = Math.round(raw * 1e6) / 1e6
         for (i in 0 until 28) {
             val start = XIU_STARS[i].eclipticLonJ2000
             val end = XIU_STARS[(i + 1) % 28].eclipticLonJ2000

@@ -993,19 +993,6 @@ library {
   repo_index {
   }
 }
-library {
-  maven_library {
-    groupId: "cn.6tail"
-    artifactId: "lunar"
-    version: "1.7.7"
-  }
-  digests {
-    sha256: "\fL:\202s3\263\342\375%\264\021\351\006s\230\365\212\353\230\261\350(\351;\242[\250\267\005\026Y"
-  }
-  repo_index {
-    value: 1
-  }
-}
 library_dependencies {
   library_dep_index: 1
   library_dep_index: 2
@@ -1790,7 +1777,6 @@ module_dependencies {
   dependency_index: 76
   dependency_index: 82
   dependency_index: 83
-  dependency_index: 87
 }
 repositories {
   maven_repo {

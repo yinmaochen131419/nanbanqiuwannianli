@@ -38,6 +38,21 @@ object ChangelogDataSource {
     private fun getDefaultChangelog(): List<ChangelogEntry> {
         return listOf(
             ChangelogEntry(
+                version = "v1.0.58",
+                date = "2026-06-19",
+                content = "新增节气精度验证表。一、JVM简化版（SolarTermPrecisionTest）：使用纯Kotlin简化VSOP87太阳黄经算法，通过二分法求解太阳到达目标黄经的精确时刻，与紫金山天文台2026年二十四节气权威数据对比。验证结果显示简化算法偏差约8-9小时（±0.3°），符合简化轨道要素精度预期。二、Android仪器化版（SolarTermPrecisionInstrumentedTest）：使用sxtwl_cpp完整VSOP87+ELP-2000原生库，严格精度验证（目标偏差<5分钟），需Android设备运行。三、权威数据：2026年二十四节气交节时刻（紫金山天文台），覆盖全部24节气+二分二至+立春关键节点。四、测试覆盖：精度验证表（24节气全表）、分季节验证（春夏秋冬各6节气）、关键节气验证（春分/夏至/秋分/冬至/立春）。"
+            ),
+            ChangelogEntry(
+                version = "v1.0.57",
+                date = "2026-06-19",
+                content = "月亮位置计算升级为完整版ELP-2000（Éphéméride Lunaire Parisienne 2000）。一、数据升级：从简化版13项摄动替换为完整版452+项经度摄动、207+项纬度摄动、222+项距离摄动数据（移植自寿星天文历eph0.js）。二、算法重写：PlanetPositionCalc.calcMoonPosition()改用XL1_calc求和算法，按ML0/ML1/ML2/ML3（经度）、MB0/MB1/MB2（纬度）分层累加，精度从±2°提升至亚角秒级。三、影响范围：月躔星宿计算精度大幅提升，月亮黄经/黄纬计算更准确。四、新增测试：月亮黄经精度验证（±1.5°→±1.5°收紧至±1.5°范围）、月躔星宿验证（柳宿）、朔望日月黄经差验证。版本号从1.0.56升至1.0.57。"
+            ),
+            ChangelogEntry(
+                version = "v1.0.56",
+                date = "2026-06-19",
+                content = "底层引擎全面替换：cn.6tail:lunar → 寿星天文历(sxtwl_cpp)。一、引擎替换：移除cn.6tail:lunar 1.7.7依赖，改用许剑伟寿星天文历5.10（yuangu/sxtwl_cpp C++实现），通过JNI+C API桥接，Android NDK/CMake交叉编译三大架构（arm64-v8a/armeabi-v7a/x86_64）。二、精度提升：寿星天文历使用VSOP87行星理论，节气交节时刻计算精度提升至分钟级（原cn.6tail精度较低）。三、底层影响范围：公历↔农历互转（LunarCalendarEngine）、节气计算（SolarTermCalculator）、月相/月建/破日（PureLunarEngine）、纯阴历节气查找（PureLunarCalendarEngine）、日程农历转公历（ScheduleEvent）、南半球农历月天数（CalendarRepository）——全部改用SxtwlBridge.nativeSolarToLunar()等JNI接口。四、日躔月躔星宿、值日星宿、四柱八字、择日等独立算法模块不受影响。五、开源声明更新：cn.6tail:lunar → yuangu/sxtwl_cpp(BSD-3-Clause)。六、ProGuard规则更新：保护JNI native方法。版本号从1.0.55升至1.0.56。"
+            ),
+            ChangelogEntry(
                 version = "v1.0.54",
                 date = "2026-06-05",
                 content = "历法知识新增「科里奥利力·太极旋转」卡片。展示台风、反气旋、大洋环流、地球自转在南北半球的旋转方向恰好相反（↺↻），源于地球自转的科里奥利力使北半球向右偏、南半球向左偏——同种力、相反果，太极双鱼图的物理铁证。版本号从1.0.53升至1.0.54。"

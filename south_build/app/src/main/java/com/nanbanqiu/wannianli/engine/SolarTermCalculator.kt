@@ -4,30 +4,33 @@
  */
 package com.nanbanqiu.wannianli.engine
 
-import com.nlf.calendar.Solar
 import kotlin.math.*
 
 object SolarTermCalculator {
 
+    private val JIE_QI_NAMES = arrayOf(
+        "冬至", "小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨",
+        "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露",
+        "秋分", "寒露", "霜降", "立冬", "小雪", "大雪"
+    )
+
     fun calculateSolarTerms(year: Int): List<SolarTermResult> {
-        val jieQiTable = Solar.fromYmd(year, 7, 1).lunar.jieQiTable
-        return CalendarConstants.NORTH_SOLAR_TERM_NAMES.mapIndexedNotNull { index, northName ->
-            val solar = jieQiTable[northName]
-            if (solar == null) {
-                android.util.Log.e("SolarTermCalc", "Missing key '$northName' for year $year")
-                null
-            } else {
-                SolarTermResult(
-                    northName = northName,
-                    southName = CalendarConstants.SOLAR_TERM_NAMES[index],
-                    year = solar.year,
-                    month = solar.month,
-                    day = solar.day,
-                    hour = solar.hour,
-                    minute = solar.minute,
-                    second = solar.second
-                )
-            }
+        val jdValues = SxtwlBridge.nativeGetSolarTermsForYear(year)
+        return (0 until 24).map { i ->
+            val jd = jdValues[i]
+            val gregorian = SxtwlBridge.jdToGregorian(jd)
+            val northName = JIE_QI_NAMES[i]
+            val southName = JIE_QI_NAMES[(i + 12) % 24]
+            SolarTermResult(
+                northName = northName,
+                southName = southName,
+                year = gregorian[0],
+                month = gregorian[1],
+                day = gregorian[2],
+                hour = gregorian[3],
+                minute = gregorian[4],
+                second = gregorian[5]
+            )
         }
     }
 

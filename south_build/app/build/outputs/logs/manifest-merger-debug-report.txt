@@ -116,7 +116,7 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] D:\DevCache\.gradle\caches\
 	tools:targetApi
 		ADDED from D:\nanbanqiuwannianli\south_build\app\src\main\AndroidManifest.xml:16:9-29
 	android:icon
-		ADDED from D:\nanbanqiuwannianli\south_build\app\src\main\AndroidManifest.xml:11:9-45
+		ADDED from D:\nanbanqiuwannianli\south_build\app\src\main\AndroidManifest.xml:11:9-43
 	android:allowBackup
 		ADDED from D:\nanbanqiuwannianli\south_build\app\src\main\AndroidManifest.xml:10:9-35
 	android:theme

@@ -609,11 +609,10 @@ class CalendarRepository(private val context: Context) {
 
                 val d = cal.get(java.util.Calendar.DAY_OF_MONTH)
 
-                val lunar = com.nlf.calendar.Solar.fromYmd(y, m, d).lunar
-
-                val lunarMonth = kotlin.math.abs(lunar.month)
-
-                val isLeap = lunar.toString().contains("闰")
+                val lunarRes = SxtwlBridge.nativeSolarToLunar(y, m, d)
+                val lunarMonth = kotlin.math.abs(lunarRes[1])
+                val lunarDay = lunarRes[2]
+                val isLeap = lunarRes[1] < 0
 
                 // 计算南半球月份
                 val sMonth = if (lunarMonth >= 7) lunarMonth - 6 else lunarMonth + 6
@@ -626,7 +625,7 @@ class CalendarRepository(private val context: Context) {
 
                     (isSouthLeap == (southernLeapMonth == southernMonth))
 
-                if (isTargetMonth && lunar.day == 1 && !foundMonth) {
+                if (isTargetMonth && lunarDay == 1 && !foundMonth) {
 
                     foundMonth = true
 

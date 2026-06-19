@@ -4,7 +4,6 @@
  */
 package com.nanbanqiu.wannianli.engine
 
-import com.nlf.calendar.Solar
 import kotlin.math.*
 
 object PureLunarEngine {
@@ -48,13 +47,13 @@ object PureLunarEngine {
         val daysToNewMoon = daysBetween(year, month, day, nextNewMoon.first, nextNewMoon.second, nextNewMoon.third)
         val daysToFullMoon = daysBetween(year, month, day, nextFullMoon.first, nextFullMoon.second, nextFullMoon.third)
 
-        val lunar = Solar.fromYmd(year, month, day).lunar
-        val lunarMonth = abs(lunar.month)
+        val lunarRes = SxtwlBridge.nativeSolarToLunar(year, month, day)
+        val lunarMonth = abs(lunarRes[1])
         val jianIdx = (lunarMonth + 1) % 12
         val monthJianZhi = DI_ZHI[jianIdx]
         val monthPoZhi = DI_ZHI[(jianIdx + 6) % 12]
 
-        val (_, poDays) = findLunarMonthInfo(year, month, day, lunarMonth, lunar.year, monthPoZhi)
+        val (_, poDays) = findLunarMonthInfo(year, month, day, lunarMonth, lunarRes[0], monthPoZhi)
 
         return MoonPhaseInfo(
             moonAge = round(moonAge * 10.0) / 10.0,
@@ -182,8 +181,8 @@ object PureLunarEngine {
         var m = solarMonth
         var d = solarDay
         while (true) {
-            val check = Solar.fromYmd(y, m, d).lunar
-            if (abs(check.month) == targetLunarMonth && check.day == 1 && check.year == targetLunarYear) break
+            val check = SxtwlBridge.nativeSolarToLunar(y, m, d)
+            if (abs(check[1]) == targetLunarMonth && check[2] == 1 && check[0] == targetLunarYear) break
             d--
             if (d < 1) {
                 m--
@@ -196,11 +195,13 @@ object PureLunarEngine {
         var dayCount = 0
         var cy = y; var cm = m; var cd = d
         while (true) {
-            val check = Solar.fromYmd(cy, cm, cd).lunar
-            if (abs(check.month) != targetLunarMonth && dayCount > 0) break
+            val check = SxtwlBridge.nativeSolarToLunar(cy, cm, cd)
+            if (abs(check[1]) != targetLunarMonth && dayCount > 0) break
             dayCount++
-            if (check.dayZhi == monthPoZhi && abs(check.month) == targetLunarMonth) {
-                poDays.add(check.day)
+            val gz = SxtwlBridge.nativeGetGanZhi(cy, cm, cd, 12)
+            val dayZhi = gz[2].substring(1)
+            if (dayZhi == monthPoZhi && abs(check[1]) == targetLunarMonth) {
+                poDays.add(check[2])
             }
             cd++
             if (cd > solarDaysInMonth(cy, cm)) {

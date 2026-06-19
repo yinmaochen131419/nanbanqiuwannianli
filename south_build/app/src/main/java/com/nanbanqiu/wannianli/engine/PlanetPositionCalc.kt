@@ -138,47 +138,79 @@ object PlanetPositionCalc {
         val eclipticLat: Double
     )
 
+    /**
+     * ELP-2000 完整版月亮位置计算
+     * 使用 452+ 项摄动数据，精度远超简化版（13项）
+     * 返回 Date 分点黄道坐标（度）
+     */
     fun calcMoonPosition(jd: Double): MoonPosition {
-        val T = (jd - 2451545.0) / 36525.0
-
-        val Lp = normalizeDeg(218.3164477 + 481267.88123421 * T - 0.0015786 * T * T)
-        val D = normalizeDeg(297.8501921 + 445267.1114034 * T - 0.0018819 * T * T)
-        val M = normalizeDeg(357.5291092 + 35999.0502909 * T - 0.0001536 * T * T)
-        val Mp = normalizeDeg(134.9633964 + 477198.8675055 * T + 0.0087414 * T * T)
-        val F = normalizeDeg(93.2720950 + 483202.0175233 * T - 0.0036539 * T * T)
-
-        val toRad = { d: Double -> d * PI / 180.0 }
-
-        var lonCorr = 0.0
-        lonCorr += 6288774 * sin(toRad(Mp))
-        lonCorr += 1274027 * sin(toRad(2 * D - Mp))
-        lonCorr += 658314 * sin(toRad(2 * D))
-        lonCorr += 213618 * sin(toRad(2 * Mp))
-        lonCorr += -185116 * sin(toRad(M))
-        lonCorr += -114332 * sin(toRad(2 * F))
-        lonCorr += 58793 * sin(toRad(2 * D - 2 * Mp))
-        lonCorr += 57066 * sin(toRad(2 * D - M - Mp))
-        lonCorr += 53322 * sin(toRad(2 * D + Mp))
-        lonCorr += 45758 * sin(toRad(2 * D - M))
-        lonCorr += -40923 * sin(toRad(M - Mp))
-        lonCorr += -34720 * sin(toRad(D))
-        lonCorr += -30383 * sin(toRad(M + Mp))
-
-        val eclipticLon = normalizeDeg(Lp + lonCorr / 1000000.0)
-
-        var latCorr = 0.0
-        latCorr += 5128122 * sin(toRad(F))
-        latCorr += 280602 * sin(toRad(Mp + F))
-        latCorr += 277693 * sin(toRad(Mp - F))
-        latCorr += 173237 * sin(toRad(2 * D - F))
-        latCorr += 55413 * sin(toRad(2 * D - Mp + F))
-        latCorr += 46271 * sin(toRad(2 * D - Mp - F))
-        latCorr += 32573 * sin(toRad(2 * D + F))
-        latCorr += 17198 * sin(toRad(2 * Mp + F))
-
-        val eclipticLat = latCorr / 1000000.0
-
+        val t = (jd - 2451545.0) / 36525.0
+        val lonRad = xl1Calc(0, t)
+        val latRad = xl1Calc(1, t)
+        val eclipticLon = normalizeDeg(lonRad * 180.0 / PI)
+        val eclipticLat = latRad * 180.0 / PI
         return MoonPosition(eclipticLon, eclipticLat)
+    }
+
+    /**
+     * ELP-2000 月亮坐标计算核心算法
+     * 移植自寿星天文历 eph0.js 的 XL1_calc 函数
+     *
+     * @param zn 0=经度, 1=纬度, 2=距离
+     * @param t 儒略世纪数 (J2000起算)
+     * @return 经度/纬度（弧度），距离（公里）
+     */
+    private fun xl1Calc(zn: Int, t: Double): Double {
+        val ob = Elp2000Data.XL1[zn]
+        val rad = 180.0 * 3600.0 / PI  // 每弧度的角秒数 = 206264.806
+
+        var t2 = t * t
+        var t3 = t2 * t
+        var t4 = t3 * t
+        val t5 = t4 * t
+        val tx = t - 10
+
+        var v = 0.0
+
+        if (zn == 0) {
+            // 月球平黄经（弧度→角秒）
+            v += (3.81034409 + 8399.684730072 * t - 3.319e-05 * t2 + 3.11e-08 * t3 - 2.033e-10 * t4) * rad
+            // 岁差（角秒）
+            v += 5028.792262 * t + 1.1124406 * t2 + 0.00007699 * t3 - 0.000023479 * t4 - 0.0000000178 * t5
+            // 公元3000-5000年长期修正
+            if (tx > 0) v += -0.866 + 1.43 * tx + 0.054 * tx * tx
+        }
+
+        // 时间幂次缩放
+        t2 /= 1e4
+        t3 /= 1e8
+        t4 /= 1e8
+
+        // 使用全部项 (n = -1 → ob[0].size)
+        val n = ob[0].size
+
+        var tn = 1.0  // t^i 系数
+        for (i in ob.indices) {
+            val f = ob[i]
+            // 按比例计算各项数（与 eph0.js 一致）
+            var nTerms = floor(n.toDouble() * f.size / ob[0].size + 0.5).toInt()
+            if (i > 0) nTerms += 6
+            if (nTerms >= f.size) nTerms = f.size
+
+            var c = 0.0
+            var j = 0
+            while (j < nTerms) {
+                c += f[j] * cos(f[j + 1] + t * f[j + 2] + t2 * f[j + 3] + t3 * f[j + 4] + t4 * f[j + 5])
+                j += 6
+            }
+            v += c * tn
+            tn *= t
+        }
+
+        // 经度和纬度：角秒→弧度
+        if (zn != 2) v /= rad
+
+        return v
     }
 
     private fun Double.toRad() = this * PI / 180.0

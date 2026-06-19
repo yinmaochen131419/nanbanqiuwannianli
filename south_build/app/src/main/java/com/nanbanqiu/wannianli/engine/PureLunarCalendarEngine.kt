@@ -4,8 +4,6 @@
  */
 package com.nanbanqiu.wannianli.engine
 
-import com.nlf.calendar.Solar
-
 import kotlin.math.*
 
 object PureLunarCalendarEngine {
@@ -211,19 +209,10 @@ object PureLunarCalendarEngine {
     }
 
     private fun findLiQiu(year: Int): Triple<Int, Int, Int> {
-
-        val jieQiTable = Solar.fromYmd(year, 7, 1).lunar.jieQiTable
-
-        val solar = jieQiTable["立秋"]
-
-        if (solar != null) {
-
-            return Triple(solar.year, solar.month, solar.day)
-
-        }
-
-        return Triple(year, 8, 7)
-
+        val terms = SxtwlBridge.nativeGetSolarTermsForYear(year)
+        val liQiuJd = terms[15] // 立秋 is index 15
+        val greg = SxtwlBridge.jdToGregorian(liQiuJd)
+        return Triple(greg[0], greg[1], greg[2])
     }
 
     private fun findNewMoonAtOrAfter(jd: Double): Double {

@@ -1,7 +1,7 @@
 # 南半球历法 ProGuard Rules
 
-# Keep lunar library (cn.6tail:lunar)
--keep class com.nlf.calendar.** { *; }
+# Keep JNI native methods (sxtwl_cpp bridge)
+-keep class com.nanbanqiu.wannianli.engine.SxtwlBridge { *; }
 
 # Keep Gson serialization classes
 -keepattributes Signature

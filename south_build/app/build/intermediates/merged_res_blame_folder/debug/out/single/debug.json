@@ -1,22 +1,62 @@
 [
     {
-        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.nanbanqiu.wannianli.app-main-55:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.nanbanqiu.wannianli.app-merged_res-53:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.nanbanqiu.wannianli.app-main-55:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.nanbanqiu.wannianli.app-main-55:/drawable/ic_launcher_background.xml"
+        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.nanbanqiu.wannianli.app-main-55:/mipmap-mdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/drawable_ic_launcher.xml.flat",
-        "source": "com.nanbanqiu.wannianli.app-main-55:/drawable/ic_launcher.xml"
+        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.nanbanqiu.wannianli.app-main-55:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/xml_file_paths.xml.flat",
-        "source": "com.nanbanqiu.wannianli.app-main-55:/xml/file_paths.xml"
+        "merged": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.nanbanqiu.wannianli.app-merged_res-53:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.nanbanqiu.wannianli.app-main-55:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.nanbanqiu.wannianli.app-main-55:/drawable/ic_launcher_foreground.xml"
+        "merged": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.nanbanqiu.wannianli.app-merged_res-53:\\drawable_ic_launcher_background.xml.flat",
+        "source": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.nanbanqiu.wannianli.app-main-55:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.nanbanqiu.wannianli.app-main-55:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.nanbanqiu.wannianli.app-main-55:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.nanbanqiu.wannianli.app-main-55:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.nanbanqiu.wannianli.app-main-55:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.nanbanqiu.wannianli.app-merged_res-53:\\drawable_ic_launcher.xml.flat",
+        "source": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.nanbanqiu.wannianli.app-main-55:\\drawable\\ic_launcher.xml"
+    },
+    {
+        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.nanbanqiu.wannianli.app-main-55:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.nanbanqiu.wannianli.app-main-55:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.nanbanqiu.wannianli.app-main-55:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.nanbanqiu.wannianli.app-merged_res-53:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.nanbanqiu.wannianli.app-main-55:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.nanbanqiu.wannianli.app-merged_res-53:\\xml_file_paths.xml.flat",
+        "source": "D:\\DevCache\\.gradle\\daemon\\8.3\\com.nanbanqiu.wannianli.app-main-55:\\xml\\file_paths.xml"
     }
 ]

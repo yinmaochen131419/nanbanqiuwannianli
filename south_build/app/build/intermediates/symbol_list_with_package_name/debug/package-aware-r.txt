@@ -189,6 +189,7 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 mipmap ic_launcher
+mipmap ic_launcher_round
 string androidx_startup
 string app_name
 string bottom_sheet_collapse_description
@@ -308,6 +309,7 @@ string home_north_hemisphere
 string home_north_lunar
 string home_north_season
 string home_north_solar
+string home_north_solar_date
 string home_north_term
 string home_prev_month
 string home_reference
@@ -484,6 +486,8 @@ string north_lunar_month_9
 string not_selected
 string off
 string on
+string opensource_text
+string privacy_policy_text
 string range_end
 string range_start
 string schedule_add
@@ -596,6 +600,8 @@ string title_disclaimer
 string title_eclipse
 string title_feedback
 string title_knowledge
+string title_opensource
+string title_privacy_policy
 string title_schedule
 string title_settings
 string title_zeri

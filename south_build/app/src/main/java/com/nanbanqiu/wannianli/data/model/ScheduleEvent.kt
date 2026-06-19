@@ -4,7 +4,7 @@
  */
 package com.nanbanqiu.wannianli.data.model
 
-import com.nlf.calendar.Lunar
+
 
 data class ScheduleEvent(
 
@@ -46,6 +46,31 @@ data class ScheduleEvent(
 
         val LUNAR_MONTH_NAMES = listOf("正月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "冬月", "腊月")
 
+        fun lunarToSolar(lunarYear: Int, lunarMonth: Int, lunarDay: Int): Triple<Int, Int, Int>? {
+            for (y in lunarYear..lunarYear + 1) {
+                for (m in 1..12) {
+                    val dim = when (m) {
+                        1, 3, 5, 7, 8, 10, 12 -> 31
+                        4, 6, 9, 11 -> 30
+                        2 -> if (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0)) 29 else 28
+                        else -> 30
+                    }
+                    for (d in 1..dim) {
+                        try {
+                            val res = com.nanbanqiu.wannianli.engine.SxtwlBridge.nativeSolarToLunar(y, m, d)
+                            val lm = kotlin.math.abs(res[1])
+                            val ld = res[2]
+                            val ly = res[0]
+                            if (ly == lunarYear && lm == lunarMonth && ld == lunarDay) {
+                                return Triple(y, m, d)
+                            }
+                        } catch (_: Exception) {}
+                    }
+                }
+            }
+            return null
+        }
+
     }
 
     val typeName: String get() = TYPE_NAMES.getOrElse(type) { "" }
@@ -57,17 +82,10 @@ data class ScheduleEvent(
         if (!isLunarDate) return Triple(year, month, day)
 
         return try {
-
-            val lunar = Lunar.fromYmd(solarYear, month, day)
-
-            val solar = lunar.solar
-
-            Triple(solar.year, solar.month, solar.day)
-
+            val solar = lunarToSolar(solarYear, month, day)
+            if (solar != null) Triple(solar.first, solar.second, solar.third) else null
         } catch (e: Exception) {
-
             null
-
         }
 
     }

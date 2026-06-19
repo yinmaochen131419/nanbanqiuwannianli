@@ -98,7 +98,7 @@
     <item name="wrapped_composition_tag" type="id"/>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="androidx_startup" translatable="false">androidx.startup</string>
-    <string name="app_name">南半球万年历</string>
+    <string name="app_name">南半球历法</string>
     <string name="bottom_sheet_collapse_description">Collapse bottom sheet</string>
     <string name="bottom_sheet_dismiss_description">Dismiss bottom sheet</string>
     <string name="bottom_sheet_drag_handle_description">Drag handle</string>
@@ -175,7 +175,7 @@
     <string name="di_zhi_8">申</string>
     <string name="di_zhi_9">酉</string>
     <string name="dialog">"Dialog"</string>
-    <string name="disclaimer_text">【重要提示：请仔细阅读本免责声明】\n\n本应用（南半球历法）是一款基于中国传统历法文化并结合南半球地理特征的历法工具软件，所有功能（包括但不限于择日、四柱八字、节气换算、月相翻转、星宿显示、科里奥利力分析等）均来源于中国传统民俗文化研究与现代天文学知识，仅供学习、研究、交流之用。\n\n一、文化研究定位\n本应用提供的所有历法计算、八卦推演、吉凶推断等信息，均基于传统古籍算法和民俗文化理论，属于传统文化研究范畴，不构成任何形式的预测、占卜或迷信行为。\n\n二、非决策依据\n本应用输出的任何信息（包括但不限于吉日推荐、时辰吉凶、星宿分析等）均不得作为以下用途的决策依据：\n（1）婚丧嫁娶、乔迁开业等重要生活决策；\n（2）医疗健康、投资理财、法律事务等专业领域决策；\n（3）任何可能产生法律后果的行为决策。\n\n三、责任豁免\n用户使用本应用即表示已充分理解并同意：\n（1）本应用开发者不对因使用或信赖本应用信息而产生的任何直接或间接损失承担责任；\n（2）用户应自行判断信息的适用性，并独立承担使用后果；\n（3）本应用有权在不另行通知的情况下修改功能和内容。\n\n四、合规声明\n本应用严格遵守《中华人民共和国网络安全法》《互联网信息服务管理办法》等相关法律法规，不传播封建迷信内容，坚持传统文化研究交流定位。\n\n五、知识产权\n本应用中的算法逻辑、代码实现、界面设计均受知识产权保护，未经授权不得复制、修改或用于商业用途。\n\n如您不同意以上条款，请立即停止使用本应用并卸载。</string>
+    <string name="disclaimer_text">【重要提示：请仔细阅读本免责声明】\n\n本应用（南半球历法）是一款基于中国传统历法文化并结合南半球地理特征的历法工具软件，所有功能（包括但不限于择日、四柱八字、节气换算、月相翻转、星宿显示、科里奥利力分析等）均来源于中国传统民俗文化研究与现代天文学知识，仅供学习、研究、交流之用。\n\n一、文化研究定位\n本应用提供的所有历法计算、八卦推演、吉凶推断等信息，均基于传统古籍算法和民俗文化理论，属于传统文化研究范畴，不构成任何形式的预测、占卜或迷信行为。\n\n二、非决策依据\n本应用输出的任何信息（包括但不限于吉日推荐、时辰吉凶、星宿分析等）均不得作为以下用途的决策依据：\n（1）婚丧嫁娶、乔迁开业等重要生活决策；\n（2）医疗健康、投资理财、法律事务等专业领域决策；\n（3）任何可能产生法律后果的行为决策。\n\n三、责任豁免\n用户使用本应用即表示已充分理解并同意：\n（1）本应用开发者不对因使用或信赖本应用信息而产生的任何直接、间接、附带、特殊、惩罚性或后果性损害承担责任；\n（2）用户应自行判断信息的适用性，并独立承担使用后果；\n（3）本应用有权在不另行通知的情况下修改功能和内容；\n（4）本应用不对功能的持续性可用性、准确性、及时性作任何明示或暗示的保证。\n\n四、无担保声明\n本应用按"现状"提供，不作任何形式的担保，包括但不限于适销性、特定用途适用性、非侵权性的暗示担保。开发者不保证本应用将不间断、及时、安全或无错误运行。\n\n五、数据与隐私\n本应用不收集、存储或传输用户个人数据。所有计算均在用户设备本地完成，不涉及任何远程服务器或第三方服务。\n\n六、合规声明\n本应用严格遵守《中华人民共和国网络安全法》《互联网信息服务管理办法》等相关法律法规，不传播封建迷信内容，坚持传统文化研究交流定位。\n\n七、知识产权\n本应用中的算法逻辑、代码实现、界面设计均受知识产权保护，未经授权不得复制、修改或用于商业用途。\n\n八、适用法律与管辖\n本声明的解释与执行适用中华人民共和国法律。因使用本应用产生的任何争议，应友好协商解决；协商不成的，提交开发者所在地有管辖权的人民法院诉讼解决。对于海外用户，本声明同时受用户所在地法律的补充保护。\n\n九、终止使用\n如您不同意以上任何条款，请立即停止使用本应用并卸载。继续使用本应用即视为您接受本声明的全部条款及其后续更新。</string>
     <string name="drawer_title">南半球历法</string>
     <string name="dropdown_menu">"Dropdown menu"</string>
     <string name="expanded">Expanded</string>
@@ -220,6 +220,7 @@
     <string name="home_north_lunar">北农历</string>
     <string name="home_north_season">北半球季节</string>
     <string name="home_north_solar">北半球阳历</string>
+    <string name="home_north_solar_date">%1$s %2$s</string>
     <string name="home_north_term">北节</string>
     <string name="home_prev_month">上个月</string>
     <string name="home_reference">参考</string>
@@ -396,6 +397,8 @@
     <string name="not_selected">Not selected</string>
     <string name="off">Off</string>
     <string name="on">On</string>
+    <string name="opensource_text">本应用使用了以下开源软件库，特此致谢：\n\n1. yuangu/sxtwl_cpp (寿星天文历C++)\n   农历历法计算引擎\n   作者：许剑伟 (寿星天文历5.10) / 袁固 (C++移植)\n   许可证：BSD-3-Clause\n\n2. com.google.code.gson:gson 2.10.1\n   JSON序列化/反序列化库\n   作者：Google Inc.\n   许可证：Apache License 2.0\n\n3. androidx.compose (BOM 2023.10.01)\n   Android现代声明式UI框架\n   作者：Google Inc.\n   许可证：Apache License 2.0\n\n4. androidx.navigation:navigation-compose 2.7.5\n   Android导航组件\n   作者：Google Inc.\n   许可证：Apache License 2.0\n\n5. androidx.datastore:datastore-preferences 1.0.0\n   Android数据存储库\n   作者：Google Inc.\n   许可证：Apache License 2.0\n\n6. androidx.core:core-ktx 1.12.0\n   Android核心Kotlin扩展\n   作者：Google Inc.\n   许可证：Apache License 2.0\n\n7. androidx.lifecycle 2.6.2\n   Android生命周期组件\n   作者：Google Inc.\n   许可证：Apache License 2.0</string>
+    <string name="privacy_policy_text">【南半球历法隐私政策】\n\n生效日期：2026年6月6日\n\n南半球历法（以下简称"本应用"）深知个人信息对您的重要性，我们将按照法律法规的规定，保护您的个人信息及隐私安全。本应用是一款纯本地运行的历法工具软件，不涉及任何网络数据传输。特此向您说明本应用的隐私政策如下：\n\n一、信息收集\n本应用不收集、获取、存储或传输任何用户的个人信息，包括但不限于姓名、电话号码、电子邮箱、设备标识符、地理位置、通讯录、照片等。所有历法计算、星宿推演、节气换算等功能均在您的设备本地完成，不涉及任何远程服务器或云端服务。\n\n二、信息存储\n本应用的所有数据均存储在您的设备本地，包括但不限于日程记录、城市选择偏好、语言设置等。本应用不会将任何数据上传至服务器。当您卸载本应用时，所有本地数据将被一并删除。\n\n三、第三方服务\n本应用不集成任何第三方分析工具、广告SDK、推送服务或社交登录功能。本应用不与任何第三方共享用户数据，因为本应用本身不收集任何数据。\n\n四、Cookie与追踪\n本应用不使用Cookie、Web Beacon、像素标签或任何其他追踪技术。本应用不会在您使用过程中追踪您的行为或活动。\n\n五、儿童隐私\n本应用不针对未成年人提供专门服务，也不收集任何年龄段用户的个人信息。如果您是未成年人的监护人，您可以放心让未成年人使用本应用，因为本应用不收集任何个人信息。\n\n六、数据安全\n虽然本应用不收集任何数据，但我们仍采取了合理的技术措施保护您设备上的本地数据安全。建议您妥善保管您的设备，设置设备锁屏密码，以防止他人未经授权访问您的设备。\n\n七、隐私政策的变更\n本应用可能会不时更新本隐私政策。任何变更将在本应用内通过更新隐私政策页面的方式通知您。继续使用本应用即表示您同意修订后的隐私政策。\n\n八、联系我们\n如您对本隐私政策有任何疑问、意见或建议，请通过本应用内的反馈功能与我们联系。我们将在合理时间内予以回复。</string>
     <string name="range_end">"Range end"</string>
     <string name="range_start">"Range start"</string>
     <string name="schedule_add">添加日程</string>
@@ -508,6 +511,8 @@
     <string name="title_eclipse">日食月食</string>
     <string name="title_feedback">意见反馈</string>
     <string name="title_knowledge">历法知识</string>
+    <string name="title_opensource">开源声明</string>
+    <string name="title_privacy_policy">隐私政策</string>
     <string name="title_schedule">日程管理</string>
     <string name="title_settings">时区设置</string>
     <string name="title_zeri">择日</string>

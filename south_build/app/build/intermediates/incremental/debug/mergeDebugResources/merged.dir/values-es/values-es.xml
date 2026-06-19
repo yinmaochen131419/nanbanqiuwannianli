@@ -73,7 +73,7 @@
     <string name="di_zhi_8">申</string>
     <string name="di_zhi_9">酉</string>
     <string msgid="4057925834421392736" name="dialog">"Cuadro de diálogo"</string>
-    <string name="disclaimer_text">[Importante: Lea detenidamente este aviso legal]\n\nEsta aplicación (Calendario del Hemisferio Sur) es una herramienta calendario basada en la cultura del calendario tradicional chino combinada con características geográficas del hemisferio Sur. Todas las funciones (incluidas pero no limitadas a selección de fechas, Cuatro Pilares, conversión de términos solares, inversión de fases lunares, visualización de mansiones estelares, análisis de fuerza de Coriolis, etc.) se derivan de la investigación de la cultura folclórica tradicional china y el conocimiento astronómico moderno, y están destinadas únicamente para aprendizaje, investigación e intercambio.\n\n1. Posicionamiento de Investigación Cultural\nTodos los cálculos de calendario, deducciones Bagua y determinaciones de auspiciosidad proporcionados por esta aplicación se basan en algoritmos antiguos tradicionales y teorías de cultura folclórica, perteneciendo a la categoría de investigación cultural tradicional, y no constituyen ninguna forma de predicción, adivinación o superstición.\n\n2. No para Toma de Decisiones\nCualquier información generada por esta aplicación (incluidas pero no limitadas a recomendaciones de fechas auspiciosas, auspiciosidad de horas, análisis de mansiones estelares, etc.) no deberá utilizarse como base para decisiones sobre:\n(1) Decisiones importantes de la vida como bodas, funerales, mudanzas o inauguraciones de negocios;\n(2) Decisiones profesionales en salud, inversiones, asuntos legales, etc.;\n(3) Cualquier decisión que pueda tener consecuencias legales.\n\n3. Exención de Responsabilidad\nAl usar esta aplicación, usted reconoce y acepta que:\n(1) El desarrollador de esta aplicación no será responsable de ninguna pérdida directa o indirecta derivada del uso o confianza en la información de la aplicación;\n(2) Los usuarios deben juzgar independientemente la aplicabilidad de la información y asumir las consecuencias de uso;\n(3) Esta aplicación se reserva el derecho de modificar funciones y contenido sin previo aviso.\n\n4. Declaración de Cumplimiento\nEsta aplicación cumple estrictamente con la Ley de Ciberseguridad de la República Popular China, las Medidas de Administración de Servicios de Información de Internet y otras leyes y regulaciones pertinentes, no difunde contenido supersticioso feudal y mantiene el posicionamiento de investigación e intercambio cultural tradicional.\n\n5. Propiedad Intelectual\nLa lógica algorítmica, implementación de código y diseño de interfaz de esta aplicación están protegidos por derechos de propiedad intelectual. Queda prohibida su copia, modificación o uso comercial sin autorización.\n\nSi no está de acuerdo con estos términos, deje de usar esta aplicación inmediatamente y desinstálela.</string>
+    <string name="disclaimer_text">[Importante: Lea detenidamente este aviso legal]\n\nEsta aplicación (Calendario del Hemisferio Sur) es una herramienta calendario basada en la cultura del calendario tradicional chino combinada con características geográficas del hemisferio Sur. Todas las funciones (incluidas pero no limitadas a selección de fechas, Cuatro Pilares, conversión de términos solares, inversión de fases lunares, visualización de mansiones estelares, análisis de fuerza de Coriolis, etc.) se derivan de la investigación de la cultura folclórica tradicional china y el conocimiento astronómico moderno, y están destinadas únicamente para aprendizaje, investigación e intercambio.\n\n1. Posicionamiento de Investigación Cultural\nTodos los cálculos de calendario, deducciones Bagua y determinaciones de auspiciosidad proporcionados por esta aplicación se basan en algoritmos antiguos tradicionales y teorías de cultura folclórica, perteneciendo a la categoría de investigación cultural tradicional, y no constituyen ninguna forma de predicción, adivinación o superstición.\n\n2. No para Toma de Decisiones\nCualquier información generada por esta aplicación (incluidas pero no limitadas a recomendaciones de fechas auspiciosas, auspiciosidad de horas, análisis de mansiones estelares, etc.) no deberá utilizarse como base para decisiones sobre:\n(1) Decisiones importantes de la vida como bodas, funerales, mudanzas o inauguraciones de negocios;\n(2) Decisiones profesionales en salud, inversiones, asuntos legales, etc.;\n(3) Cualquier decisión que pueda tener consecuencias legales.\n\n3. Limitación de Responsabilidad\nAl usar esta aplicación, usted reconoce y acepta que:\n(1) El desarrollador no será responsable de ningún daño directo, indirecto, incidental, especial, punitivo o consecuente derivado del uso o confianza en la información de la aplicación;\n(2) Los usuarios deben juzgar independientemente la aplicabilidad de la información y asumir las consecuencias de uso;\n(3) Esta aplicación se reserva el derecho de modificar funciones y contenido sin previo aviso;\n(4) No se ofrece garantía expresa o implícita sobre la disponibilidad continua, precisión o puntualidad de las funciones.\n\n4. Sin Garantía\nEsta aplicación se proporciona \"tal cual\" sin garantías de ningún tipo, ya sean expresas o implícitas, incluyendo pero no limitándose a garantías implícitas de comercialidad, idoneidad para un propósito particular y no infracción. El desarrollador no garantiza que la aplicación funcione de manera ininterrumpida, oportuna, segura o sin errores.\n\n5. Datos y Privacidad\nEsta aplicación no recopila, almacena ni transmite datos personales del usuario. Todos los cálculos se realizan localmente en el dispositivo del usuario sin involucrar servidores remotos ni servicios de terceros.\n\n6. Declaración de Cumplimiento\nEsta aplicación cumple estrictamente con la Ley de Ciberseguridad de la República Popular China, las Medidas de Administración de Servicios de Información de Internet y otras leyes y regulaciones pertinentes, no difunde contenido supersticioso feudal y mantiene el posicionamiento de investigación e intercambio cultural tradicional.\n\n7. Propiedad Intelectual\nLa lógica algorítmica, implementación de código y diseño de interfaz de esta aplicación están protegidos por derechos de propiedad intelectual. Queda prohibida su copia, modificación o uso comercial sin autorización.\n\n8. Ley Aplicable y Jurisdicción\nEste aviso se regirá e interpretará de acuerdo con las leyes de la República Popular China. Cualquier disputa derivada del uso de esta aplicación se resolverá mediante negociación amistosa; si la negociación fracasa, la disputa se someterá al tribunal popular competente en la ubicación del desarrollador. Para usuarios en el extranjero, este aviso está adicionalmente protegido por las leyes de la jurisdicción del usuario.\n\n9. Terminación\nSi no está de acuerdo con alguno de los términos anteriores, deje de usar esta aplicación inmediatamente y desinstálela. El uso continuado de esta aplicación constituye la aceptación de todos los términos de este aviso y sus actualizaciones posteriores.</string>
     <string name="drawer_title">Calendario Hemisferio Sur</string>
     <string msgid="1890207353314751437" name="dropdown_menu">"Menú desplegable"</string>
     <string msgid="5974471714631304645" name="expanded">"Desplegado"</string>
@@ -118,6 +118,7 @@
     <string name="home_north_lunar">Lunar N.</string>
     <string name="home_north_season">Estación Norte</string>
     <string name="home_north_solar">Solar Norte</string>
+    <string name="home_north_solar_date">%1$s, %2$s</string>
     <string name="home_north_term">T. Norte</string>
     <string name="home_prev_month">Mes Anterior</string>
     <string name="home_reference">Ref.</string>
@@ -180,36 +181,36 @@
     <string name="lang_simplified_chinese">Chino Simplificado</string>
     <string name="lang_traditional_chinese">Chino Tradicional</string>
     <string name="leap_month_prefix">Intercalar</string>
-    <string name="lunar_day_0">1°</string>
-    <string name="lunar_day_1">2°</string>
-    <string name="lunar_day_10">11°</string>
-    <string name="lunar_day_11">12°</string>
-    <string name="lunar_day_12">13°</string>
-    <string name="lunar_day_13">14°</string>
-    <string name="lunar_day_14">15°</string>
-    <string name="lunar_day_15">16°</string>
-    <string name="lunar_day_16">17°</string>
-    <string name="lunar_day_17">18°</string>
-    <string name="lunar_day_18">19°</string>
-    <string name="lunar_day_19">20°</string>
-    <string name="lunar_day_2">3°</string>
-    <string name="lunar_day_20">21°</string>
-    <string name="lunar_day_21">22°</string>
-    <string name="lunar_day_22">23°</string>
-    <string name="lunar_day_23">24°</string>
-    <string name="lunar_day_24">25°</string>
-    <string name="lunar_day_25">26°</string>
-    <string name="lunar_day_26">27°</string>
-    <string name="lunar_day_27">28°</string>
-    <string name="lunar_day_28">29°</string>
-    <string name="lunar_day_29">30°</string>
-    <string name="lunar_day_3">4°</string>
-    <string name="lunar_day_4">5°</string>
-    <string name="lunar_day_5">6°</string>
-    <string name="lunar_day_6">7°</string>
-    <string name="lunar_day_7">8°</string>
-    <string name="lunar_day_8">9°</string>
-    <string name="lunar_day_9">10°</string>
+    <string name="lunar_day_0">1</string>
+    <string name="lunar_day_1">2</string>
+    <string name="lunar_day_10">11</string>
+    <string name="lunar_day_11">12</string>
+    <string name="lunar_day_12">13</string>
+    <string name="lunar_day_13">14</string>
+    <string name="lunar_day_14">15</string>
+    <string name="lunar_day_15">16</string>
+    <string name="lunar_day_16">17</string>
+    <string name="lunar_day_17">18</string>
+    <string name="lunar_day_18">19</string>
+    <string name="lunar_day_19">20</string>
+    <string name="lunar_day_2">3</string>
+    <string name="lunar_day_20">21</string>
+    <string name="lunar_day_21">22</string>
+    <string name="lunar_day_22">23</string>
+    <string name="lunar_day_23">24</string>
+    <string name="lunar_day_24">25</string>
+    <string name="lunar_day_25">26</string>
+    <string name="lunar_day_26">27</string>
+    <string name="lunar_day_27">28</string>
+    <string name="lunar_day_28">29</string>
+    <string name="lunar_day_29">30</string>
+    <string name="lunar_day_3">4</string>
+    <string name="lunar_day_4">5</string>
+    <string name="lunar_day_5">6</string>
+    <string name="lunar_day_6">7</string>
+    <string name="lunar_day_7">8</string>
+    <string name="lunar_day_8">9</string>
+    <string name="lunar_day_9">10</string>
     <string name="lunar_month_1">1er Mes</string>
     <string name="lunar_month_10">10mo Mes</string>
     <string name="lunar_month_11">11vo Mes</string>
@@ -293,6 +294,7 @@
     <string msgid="6610465462668679431" name="not_selected">"No seleccionado"</string>
     <string msgid="875452955155264703" name="off">"Desactivado"</string>
     <string msgid="8655164131929253426" name="on">"Activado"</string>
+    <string name="privacy_policy_text">[Política de Privacidad del Calendario del Hemisferio Sur]\n\nFecha de vigencia: 6 de junio de 2026\n\nEl Calendario del Hemisferio Sur (en adelante, \"esta Aplicación\") comprende la importancia de su información personal. Protegeremos su información personal y privacidad de acuerdo con las leyes y regulaciones aplicables. Esta Aplicación es una herramienta calendario que funciona exclusivamente de forma local, sin transmisión de datos por red. Nuestra política de privacidad es la siguiente:\n\n1. Recopilación de Información\nEsta Aplicación no recopila, obtiene, almacena ni transmite ninguna información personal de los usuarios, incluyendo pero no limitándose a nombres, números de teléfono, direcciones de correo electrónico, identificadores de dispositivo, ubicaciones geográficas, contactos, fotos, etc. Todos los cálculos de calendario, deducciones de mansiones estelares, conversiones de términos solares y otras funciones se realizan localmente en su dispositivo sin involucrar servidores remotos ni servicios en la nube.\n\n2. Almacenamiento de Información\nTodos los datos de esta Aplicación se almacenan localmente en su dispositivo, incluyendo pero no limitándose a registros de horarios, preferencias de selección de ciudad, configuración de idioma, etc. Esta Aplicación no carga ningún dato a servidores. Al desinstalar esta Aplicación, todos los datos locales se eliminarán junto con ella.\n\n3. Servicios de Terceros\nEsta Aplicación no integra herramientas de análisis de terceros, SDKs de publicidad, servicios de notificaciones push ni funciones de inicio de sesión social. Esta Aplicación no comparte ningún dato de usuario con terceros porque esta Aplicación en sí no recopila ningún dato.\n\n4. Cookies y Rastreo\nEsta Aplicación no utiliza cookies, balizas web, etiquetas de píxel ni ninguna otra tecnología de rastreo. Esta Aplicación no rastrea su comportamiento o actividades durante el uso.\n\n5. Privacidad de Menores\nEsta Aplicación no proporciona servicios dedicados para menores, ni recopila información personal de usuarios de ninguna edad. Si usted es tutor de un menor, puede permitir con tranquilidad que los menores usen esta Aplicación, ya que no recopila ninguna información personal.\n\n6. Seguridad de Datos\nAunque esta Aplicación no recopila ningún dato, aún tomamos medidas técnicas razonables para proteger la seguridad de sus datos locales en su dispositivo. Recomendamos que guarde su dispositivo de forma segura y configure una contraseña de bloqueo de pantalla para evitar el acceso no autorizado a su dispositivo.\n\n7. Cambios en la Política de Privacidad\nEsta Aplicación puede actualizar esta política de privacidad periódicamente. Cualquier cambio se notificará mediante la actualización de la página de política de privacidad dentro de esta Aplicación. El uso continuado de esta Aplicación constituye su aceptación de la política de privacidad revisada.\n\n8. Contáctenos\nSi tiene alguna pregunta, opinión o sugerencia sobre esta política de privacidad, contáctenos a través de la función de comentarios dentro de esta Aplicación. Responderemos en un tiempo razonable.</string>
     <string msgid="5941395253238309765" name="range_end">"Fin del intervalo"</string>
     <string msgid="7097486360902471446" name="range_start">"Inicio del intervalo"</string>
     <string name="schedule_add">Agregar Evento</string>
@@ -405,6 +407,7 @@
     <string name="title_eclipse">Eclipses Solares y Lunares</string>
     <string name="title_feedback">Comentarios</string>
     <string name="title_knowledge">Conocimiento del Calendario</string>
+    <string name="title_privacy_policy">Política de Privacidad</string>
     <string name="title_schedule">Agenda</string>
     <string name="title_settings">Configuración de Zona Horaria</string>
     <string name="title_zeri">Selección de Fecha</string>
